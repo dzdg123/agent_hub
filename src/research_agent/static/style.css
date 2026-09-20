@@ -1,0 +1,35 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, "Microsoft YaHei", system-ui, sans-serif;
+  color: #19231d;
+  background: #f2f1e9;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: radial-gradient(circle at top right, #dbe9de, transparent 40%), #f2f1e9; }
+main { width: min(920px, calc(100% - 32px)); margin: 0 auto; padding: 56px 0 100px; }
+header { margin-bottom: 36px; }
+h1 { font-family: Georgia, serif; font-size: clamp(40px, 7vw, 72px); max-width: 700px; line-height: .98; margin: 8px 0 20px; font-weight: 500; }
+h2 { margin: 0 0 18px; }
+h3 { margin-top: 28px; }
+.eyebrow { letter-spacing: .18em; font-size: 12px; color: #52705e; font-weight: 700; }
+.lede { max-width: 670px; font-size: 19px; line-height: 1.7; color: #566159; }
+.panel { background: rgba(255,255,255,.82); border: 1px solid #d9ddd4; border-radius: 18px; padding: 26px; margin: 18px 0; box-shadow: 0 12px 40px rgba(35,55,43,.06); }
+label { display: block; margin-bottom: 8px; font-weight: 600; }
+textarea { width: 100%; min-height: 130px; padding: 14px; border: 1px solid #bec8bf; border-radius: 10px; font: inherit; resize: vertical; }
+button { border: 0; border-radius: 999px; padding: 11px 20px; background: #1e5f43; color: white; font-weight: 700; cursor: pointer; }
+button:hover { filter: brightness(1.08); }
+button:disabled { cursor: not-allowed; opacity: .45; }
+button.secondary { background: #dce8df; color: #174a35; }
+button.danger { background: #9b3d33; }
+.options, .actions, .row, form { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+#research-form { align-items: stretch; flex-direction: column; }
+.options label { font-weight: 500; }
+.row { justify-content: space-between; }
+.pill { display: inline-block; border: 1px solid #aebdb2; background: #e9f1eb; border-radius: 999px; padding: 6px 11px; font-size: 13px; }
+.status { color: #52705e; }
+.events { max-height: 230px; overflow: auto; border-left: 3px solid #a9c1af; padding-left: 16px; }
+.event { padding: 7px 0; color: #49564d; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #17231c; color: #e5eee7; padding: 22px; border-radius: 12px; line-height: 1.65; }
+.hidden { display: none; }
+@media (max-width: 600px) { main { padding-top: 28px; } .panel { padding: 18px; } }
+

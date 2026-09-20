@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-learning-lab"
+version = "0.1.0"
+description = "A six-week, project-driven research agent learning lab"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "beautifulsoup4>=4.12,<5",
+  "fastapi>=0.115,<1",
+  "httpx>=0.27,<1",
+  "langgraph>=0.2.76,<2",
+  "mcp>=2,<3",
+  "pydantic>=2.10,<3",
+  "pydantic-settings>=2.7,<3",
+  "pymupdf>=1.25,<2",
+  "python-multipart>=0.0.20,<1",
+  "uvicorn[standard]>=0.34,<1",
+]
+
+[project.optional-dependencies]
+vector = ["chromadb>=1,<2", "sentence-transformers>=3,<6"]
+dev = ["pytest>=8,<10", "pytest-asyncio>=0.25,<2", "respx>=0.22,<1"]
+
+[project.scripts]
+research-agent = "research_agent.cli:main"
+research-agent-api = "research_agent.api:run"
+research-mcp = "research_agent.mcp_server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/research_agent"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

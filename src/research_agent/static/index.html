@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research Agent Lab</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">AGENT LEARNING LAB</p>
+      <h1>让研究过程清楚可见</h1>
+      <p class="lede">输入问题，确认研究计划，观察 Agent 搜索、整理证据并生成带引用的报告。</p>
+      <div id="health" class="pill">正在检查服务…</div>
+    </header>
+
+    <section class="panel">
+      <h2>1. 添加本地资料</h2>
+      <form id="upload-form">
+        <input id="document" name="file" type="file" accept=".txt,.md,.markdown,.pdf">
+        <button type="submit" class="secondary">上传并索引</button>
+      </form>
+      <p id="upload-status" class="status"></p>
+    </section>
+
+    <section class="panel">
+      <h2>2. 创建研究任务</h2>
+      <form id="research-form">
+        <label for="query">研究问题</label>
+        <textarea id="query" required minlength="3" placeholder="例如：对比 RAG 与长上下文方案的适用场景"></textarea>
+        <div class="options">
+          <label><input id="use-web" type="checkbox" checked> 使用网页</label>
+          <label><input id="use-documents" type="checkbox" checked> 使用本地文档</label>
+        </div>
+        <button type="submit">生成研究计划</button>
+      </form>
+    </section>
+
+    <section id="task-panel" class="panel hidden">
+      <div class="row">
+        <div>
+          <p class="eyebrow">CURRENT RUN</p>
+          <h2 id="task-title">研究任务</h2>
+        </div>
+        <span id="task-status" class="pill"></span>
+      </div>
+      <ol id="plan"></ol>
+      <div class="actions">
+        <button id="approve">确认并开始</button>
+        <button id="cancel" class="danger">取消</button>
+      </div>
+      <h3>运行轨迹</h3>
+      <div id="events" class="events"></div>
+      <h3>报告</h3>
+      <pre id="report">报告完成后会显示在这里。</pre>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
+
