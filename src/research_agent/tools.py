@@ -6,7 +6,20 @@ from collections.abc import Awaitable, Callable
 from datetime import datetime, timezone
 from typing import Any
 
-from pydantic import BaseModel
+from pydantic import BaseModel,ConfigDict,Field,ValidationError
+
+class StrictToolArgs(BaseModel):
+    model_config = ConfigDict(strict=True,extra='forbid')
+
+class CalculatorArgs(StrictToolArgs):
+    expression: str = Field(min_length=1,max_length=100)
+
+class CurrentTimeArgs(StrictToolArgs):
+    pass
+
+
+class TextStatisticsArgs(StrictToolArgs):
+    text: str = Field(max_length=10000)
 
 
 class ToolExecutionError(RuntimeError):
@@ -18,6 +31,11 @@ class ToolResult(BaseModel):
     content: Any = None
     error: str | None = None
 
+class CountOccurrencesArgs(StrictToolArgs):
+    text: str = Field(max_length=10000)
+    needle:str = Field(min_length=1,max_length=100)
+    case_sensitive: bool = True
+
 
 ToolHandler = Callable[[dict[str, Any]], Any | Awaitable[Any]]
 
@@ -28,15 +46,22 @@ class Tool:
         *,
         name: str,
         description: str,
-        parameters: dict[str, Any],
+        parameters: dict[str, Any] | None = None,
         handler: ToolHandler,
         read_only: bool = True,
+        input_model: type[BaseModel] | None = None,
     ) -> None:
         self.name = name
         self.description = description
-        self.parameters = parameters
         self.handler = handler
         self.read_only = read_only
+        self.input_model = input_model
+        if input_model is not None:
+            self.parameters = input_model.model_json_schema()
+        else:
+            if parameters is None:
+                raise ValueError("必须提供 input_model 或 parameters")
+            self.parameters = parameters
 
     def as_model_tool(self) -> dict[str, Any]:
         return {
@@ -49,14 +74,32 @@ class Tool:
         }
 
     async def invoke(self, arguments: dict[str, Any]) -> ToolResult:
-        self._validate_required(arguments)
+        if not isinstance(arguments, dict):
+            return ToolResult(ok=False, error="工具参数必须是对象")
+
         try:
-            result = self.handler(arguments)
+            if self.input_model is not None:
+                validated = self.input_model.model_validate(arguments)
+                handler_arguments = validated.model_dump()
+            else:
+                # 兼容旧工具：只有必填字段检查，不是完整 Schema 校验
+                self._validate_required(arguments)
+                handler_arguments = arguments
+        except ValidationError as exc:
+            return ToolResult(ok=False, error=f"参数校验失败: {exc}")
+        except ToolExecutionError as exc:
+            return ToolResult(ok=False, error=str(exc))
+
+        try:
+            result = self.handler(handler_arguments)
             if hasattr(result, "__await__"):
                 result = await result
             return ToolResult(ok=True, content=result)
         except Exception as exc:
-            return ToolResult(ok=False, error=f"{type(exc).__name__}: {exc}")
+            return ToolResult(
+                ok=False,
+                error=f"{type(exc).__name__}: {exc}",
+            )
 
     def _validate_required(self, arguments: dict[str, Any]) -> None:
         if not isinstance(arguments, dict):
@@ -120,6 +163,17 @@ def safe_calculate(expression: str) -> float:
         raise ValueError("表达式过长")
     return evaluate(ast.parse(expression, mode="eval"))
 
+def count_occurrences(arguments: dict) -> dict:
+    text = arguments["text"]
+    needle = arguments["needle"]
+
+
+    if not arguments["case_sensitive"]:
+        text = text.casefold()
+        needle = needle.casefold()
+
+    return {"text": text.count(needle)}
+
 
 def builtin_registry() -> ToolRegistry:
     return ToolRegistry(
@@ -127,34 +181,30 @@ def builtin_registry() -> ToolRegistry:
             Tool(
                 name="calculator",
                 description="计算只包含数字、括号和基本运算符的算术表达式",
-                parameters={
-                    "type": "object",
-                    "properties": {"expression": {"type": "string"}},
-                    "required": ["expression"],
-                    "additionalProperties": False,
-                },
-                handler=lambda args: safe_calculate(str(args["expression"])),
+                input_model=CalculatorArgs,
+                handler=lambda args: safe_calculate(args["expression"]),
             ),
             Tool(
                 name="current_time",
                 description="返回当前 UTC 时间",
-                parameters={"type": "object", "properties": {}, "additionalProperties": False},
+                input_model=CurrentTimeArgs,
                 handler=lambda _: datetime.now(timezone.utc).isoformat(),
             ),
             Tool(
                 name="text_statistics",
                 description="统计一段文本的字符数、非空白字符数和词数",
-                parameters={
-                    "type": "object",
-                    "properties": {"text": {"type": "string"}},
-                    "required": ["text"],
-                    "additionalProperties": False,
-                },
+                input_model=TextStatisticsArgs,
                 handler=lambda args: {
-                    "characters": len(str(args["text"])),
-                    "non_whitespace": len("".join(str(args["text"]).split())),
-                    "words": len(str(args["text"]).split()),
+                    "characters": len(args["text"]),
+                    "non_whitespace": len("".join(args["text"].split())),
+                    "words": len(args["text"].split()),
                 },
+            ),
+            Tool(
+                name="count_occurrences",
+                description="统计文本中出现子串的非重叠次数",
+                input_model=CountOccurrencesArgs,
+                handler=count_occurrences,
             ),
         ]
     )
