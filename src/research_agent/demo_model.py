@@ -11,6 +11,8 @@ from .models import ModelReply, ToolCall, Usage
 class DemoModel:
     """Deterministic offline model for tests and the first-day demo."""
 
+    model_mode = "mock"
+
     async def complete(
         self,
         messages: Sequence[dict[str, Any]],
@@ -47,4 +49,3 @@ class DemoModel:
                 usage=usage,
             )
         return ModelReply(content=f"离线演示回复：{latest}", usage=usage)
-

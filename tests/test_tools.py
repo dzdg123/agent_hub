@@ -18,8 +18,13 @@ def test_safe_calculate_rejects_python(expression):
 @pytest.mark.asyncio
 async def test_registry_validates_missing_arguments():
     result = await builtin_registry().invoke("calculator", {})
-    assert not result.ok
-    assert "缺少必要参数" in result.error
+    assert result.ok is False
+    assert result.content is None
+    assert result.error is not None
+    # 绑定输入模型的工具使用 Pydantic 校验错误契约。
+    assert result.error.startswith("参数校验失败:")
+    assert "expression" in result.error
+    assert "type=missing" in result.error
 
 
 @pytest.mark.asyncio
@@ -28,13 +33,23 @@ async def test_registry_handles_unknown_tool():
     assert not result.ok
     assert "未知工具" in result.error
 
-def test_validate_before_handeler():
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "arguments, error_field, error_type",
+    [
+        ({}, "text", "missing"),
+        ({"text": 123}, "text", "string_type"),
+        ({"text": "abc", "unexpected": True}, "unexpected", "extra_forbidden"),
+    ],
+    ids=["missing-text", "wrong-type", "extra-field"],
+)
+async def test_validate_before_handler(arguments, error_field, error_type):
     class TestArgs(BaseModel):
         model_config = ConfigDict(strict=True,extra='forbid')
         text: str
 
     call_count = 0
-    def handler(args: TestArgs):
+    def handler(args: dict[str, str]):
         nonlocal call_count
         call_count += 1
         return len(args["text"])
@@ -45,6 +60,22 @@ def test_validate_before_handeler():
         input_model=TestArgs,
         handler=handler,
     )
+
+    result = await tool.invoke(arguments)
+    assert call_count == 0
+    assert result.ok is False
+    assert result.content is None
+    assert result.error is not None
+    assert result.error.startswith("参数校验失败:")
+    assert error_field in result.error
+    assert f"type={error_type}" in result.error
+
+    # 正向对照：工具可以执行，不能靠始终拒绝输入让测试通过。
+    result = await tool.invoke({"text": "abc"})
+    assert call_count == 1
+    assert result.ok is True, result.error
+    assert result.content == 3
+    assert result.error is None
 
 
 @pytest.mark.asyncio

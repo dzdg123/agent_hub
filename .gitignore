@@ -9,4 +9,4 @@ data/agent.db
 data/chroma/
 data/reports/*.md
 !data/reports/.gitkeep
-
+data/day05/

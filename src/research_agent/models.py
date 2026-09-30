@@ -114,3 +114,23 @@ class ResearchTask(BaseModel):
     usage: Usage = Field(default_factory=Usage)
     created_at: datetime = Field(default_factory=utc_now)
     updated_at: datetime = Field(default_factory=utc_now)
+
+
+class MiniAgentStatus(StrEnum):
+    RUNNING = "running"
+    COMPLETED = "completed"
+    FAILED = "failed"
+    CANCELLED = "cancelled"
+    STOPPED = "stopped"
+
+
+class MiniAgentResult(BaseModel):
+    run_id: str
+    status: MiniAgentStatus = MiniAgentStatus.RUNNING
+    answer: str = ""
+    stop_reason: str | None = None
+    steps: int = 0
+    messages: list[dict[str, Any]] = Field(default_factory=list)
+    events: list[RunEvent] = Field(default_factory=list)
+    usage: Usage = Field(default_factory=Usage)
+    elapsed_seconds: float = 0.0
