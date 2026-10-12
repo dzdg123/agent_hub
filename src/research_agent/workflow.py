@@ -140,8 +140,21 @@ class ResearchWorkflow:
                 *(fetch_webpage(item.url) for item in search_results[:2] if item.url),
                 return_exceptions=True,
             )
-            full_pages = [page for page in pages if isinstance(page, Source)]
-            result_sets.append(full_pages or search_results)
+            full_pages_by_id = {
+                page.source_id: page
+                for page in pages
+                if isinstance(page, Source)
+            }
+
+            web_results = [
+                full_pages_by_id.get(
+                    search_result.source_id,
+                    search_result,
+                )
+                for search_result in search_results
+            ]
+
+            result_sets.append(web_results)
         return merge_ranked(result_sets, top_k=8)
 
     async def _write_report(

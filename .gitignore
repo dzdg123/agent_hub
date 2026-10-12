@@ -10,3 +10,7 @@ data/chroma/
 data/reports/*.md
 !data/reports/.gitkeep
 data/day05/
+.idea/
+.test_tmp/
+.ua/
+data/day06/
