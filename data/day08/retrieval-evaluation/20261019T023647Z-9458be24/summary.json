@@ -1,0 +1,196 @@
+{
+  "positive_denominator": 10,
+  "reviewed_positive_questions": 10,
+  "pending_candidate_rows": 0,
+  "manual_hit_count": 10,
+  "manual_hit_at_3": 1.0,
+  "teaching_target_met": true,
+  "preannotation_id_hit_at_3": 1.0,
+  "preannotation_note": "预标注证据 ID 命中率，仅作自动核对，不替代人工支持判断",
+  "all_required_evidence_coverage": "当前每题只有一条必要关键句；不宣称多证据覆盖或 Recall@3",
+  "per_query": [
+    {
+      "query_id": "Q01",
+      "kind": "positive",
+      "review_complete": true,
+      "manual_hit_at_3": 1,
+      "support_levels": [
+        2,
+        0,
+        0
+      ],
+      "error_causes": [
+        "配置与环境词汇关联，但答案主题不同",
+        "软件工具主题干扰"
+      ]
+    },
+    {
+      "query_id": "Q02",
+      "kind": "positive",
+      "review_complete": true,
+      "manual_hit_at_3": 1,
+      "support_levels": [
+        2,
+        1,
+        0
+      ],
+      "error_causes": [
+        "安全主题相关但缺少密钥存储规则",
+        "模型和工具调用词汇干扰"
+      ]
+    },
+    {
+      "query_id": "Q03",
+      "kind": "positive",
+      "review_complete": true,
+      "manual_hit_at_3": 1,
+      "support_levels": [
+        2,
+        0,
+        0
+      ],
+      "error_causes": [
+        "技术实验配置主题干扰",
+        "Python 运行环境主题干扰"
+      ]
+    },
+    {
+      "query_id": "Q04",
+      "kind": "positive",
+      "review_complete": true,
+      "manual_hit_at_3": 1,
+      "support_levels": [
+        2,
+        1,
+        0
+      ],
+      "error_causes": [
+        "工具执行相关但缺参数验证证据",
+        "模型配置与函数参数概念干扰"
+      ]
+    },
+    {
+      "query_id": "Q05",
+      "kind": "positive",
+      "review_complete": true,
+      "manual_hit_at_3": 1,
+      "support_levels": [
+        2,
+        1,
+        0
+      ],
+      "error_causes": [
+        "执行职责部分支持，缺少结果回传流程",
+        "模型与查询词汇相似但语义任务不同"
+      ]
+    },
+    {
+      "query_id": "Q06",
+      "kind": "positive",
+      "review_complete": true,
+      "manual_hit_at_3": 1,
+      "support_levels": [
+        1,
+        1,
+        2
+      ],
+      "error_causes": [
+        "印刷页码近似干扰，缺少 PDF 物理页编号规则",
+        "同一 PDF 的概述页相关但缺少完整规则"
+      ]
+    },
+    {
+      "query_id": "Q07",
+      "kind": "positive",
+      "review_complete": true,
+      "manual_hit_at_3": 1,
+      "support_levels": [
+        2,
+        1,
+        0
+      ],
+      "error_causes": [
+        "文档坐标主题相关但缺少字符偏移字段",
+        "字段和参数词汇干扰"
+      ]
+    },
+    {
+      "query_id": "Q08",
+      "kind": "positive",
+      "review_complete": true,
+      "manual_hit_at_3": 1,
+      "support_levels": [
+        2,
+        0,
+        0
+      ],
+      "error_causes": [
+        "模型词汇相同但指向工具调用流程",
+        "字符坐标与向量坐标的概念干扰"
+      ]
+    },
+    {
+      "query_id": "Q09",
+      "kind": "positive",
+      "review_complete": true,
+      "manual_hit_at_3": 1,
+      "support_levels": [
+        2,
+        1,
+        1
+      ],
+      "error_causes": [
+        "工具流程相关但缺停止条件",
+        "并发任务控制与 Agent 循环终止不等价"
+      ]
+    },
+    {
+      "query_id": "Q10",
+      "kind": "positive",
+      "review_complete": true,
+      "manual_hit_at_3": 1,
+      "support_levels": [
+        2,
+        1,
+        0
+      ],
+      "error_causes": [
+        "可靠性主题相关但缺少证据不足处理规则",
+        "资料与来源词汇造成无关候选"
+      ]
+    },
+    {
+      "query_id": "N01",
+      "kind": "probe",
+      "review_complete": true,
+      "manual_hit_at_3": 0,
+      "support_levels": [
+        0,
+        0,
+        0
+      ],
+      "error_causes": [
+        "语料无目标答案，近邻仍返回通用资料",
+        "语料无目标答案，返回无关页码资料",
+        "语料无目标答案，返回无关 PDF 概述"
+      ]
+    },
+    {
+      "query_id": "N02",
+      "kind": "probe",
+      "review_complete": true,
+      "manual_hit_at_3": 0,
+      "support_levels": [
+        1,
+        0,
+        0
+      ],
+      "error_causes": [
+        "凭据安全近似干扰，缺少目标密码",
+        "语料无目标密码，返回通用证据策略",
+        "语料无目标密码，返回无关向量资料"
+      ]
+    }
+  ],
+  "probe_warning": "N01/N02 不计入分母；近邻返回候选不代表存在答案，需人工记录不支持理由"
+}

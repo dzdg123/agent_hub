@@ -1,0 +1,45 @@
+{
+  "dataset_version": "retrieval-v1",
+  "fingerprint": "926b6eca070447d1f6fedad27c104c795906c2c93e24c9654464cf66d036c9c4",
+  "config": {
+    "model": "BAAI/bge-small-zh-v1.5",
+    "requested_revision": null,
+    "resolved_model_commit": "7999e1d3359715c523056ef9478215996d62a620",
+    "sentence_transformers_version": "5.7.0",
+    "transformers_version": "5.19.0",
+    "normalize_embeddings": true,
+    "query_instruction": null,
+    "chunk_size": 400,
+    "overlap": 60,
+    "model_limit": 512
+  },
+  "file_sha256": {
+    "corpus/agent_control.md": "4dc6a320a2dfc8e3d54f7f4857ea27f6731790d10aa56ed75e16afeebf5b7469",
+    "corpus/async.md": "70b0d278f8cea93070906ac9fa279736ca5fc7e6a4cb1ea4870341ccccbf3cf1",
+    "corpus/cooking.txt": "96896170011fa84501cb02d6795c398d071284f9031988ee37b83bb60ad8ddeb",
+    "corpus/document_tracking.pdf": "29a8622d077e51a6cdadeabd4afe48f7bbe8c0b62b6374b2b16b8110561c22f1",
+    "corpus/embeddings.md": "870465f4ec28fb7ea71b763ee94243aa5774ff4b0c60be4f10db9f32b793c15e",
+    "corpus/environment.txt": "e0422afb279141e0bcb989d84bd04df5e84c5ccf1030a9771be335c418bc794e",
+    "corpus/evidence.md": "0418b1c688d1876c656ee58016508b88f566cc15526bfe9bd2c95206a9ff53f3",
+    "corpus/gardening.md": "eb6f8a8067b7117d65f3df00d2f66ece1bd3c7f6d552ba127cf2167e4a6c0e2d",
+    "corpus/offset.md": "79e1f1e8395d7d7a276dda931b455dec023a9c3a69769b175f805ad94b3891a7",
+    "corpus/printed_pages.md": "32fce44ce2a77aed3e6a0052969d051c6df245ff16782284ef8ab2b57e6b6dbb",
+    "corpus/security.md": "b8ced244298a474a68b1f29290f8784329313693c18804d52f24b627b556d738",
+    "corpus/tools.md": "a5c84fb4a9ab0a682ebf6cc6b636dce81390e65daa44fcd92fa12ce547f98dc2",
+    "questions.jsonl": "cc8a35cc79927f5254594e424ca1ea254e8c80eea126a6362eb45add6da30d4d",
+    "probes.jsonl": "eaca993366feee6f8a7a17bef81a2e0f98ad7eef8ea85b423fc24385d40ee984"
+  },
+  "loaded_files": 12,
+  "source_count": 13,
+  "positive_question_count": 10,
+  "no_evidence_probe_count": 2,
+  "positive_hit_rate_denominator": 10,
+  "loader_warnings": [
+    {
+      "relative_path": "document_tracking.pdf",
+      "page": 2,
+      "warning_code": "no_text_on_page",
+      "message": "第 2 页未提取到文本"
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "status": "built_and_deleted",
+  "created_at": "2026-10-18T03:22:59.681728+00:00",
+  "database_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\persistence-v1\\chroma",
+  "collection_name": "day08-persistence-v1",
+  "document_root": "E:\\agent_project\\agent-learning-lab\\data\\day07\\input",
+  "query": "tools and parameters",
+  "original_count": 4,
+  "original_ids": [
+    "doc-dccc91b46e344f92",
+    "doc-7c176e81db74f8fb",
+    "doc-f82990203cf38d2f",
+    "doc-51a75748cc037300"
+  ],
+  "load_errors": [
+    {
+      "path": "image_only.pdf",
+      "code": "no_extractable_text",
+      "message": "PDF 没有可提取文本，可能是扫描件"
+    }
+  ],
+  "config": {
+    "model": "BAAI/bge-small-zh-v1.5",
+    "revision": null,
+    "normalize_embeddings": true,
+    "query_instruction": null,
+    "chunk_size": 400,
+    "overlap": 60,
+    "metric": "cosine"
+  },
+  "count_after_first_add": 4,
+  "count_after_second_add": 4,
+  "query_hits_before_delete": [
+    {
+      "source_id": "doc-f82990203cf38d2f",
+      "title": "two_pages.pdf 第 1 页",
+      "content": "PAGE_ONE: tools and parameters",
+      "url": null,
+      "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day07\\input\\two_pages.pdf",
+      "page": 1,
+      "score": 0.854584276676178,
+      "fetched_at": "2026-10-18T03:22:59.681728Z",
+      "metadata": {
+        "chunk_index": 0,
+        "content_kind": "local_document",
+        "end_offset": 30,
+        "file_name": "two_pages.pdf",
+        "file_type": "pdf",
+        "offset": 0,
+        "offset_basis": "normalized_page_text",
+        "page": 1,
+        "relative_path": "two_pages.pdf",
+        "_retrieval": {
+          "metric": "cosine",
+          "distance": 0.14541572332382202
+        }
+      }
+    },
+    {
+      "source_id": "doc-dccc91b46e344f92",
+      "title": "mixed_pages.pdf 第 1 页",
+      "content": "PAGE_ONE: tools and parameters",
+      "url": null,
+      "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day07\\input\\mixed_pages.pdf",
+      "page": 1,
+      "score": 0.8545842170715332,
+      "fetched_at": "2026-10-18T03:22:59.676211Z",
+      "metadata": {
+        "chunk_index": 0,
+        "content_kind": "local_document",
+        "empty_pages": [
+          2
+        ],
+        "end_offset": 30,
+        "file_name": "mixed_pages.pdf",
+        "file_type": "pdf",
+        "offset": 0,
+        "offset_basis": "normalized_page_text",
+        "page": 1,
+        "relative_path": "mixed_pages.pdf",
+        "warnings": [
+          "以下页面未提取到文本：2"
+        ],
+        "_retrieval": {
+          "metric": "cosine",
+          "distance": 0.1454157829284668
+        }
+      }
+    },
+    {
+      "source_id": "doc-51a75748cc037300",
+      "title": "two_pages.pdf 第 2 页",
+      "content": "PAGE_TWO: sources and citations",
+      "url": null,
+      "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day07\\input\\two_pages.pdf",
+      "page": 2,
+      "score": 0.591543972492218,
+      "fetched_at": "2026-10-18T03:22:59.681728Z",
+      "metadata": {
+        "chunk_index": 0,
+        "content_kind": "local_document",
+        "end_offset": 31,
+        "file_name": "two_pages.pdf",
+        "file_type": "pdf",
+        "offset": 0,
+        "offset_basis": "normalized_page_text",
+        "page": 2,
+        "relative_path": "two_pages.pdf",
+        "_retrieval": {
+          "metric": "cosine",
+          "distance": 0.408456027507782
+        }
+      }
+    }
+  ],
+  "deleted_id": "doc-f82990203cf38d2f",
+  "count_after_delete": 3,
+  "query_ids_after_delete": [
+    "doc-dccc91b46e344f92",
+    "doc-7c176e81db74f8fb",
+    "doc-51a75748cc037300"
+  ],
+  "remaining_sources": [
+    {
+      "source_id": "doc-51a75748cc037300",
+      "title": "two_pages.pdf 第 2 页",
+      "content": "PAGE_TWO: sources and citations",
+      "url": null,
+      "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day07\\input\\two_pages.pdf",
+      "page": 2,
+      "fetched_at": "2026-10-18T03:22:59.681728Z",
+      "metadata": {
+        "content_kind": "local_document",
+        "file_name": "two_pages.pdf",
+        "relative_path": "two_pages.pdf",
+        "file_type": "pdf",
+        "page": 2,
+        "chunk_index": 0,
+        "offset": 0,
+        "end_offset": 31,
+        "offset_basis": "normalized_page_text"
+      }
+    },
+    {
+      "source_id": "doc-7c176e81db74f8fb",
+      "title": "mixed_pages.pdf 第 3 页",
+      "content": "PAGE_TWO: sources and citations",
+      "url": null,
+      "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day07\\input\\mixed_pages.pdf",
+      "page": 3,
+      "fetched_at": "2026-10-18T03:22:59.680720Z",
+      "metadata": {
+        "content_kind": "local_document",
+        "file_name": "mixed_pages.pdf",
+        "relative_path": "mixed_pages.pdf",
+        "file_type": "pdf",
+        "page": 3,
+        "chunk_index": 0,
+        "offset": 0,
+        "end_offset": 31,
+        "offset_basis": "normalized_page_text",
+        "empty_pages": [
+          2
+        ],
+        "warnings": [
+          "以下页面未提取到文本：2"
+        ]
+      }
+    },
+    {
+      "source_id": "doc-dccc91b46e344f92",
+      "title": "mixed_pages.pdf 第 1 页",
+      "content": "PAGE_ONE: tools and parameters",
+      "url": null,
+      "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day07\\input\\mixed_pages.pdf",
+      "page": 1,
+      "fetched_at": "2026-10-18T03:22:59.676211Z",
+      "metadata": {
+        "content_kind": "local_document",
+        "file_name": "mixed_pages.pdf",
+        "relative_path": "mixed_pages.pdf",
+        "file_type": "pdf",
+        "page": 1,
+        "chunk_index": 0,
+        "offset": 0,
+        "end_offset": 30,
+        "offset_basis": "normalized_page_text",
+        "empty_pages": [
+          2
+        ],
+        "warnings": [
+          "以下页面未提取到文本：2"
+        ]
+      }
+    }
+  ],
+  "reopen_checks": [
+    {
+      "verified_at": "2026-10-18T03:23:36.051391+00:00",
+      "count": 3,
+      "remaining_ids": [
+        "doc-51a75748cc037300",
+        "doc-7c176e81db74f8fb",
+        "doc-dccc91b46e344f92"
+      ],
+      "deleted_id_absent": true,
+      "sources_match_snapshot": true
+    }
+  ]
+}

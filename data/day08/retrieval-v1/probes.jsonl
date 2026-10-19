@@ -1,0 +1,2 @@
+{"query_id":"N01","question":"本资料里的公司 2027 年营收是多少？","has_evidence":false,"reason":"语料未描述公司、财务报表或任何年度营收。","include_in_positive_hit_rate":false}
+{"query_id":"N02","question":"园艺资料是否说明了数据库管理员密码？","has_evidence":false,"reason":"园艺资料明确不记录数据库账号或密码；没有可提供的管理员密码。","include_in_positive_hit_rate":false}

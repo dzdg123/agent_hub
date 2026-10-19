@@ -86,6 +86,25 @@ def test_markdown_content_enters_document_pipeline(
     assert all(source.metadata["file_type"] == "markdown" for source in sources)
 
 
+def test_load_document_passes_chunk_parameters_to_text(tmp_path: Path):
+    path = tmp_path / "long.txt"
+    path.write_text("ABCDEFGHIJKLMNO", encoding="utf-8")
+
+    sources = load_document(
+        path,
+        tmp_path,
+        chunk_size=6,
+        overlap=2,
+    )
+
+    assert [source.content for source in sources] == [
+        "ABCDEF",
+        "EFGHIJ",
+        "IJKLMN",
+        "MNO",
+    ]
+
+
 # T04：0 字节与纯空白文本
 @pytest.mark.parametrize(
     "content",
@@ -136,6 +155,30 @@ def test_two_page_pdf_keeps_text_and_physical_pages(tmp_path: Path):
     assert all("FIRST_PAGE_ONLY" not in source.content for source in page_2_sources)
     assert all(source.metadata["page"] == 1 for source in page_1_sources)
     assert all(source.metadata["page"] == 2 for source in page_2_sources)
+
+
+def test_load_document_passes_chunk_parameters_to_pdf(tmp_path: Path):
+    import pymupdf
+
+    path = tmp_path / "chunked.pdf"
+    with pymupdf.open() as document:
+        page = document.new_page()
+        page.insert_text((72, 72), "ABCDEFGHIJKLMNO")
+        document.save(path)
+
+    sources = load_document(
+        path,
+        tmp_path,
+        chunk_size=6,
+        overlap=2,
+    )
+
+    assert [source.content for source in sources] == [
+        "ABCDEF",
+        "EFGHIJ",
+        "IJKLMN",
+        "MNO",
+    ]
 
 
 # P02：混合 PDF

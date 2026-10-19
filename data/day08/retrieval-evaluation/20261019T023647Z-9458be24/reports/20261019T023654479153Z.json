@@ -1,0 +1,158 @@
+{
+  "positive_denominator": 10,
+  "reviewed_positive_questions": 0,
+  "pending_candidate_rows": 36,
+  "manual_hit_count": null,
+  "manual_hit_at_3": null,
+  "teaching_target_met": null,
+  "preannotation_id_hit_at_3": 1.0,
+  "preannotation_note": "预标注证据 ID 命中率，仅作自动核对，不替代人工支持判断",
+  "all_required_evidence_coverage": "当前每题只有一条必要关键句；不宣称多证据覆盖或 Recall@3",
+  "per_query": [
+    {
+      "query_id": "Q01",
+      "kind": "positive",
+      "review_complete": false,
+      "manual_hit_at_3": null,
+      "support_levels": [
+        null,
+        null,
+        null
+      ],
+      "error_causes": []
+    },
+    {
+      "query_id": "Q02",
+      "kind": "positive",
+      "review_complete": false,
+      "manual_hit_at_3": null,
+      "support_levels": [
+        null,
+        null,
+        null
+      ],
+      "error_causes": []
+    },
+    {
+      "query_id": "Q03",
+      "kind": "positive",
+      "review_complete": false,
+      "manual_hit_at_3": null,
+      "support_levels": [
+        null,
+        null,
+        null
+      ],
+      "error_causes": []
+    },
+    {
+      "query_id": "Q04",
+      "kind": "positive",
+      "review_complete": false,
+      "manual_hit_at_3": null,
+      "support_levels": [
+        null,
+        null,
+        null
+      ],
+      "error_causes": []
+    },
+    {
+      "query_id": "Q05",
+      "kind": "positive",
+      "review_complete": false,
+      "manual_hit_at_3": null,
+      "support_levels": [
+        null,
+        null,
+        null
+      ],
+      "error_causes": []
+    },
+    {
+      "query_id": "Q06",
+      "kind": "positive",
+      "review_complete": false,
+      "manual_hit_at_3": null,
+      "support_levels": [
+        null,
+        null,
+        null
+      ],
+      "error_causes": []
+    },
+    {
+      "query_id": "Q07",
+      "kind": "positive",
+      "review_complete": false,
+      "manual_hit_at_3": null,
+      "support_levels": [
+        null,
+        null,
+        null
+      ],
+      "error_causes": []
+    },
+    {
+      "query_id": "Q08",
+      "kind": "positive",
+      "review_complete": false,
+      "manual_hit_at_3": null,
+      "support_levels": [
+        null,
+        null,
+        null
+      ],
+      "error_causes": []
+    },
+    {
+      "query_id": "Q09",
+      "kind": "positive",
+      "review_complete": false,
+      "manual_hit_at_3": null,
+      "support_levels": [
+        null,
+        null,
+        null
+      ],
+      "error_causes": []
+    },
+    {
+      "query_id": "Q10",
+      "kind": "positive",
+      "review_complete": false,
+      "manual_hit_at_3": null,
+      "support_levels": [
+        null,
+        null,
+        null
+      ],
+      "error_causes": []
+    },
+    {
+      "query_id": "N01",
+      "kind": "probe",
+      "review_complete": false,
+      "manual_hit_at_3": null,
+      "support_levels": [
+        null,
+        null,
+        null
+      ],
+      "error_causes": []
+    },
+    {
+      "query_id": "N02",
+      "kind": "probe",
+      "review_complete": false,
+      "manual_hit_at_3": null,
+      "support_levels": [
+        null,
+        null,
+        null
+      ],
+      "error_causes": []
+    }
+  ],
+  "probe_warning": "N01/N02 不计入分母；近邻返回候选不代表存在答案，需人工记录不支持理由"
+}

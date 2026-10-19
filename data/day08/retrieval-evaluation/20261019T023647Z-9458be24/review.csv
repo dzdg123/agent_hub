@@ -1,0 +1,152 @@
+﻿query_id,question,kind,expected_relative_path,expected_page,evidence_quote,rank,source_id,relative_path,file_path,page,content,distance,score,preannotated_evidence_match,support_level,reason,error_cause
+"Q01","怎样避免不同项目安装的包互相干扰？","positive","environment.txt","","为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。","1","doc-67e8db8df1d1d15d","environment.txt","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\environment.txt","","项目实验记录
+为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。
+运行脚本和安装包时应选择同一个环境中的 Python 解释器。可以使用 python -m pip 安装依赖，减少 pip 指向另一个解释器的风险。
+虚拟环境隔离软件依赖，不会自动隔离文件、网络或操作系统权限。复制项目时保留依赖清单，通常不复制整个环境目录。","0.3894733190536499","0.6105266809463501","True","2","正文明确说明为每个项目创建独立虚拟环境，可以隔离依赖包及版本，直接回答如何避免项目间包依赖互相干扰。",""
+"Q01","怎样避免不同项目安装的包互相干扰？","positive","environment.txt","","为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。","2","doc-c5b5b52aa10f6be7","security.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md","","# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。","0.4881906509399414","0.5118093490600586","False","0","正文规定 API 密钥的保存、忽略提交和泄露处置，没有说明隔离不同项目的依赖包。","配置与环境词汇关联，但答案主题不同"
+"Q01","怎样避免不同项目安装的包互相干扰？","positive","environment.txt","","为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。","3","doc-47de7bf8c30cf985","tools.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md","","# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。","0.4967954158782959","0.5032045841217041","False","0","正文讨论工具参数校验和工具消息关联，没有虚拟环境或项目依赖隔离的证据。","软件工具主题干扰"
+"Q02","调用模型的密钥应放在哪里，哪些地方不应该出现？","positive","security.md","","API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。","1","doc-c5b5b52aa10f6be7","security.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md","","# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。","0.4555019736289978","0.5444980263710022","True","2","正文同时指出应使用环境变量或受控密钥存储，并禁止密钥出现在源代码、Git、日志和聊天记录中，覆盖问题的保存位置与禁止位置。",""
+"Q02","调用模型的密钥应放在哪里，哪些地方不应该出现？","positive","security.md","","API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。","2","doc-47de7bf8c30cf985","tools.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md","","# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。","0.48994338512420654","0.5100566148757935","False","1","正文涉及调用工具时的权限和业务边界，属于调用安全相关内容，但没有说明密钥保存在哪里及哪些位置禁止出现。","安全主题相关但缺少密钥存储规则"
+"Q02","调用模型的密钥应放在哪里，哪些地方不应该出现？","positive","security.md","","API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。","3","doc-eccf50f58a9a4d9d","agent_control.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md","","# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。","0.5071626305580139","0.4928373694419861","False","0","正文解释 Agent 最大步数、取消和退出条件，没有提供 API 密钥存储或保密要求。","模型和工具调用词汇干扰"
+"Q03","多个网络请求怎样同时等待而不逐个排队？","positive","async.md","","对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。","1","doc-21a31aa34e21153f","async.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\async.md","","# 网络任务观察
+对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。
+如果在循环里逐个 await 每次请求，前一个请求返回后才会启动下一个，就仍然是顺序等待。
+异步并发适用于 I/O 等待，不意味着 CPU 计算会自动并行。实际调用还应限制并发数量，并明确超时和单个任务失败的处理策略。","0.33842504024505615","0.6615749597549438","True","2","正文明确使用异步任务和 asyncio.gather 同时等待多个独立网络请求，并对比逐个 await 的顺序等待，直接支持并发等待的做法。",""
+"Q03","多个网络请求怎样同时等待而不逐个排队？","positive","async.md","","对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。","2","doc-f69a71b5b9f84c38","embeddings.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md","","# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。","0.5528897047042847","0.44711029529571533","False","0","正文说明向量模型一致性与余弦比较，没有网络请求调度、异步任务或并发等待方法。","技术实验配置主题干扰"
+"Q03","多个网络请求怎样同时等待而不逐个排队？","positive","async.md","","对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。","3","doc-67e8db8df1d1d15d","environment.txt","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\environment.txt","","项目实验记录
+为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。
+运行脚本和安装包时应选择同一个环境中的 Python 解释器。可以使用 python -m pip 安装依赖，减少 pip 指向另一个解释器的风险。
+虚拟环境隔离软件依赖，不会自动隔离文件、网络或操作系统权限。复制项目时保留依赖清单，通常不复制整个环境目录。","0.5771912336349487","0.42280876636505127","False","0","正文说明 Python 虚拟环境和解释器选择，不能据此回答如何让网络请求同时等待。","Python 运行环境主题干扰"
+"Q04","为什么工具函数执行前要验证参数？","positive","tools.md","","工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。","1","doc-47de7bf8c30cf985","tools.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md","","# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。","0.305283784866333","0.694716215133667","True","2","正文要求按 Schema 检查必填字段、类型及范围，并直接给出原因：避免缺失或非法参数进入业务函数。",""
+"Q04","为什么工具函数执行前要验证参数？","positive","tools.md","","工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。","2","doc-eccf50f58a9a4d9d","agent_control.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md","","# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。","0.3812667727470398","0.6187332272529602","False","1","正文涉及工具重复失败和应用执行控制，主题与工具执行相关，但没有说明执行前参数 Schema 校验的内容及原因。","工具执行相关但缺参数验证证据"
+"Q04","为什么工具函数执行前要验证参数？","positive","tools.md","","工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。","3","doc-f69a71b5b9f84c38","embeddings.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md","","# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。","0.48702025413513184","0.5129797458648682","False","0","正文约定向量模型、归一化与查询指令，未讨论工具函数的必填参数、类型或范围校验。","模型配置与函数参数概念干扰"
+"Q05","模型提出调用工具后，谁执行函数，结果怎样传回？","positive","tools.md","","模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。","1","doc-47de7bf8c30cf985","tools.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md","","# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。","0.33394455909729004","0.66605544090271","True","2","正文明确模型只提出名称和参数、应用执行器调用函数，并将结果封装为关联原 tool_call_id 的工具消息传回模型，完整支持执行者和返回流程。",""
+"Q05","模型提出调用工具后，谁执行函数，结果怎样传回？","positive","tools.md","","模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。","2","doc-eccf50f58a9a4d9d","agent_control.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md","","# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。","0.4056692123413086","0.5943307876586914","False","1","正文提到应用负责执行、计数和检查退出条件，可部分支持应用承担执行责任，但没有说明工具结果消息及 tool_call_id 关联方式。","执行职责部分支持，缺少结果回传流程"
+"Q05","模型提出调用工具后，谁执行函数，结果怎样传回？","positive","tools.md","","模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。","3","doc-f69a71b5b9f84c38","embeddings.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md","","# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。","0.4404333829879761","0.5595666170120239","False","0","正文中的模型指向 Embedding 编码模型，讨论向量表示与查询配置，不是工具调用执行者或工具消息回传。","模型与查询词汇相似但语义任务不同"
+"Q06","PDF 中间有空白页，后续引用的页数该怎样记录？","positive","document_tracking.pdf","3","Count every physical PDF page, including blank pages, when recording citations.","1","doc-870ad51e4b6db443","printed_pages.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\printed_pages.md","","# 纸质书编排说明
+纸质书的印刷页码可能从正文开始编号，封面和目录可能不编号，也可能使用罗马数字。
+这里的页码是排版者印在纸上的标记，讨论的是纸质出版物。某张纸上没有印刷数字，并不等于文件解析时应该忽略该页。
+本说明没有规定 PDF 加载器如何记录物理页号，不能单独用它支持 PDF 中间空白页之后的引用坐标。","0.3010968565940857","0.6989031434059143","False","1","正文解释纸质书印刷页码并提醒不能忽略未印数字的纸页，但明确没有规定 PDF 加载器的物理页记录规则，不能直接回答空白页之后的引用编号。","印刷页码近似干扰，缺少 PDF 物理页编号规则"
+"Q06","PDF 中间有空白页，后续引用的页数该怎样记录？","positive","document_tracking.pdf","3","Count every physical PDF page, including blank pages, when recording citations.","2","doc-5149b57efb060e06","document_tracking.pdf","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf","1","Document tracking notes
+This fixture contains three physical PDF pages.
+The second physical page is intentionally blank.
+Page labels printed on a page may differ from its physical position.","0.3420066833496094","0.6579933166503906","False","1","第 1 页说明文件有三个物理页、第 2 页留白，且印刷标签可能不同于物理位置；没有明确要求引用计入空白页或说明不能重编号。","同一 PDF 的概述页相关但缺少完整规则"
+"Q06","PDF 中间有空白页，后续引用的页数该怎样记录？","positive","document_tracking.pdf","3","Count every physical PDF page, including blank pages, when recording citations.","3","doc-a4d971350c7e5875","document_tracking.pdf","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf","3","Citation coordinates
+Count every physical PDF page, including blank pages, when recording citations.
+This text is on physical page 3, even though page 2 has no extracted text.
+Do not renumber later pages after skipping a blank page during extraction.","0.3520087003707886","0.6479912996292114","True","2","物理第 3 页明确要求引用时计入全部物理页（含空白页），说明即使第 2 页无文本本页仍是第 3 页，并禁止跳过空白页后重编号。",""
+"Q07","怎样利用 offset 与 end_offset 找回片段原文？","positive","offset.md","","offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。","1","doc-76ab5ce75e586d60","offset.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\offset.md","","# 文本位置记录
+offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。
+文本文件以规范化整篇原文为坐标基准；PDF 片段以规范化的对应物理页文本为基准。坐标既不是 UTF-8 字节偏移，也不是 token 下标。
+重新切片应从原始文档开始，并重新生成坐标和 ID。旧片段再次切碎后不能直接沿用原来的 offset。","0.2606666684150696","0.7393333315849304","True","2","正文直接给出 normalized_text[offset:end_offset] 切片表达式，说明坐标属于规范化文本的字符位置且 end_offset 为右开边界，足以还原片段原文。",""
+"Q07","怎样利用 offset 与 end_offset 找回片段原文？","positive","offset.md","","offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。","2","doc-5149b57efb060e06","document_tracking.pdf","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf","1","Document tracking notes
+This fixture contains three physical PDF pages.
+The second physical page is intentionally blank.
+Page labels printed on a page may differ from its physical position.","0.49352002143859863","0.5064799785614014","False","1","正文与文档位置追溯相关，但只说明 PDF 物理页和页面标签，不包含 offset、end_offset、规范化字符坐标或切片表达式。","文档坐标主题相关但缺少字符偏移字段"
+"Q07","怎样利用 offset 与 end_offset 找回片段原文？","positive","offset.md","","offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。","3","doc-47de7bf8c30cf985","tools.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md","","# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。","0.5098825693130493","0.4901174306869507","False","0","正文讨论 Schema、权限与 tool_call_id，没有规范化原文坐标或根据 offset 还原文本的方法。","字段和参数词汇干扰"
+"Q08","文档与查询为什么不能分别使用两种向量模型？","positive","embeddings.md","","文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。","1","doc-f69a71b5b9f84c38","embeddings.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md","","# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。","0.272139310836792","0.727860689163208","True","2","正文指出文档和查询须使用同一向量模型及兼容编码配置，并解释即使维度相同，不同模型坐标含义也可能不同而不能直接比较。",""
+"Q08","文档与查询为什么不能分别使用两种向量模型？","positive","embeddings.md","","文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。","2","doc-47de7bf8c30cf985","tools.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md","","# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。","0.45897364616394043","0.5410263538360596","False","0","正文里的模型负责提出工具调用，工具执行器负责执行；没有不同 Embedding 模型向量空间为何不可混用的原理。","模型词汇相同但指向工具调用流程"
+"Q08","文档与查询为什么不能分别使用两种向量模型？","positive","embeddings.md","","文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。","3","doc-76ab5ce75e586d60","offset.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\offset.md","","# 文本位置记录
+offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。
+文本文件以规范化整篇原文为坐标基准；PDF 片段以规范化的对应物理页文本为基准。坐标既不是 UTF-8 字节偏移，也不是 token 下标。
+重新切片应从原始文档开始，并重新生成坐标和 ID。旧片段再次切碎后不能直接沿用原来的 offset。","0.48166030645370483","0.5183396935462952","False","0","正文讨论原文字符坐标和切片 ID，其坐标属于文档位置，不是 Embedding 向量空间，不能解释向量模型不兼容。","字符坐标与向量坐标的概念干扰"
+"Q09","如何避免 Agent 一直调用工具而不结束？","positive","agent_control.md","","Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。","1","doc-eccf50f58a9a4d9d","agent_control.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md","","# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。","0.32811838388442993","0.6718816161155701","True","2","正文明确要求最大执行步数，以及最终回答、取消和不可恢复错误等停止条件，并要求受控失败处理、不能无限重试，直接支持终止 Agent 循环。",""
+"Q09","如何避免 Agent 一直调用工具而不结束？","positive","agent_control.md","","Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。","2","doc-47de7bf8c30cf985","tools.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md","","# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。","0.37373077869415283","0.6262692213058472","False","1","正文描述工具请求、执行和回传的循环环节，但没有最大步数或最终回答、取消等退出条件，不能据此保证 Agent 结束。","工具流程相关但缺停止条件"
+"Q09","如何避免 Agent 一直调用工具而不结束？","positive","agent_control.md","","Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。","3","doc-21a31aa34e21153f","async.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\async.md","","# 网络任务观察
+对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。
+如果在循环里逐个 await 每次请求，前一个请求返回后才会启动下一个，就仍然是顺序等待。
+异步并发适用于 I/O 等待，不意味着 CPU 计算会自动并行。实际调用还应限制并发数量，并明确超时和单个任务失败的处理策略。","0.41113173961639404","0.588868260383606","False","1","正文涉及并发限制、超时及单任务失败处理，可关联受控执行，但没有 Agent 循环步数上限或停止判据。","并发任务控制与 Agent 循环终止不等价"
+"Q10","资料没有支持结论时，研究系统应怎样处理？","positive","evidence.md","","资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。","1","doc-8ed6ac9b3a883cfc","evidence.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\evidence.md","","# 研究记录准则
+资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。
+找到主题相近的片段只是候选检索成功。回答前还要核对原句是否支持具体结论，以及来源是否适用。
+如果只能支持问题的一部分，可以回答已证实的部分并标明其余部分未知。检索分数不是结论正确的概率。","0.2890373468399048","0.7109626531600952","True","2","正文直接规定证据不足时应说明不足、列出缺失信息、必要时继续检索，并禁止编造或无关引用；也说明只支持部分时如何处理。",""
+"Q10","资料没有支持结论时，研究系统应怎样处理？","positive","evidence.md","","资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。","2","doc-f69a71b5b9f84c38","embeddings.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md","","# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。","0.4625508785247803","0.5374491214752197","False","1","正文提醒高相似度不保证事实正确，涉及检索证据可靠性，但没有给出证据不足时应声明未知、列出缺失信息或继续检索的具体策略。","可靠性主题相关但缺少证据不足处理规则"
+"Q10","资料没有支持结论时，研究系统应怎样处理？","positive","evidence.md","","资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。","3","doc-5149b57efb060e06","document_tracking.pdf","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf","1","Document tracking notes
+This fixture contains three physical PDF pages.
+The second physical page is intentionally blank.
+Page labels printed on a page may differ from its physical position.","0.5278235673904419","0.4721764326095581","False","0","正文说明 PDF 页数和空白页，不涉及研究结论的支持程度或证据不足时的处理。","资料与来源词汇造成无关候选"
+"N01","本资料里的公司 2027 年营收是多少？","probe","","","","1","doc-8ed6ac9b3a883cfc","evidence.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\evidence.md","","# 研究记录准则
+资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。
+找到主题相近的片段只是候选检索成功。回答前还要核对原句是否支持具体结论，以及来源是否适用。
+如果只能支持问题的一部分，可以回答已证实的部分并标明其余部分未知。检索分数不是结论正确的概率。","0.6278505921363831","0.37214940786361694","False","0","正文提供通用证据不足处理原则，没有公司名称、2027 年财务数据或营收数值，不能给出所问收入。","语料无目标答案，近邻仍返回通用资料"
+"N01","本资料里的公司 2027 年营收是多少？","probe","","","","2","doc-870ad51e4b6db443","printed_pages.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\printed_pages.md","","# 纸质书编排说明
+纸质书的印刷页码可能从正文开始编号，封面和目录可能不编号，也可能使用罗马数字。
+这里的页码是排版者印在纸上的标记，讨论的是纸质出版物。某张纸上没有印刷数字，并不等于文件解析时应该忽略该页。
+本说明没有规定 PDF 加载器如何记录物理页号，不能单独用它支持 PDF 中间空白页之后的引用坐标。","0.6639697551727295","0.3360302448272705","False","0","正文讨论纸质书的印刷页码，不包含公司、年度财务报表或 2027 年营收。","语料无目标答案，返回无关页码资料"
+"N01","本资料里的公司 2027 年营收是多少？","probe","","","","3","doc-5149b57efb060e06","document_tracking.pdf","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf","1","Document tracking notes
+This fixture contains three physical PDF pages.
+The second physical page is intentionally blank.
+Page labels printed on a page may differ from its physical position.","0.6681901812553406","0.3318098187446594","False","0","PDF 概述只列出物理页数和空白页信息，没有任何公司营收数据；页数不能当作财务数值。","语料无目标答案，返回无关 PDF 概述"
+"N02","园艺资料是否说明了数据库管理员密码？","probe","","","","1","doc-c5b5b52aa10f6be7","security.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md","","# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。","0.4861378073692322","0.5138621926307678","False","1","正文讨论 API 密钥保护，与凭据安全主题相近，但没有园艺文档的数据库管理员密码，不能从保密规则推导实际凭据。","凭据安全近似干扰，缺少目标密码"
+"N02","园艺资料是否说明了数据库管理员密码？","probe","","","","2","doc-8ed6ac9b3a883cfc","evidence.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\evidence.md","","# 研究记录准则
+资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。
+找到主题相近的片段只是候选检索成功。回答前还要核对原句是否支持具体结论，以及来源是否适用。
+如果只能支持问题的一部分，可以回答已证实的部分并标明其余部分未知。检索分数不是结论正确的概率。","0.4871869683265686","0.5128130316734314","False","0","正文仅规定证据不足时如何处理，没有园艺内容、数据库账号或实际管理员密码。","语料无目标密码，返回通用证据策略"
+"N02","园艺资料是否说明了数据库管理员密码？","probe","","","","3","doc-f69a71b5b9f84c38","embeddings.md","E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md","","# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。","0.4905191659927368","0.5094808340072632","False","0","正文讨论向量模型和相似度，不提供园艺文档中的数据库管理员密码或可用于判断该密码的证据。","语料无目标密码，返回无关向量资料"

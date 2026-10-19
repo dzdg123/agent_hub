@@ -88,7 +88,13 @@ def content_id(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8", errors="ignore")).hexdigest()[:16]
 
 
-def load_document(path: Path, root: Path) -> list[Source]:
+def load_document(
+    path: Path,
+    root: Path,
+    *,
+    chunk_size: int = 900,
+    overlap: int = 120,
+) -> list[Source]:
     root = root.resolve()
     path = safe_document_path(root, path)
 
@@ -123,6 +129,8 @@ def load_document(path: Path, root: Path) -> list[Source]:
         return _load_pdf(
             path,
             base_metadata=file_metadata,
+            chunk_size=chunk_size,
+            overlap=overlap,
         )
 
     try:
@@ -149,6 +157,8 @@ def load_document(path: Path, root: Path) -> list[Source]:
         title=path.name,
         file_path=str(path),
         base_metadata=file_metadata,
+        chunk_size=chunk_size,
+        overlap=overlap,
     )
 
 
@@ -156,6 +166,8 @@ def _load_pdf(
     path: Path,
     *,
     base_metadata: dict[str, Any],
+    chunk_size: int = 900,
+    overlap: int = 120,
 ) -> list[Source]:
     try:
         import pymupdf
@@ -195,6 +207,8 @@ def _load_pdf(
                         file_path=str(path),
                         page=page_number,
                         base_metadata=page_metadata,
+                        chunk_size=chunk_size,
+                        overlap=overlap,
                     )
                 )
 
@@ -328,11 +342,20 @@ def _chunk_sources(
     return chunks
 
 
-def load_all_documents(root: Path) -> list[Source]:
+def load_all_documents(
+    root: Path,
+    *,
+    chunk_size: int = 900,
+    overlap: int = 120,
+) -> list[Source]:
     # 旧入口保留自动创建目录的行为
     root.mkdir(parents=True, exist_ok=True)
 
-    result = load_all_documents_detailed(root)
+    result = load_all_documents_detailed(
+        root,
+        chunk_size=chunk_size,
+        overlap=overlap,
+    )
 
     return result.sources
 
@@ -340,6 +363,9 @@ def load_all_documents(root: Path) -> list[Source]:
 
 def load_all_documents_detailed(
     root: Path,
+    *,
+    chunk_size: int = 900,
+    overlap: int = 120,
 ) -> DocumentBatchResult:
     root = root.resolve()
 
@@ -369,7 +395,12 @@ def load_all_documents_detailed(
             continue
 
         try:
-            file_sources = load_document(path, root)
+            file_sources = load_document(
+                path,
+                root,
+                chunk_size=chunk_size,
+                overlap=overlap,
+            )
         except DocumentLoadError as exc:
             result.failed_files += 1
             result.errors.append(
