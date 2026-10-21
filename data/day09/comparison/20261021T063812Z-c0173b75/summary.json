@@ -1,0 +1,1273 @@
+{
+  "groups": {
+    "baseline": {
+      "positive_denominator": 10,
+      "no_evidence_count": 2,
+      "methods": {
+        "keyword": {
+          "review_complete": false,
+          "evaluated_positive_count": 0,
+          "hit_at_3_count": null,
+          "hit_at_3": null,
+          "top1_support_rate_count": null,
+          "top1_support_rate": null,
+          "context_retained_hit_rate_count": null,
+          "context_retained_hit_rate": null,
+          "unsupported_count": null,
+          "topic_only_count": null,
+          "returned_top3_count": 36,
+          "preannotation_id_hit_count": 9,
+          "filter_violation_count": 0,
+          "context_filter_violation_count": 0,
+          "mean_context_chars": 1244.9166666666667,
+          "mean_hot_retrieval_ms": 0.8660916743489603,
+          "successful_execution_count": 12
+        },
+        "vector": {
+          "review_complete": false,
+          "evaluated_positive_count": 0,
+          "hit_at_3_count": null,
+          "hit_at_3": null,
+          "top1_support_rate_count": null,
+          "top1_support_rate": null,
+          "context_retained_hit_rate_count": null,
+          "context_retained_hit_rate": null,
+          "unsupported_count": null,
+          "topic_only_count": null,
+          "returned_top3_count": 36,
+          "preannotation_id_hit_count": 10,
+          "filter_violation_count": 0,
+          "context_filter_violation_count": 0,
+          "mean_context_chars": 1306.6666666666667,
+          "mean_hot_retrieval_ms": 19.123433346976526,
+          "successful_execution_count": 12
+        },
+        "rrf": {
+          "review_complete": false,
+          "evaluated_positive_count": 0,
+          "hit_at_3_count": null,
+          "hit_at_3": null,
+          "top1_support_rate_count": null,
+          "top1_support_rate": null,
+          "context_retained_hit_rate_count": null,
+          "context_retained_hit_rate": null,
+          "unsupported_count": null,
+          "topic_only_count": null,
+          "returned_top3_count": 36,
+          "preannotation_id_hit_count": 9,
+          "filter_violation_count": 0,
+          "context_filter_violation_count": 0,
+          "mean_context_chars": 1275.3333333333333,
+          "mean_hot_retrieval_ms": 21.003933356648,
+          "successful_execution_count": 12
+        }
+      },
+      "candidate_repetition": {
+        "stage": "raw_keyword_and_vector_before_fusion",
+        "raw_count": 135,
+        "unique_id_count_summed_per_query": 95,
+        "rate": 0.2962962962962963
+      }
+    },
+    "challenge": {
+      "positive_denominator": 5,
+      "no_evidence_count": 1,
+      "methods": {
+        "keyword": {
+          "review_complete": false,
+          "evaluated_positive_count": 0,
+          "hit_at_3_count": null,
+          "hit_at_3": null,
+          "top1_support_rate_count": null,
+          "top1_support_rate": null,
+          "context_retained_hit_rate_count": null,
+          "context_retained_hit_rate": null,
+          "unsupported_count": null,
+          "topic_only_count": null,
+          "returned_top3_count": 13,
+          "preannotation_id_hit_count": 4,
+          "filter_violation_count": 0,
+          "context_filter_violation_count": 0,
+          "mean_context_chars": 957.8333333333334,
+          "mean_hot_retrieval_ms": 0.5189166695345193,
+          "successful_execution_count": 6
+        },
+        "vector": {
+          "review_complete": false,
+          "evaluated_positive_count": 0,
+          "hit_at_3_count": null,
+          "hit_at_3": null,
+          "top1_support_rate_count": null,
+          "top1_support_rate": null,
+          "context_retained_hit_rate_count": null,
+          "context_retained_hit_rate": null,
+          "unsupported_count": null,
+          "topic_only_count": null,
+          "returned_top3_count": 14,
+          "preannotation_id_hit_count": 5,
+          "filter_violation_count": 0,
+          "context_filter_violation_count": 0,
+          "mean_context_chars": 1067.5,
+          "mean_hot_retrieval_ms": 16.837283338342484,
+          "successful_execution_count": 6
+        },
+        "rrf": {
+          "review_complete": false,
+          "evaluated_positive_count": 0,
+          "hit_at_3_count": null,
+          "hit_at_3": null,
+          "top1_support_rate_count": null,
+          "top1_support_rate": null,
+          "context_retained_hit_rate_count": null,
+          "context_retained_hit_rate": null,
+          "unsupported_count": null,
+          "topic_only_count": null,
+          "returned_top3_count": 14,
+          "preannotation_id_hit_count": 4,
+          "filter_violation_count": 0,
+          "context_filter_violation_count": 0,
+          "mean_context_chars": 1043,
+          "mean_hot_retrieval_ms": 18.174166665024433,
+          "successful_execution_count": 6
+        }
+      },
+      "candidate_repetition": {
+        "stage": "raw_keyword_and_vector_before_fusion",
+        "raw_count": 43,
+        "unique_id_count_summed_per_query": 26,
+        "rate": 0.3953488372093023
+      }
+    }
+  },
+  "per_query": [
+    {
+      "query_id": "Q01",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-67e8db8df1d1d15d",
+            "doc-1d7abc3ef0be35c3",
+            "doc-f69a71b5b9f84c38"
+          ],
+          "support_levels": {
+            "doc-67e8db8df1d1d15d": "",
+            "doc-1d7abc3ef0be35c3": "",
+            "doc-f69a71b5b9f84c38": ""
+          },
+          "top1_source_id": "doc-67e8db8df1d1d15d",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-67e8db8df1d1d15d",
+            "doc-c5b5b52aa10f6be7",
+            "doc-47de7bf8c30cf985"
+          ],
+          "support_levels": {
+            "doc-67e8db8df1d1d15d": "",
+            "doc-c5b5b52aa10f6be7": "",
+            "doc-47de7bf8c30cf985": ""
+          },
+          "top1_source_id": "doc-67e8db8df1d1d15d",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-67e8db8df1d1d15d",
+            "doc-47de7bf8c30cf985",
+            "doc-f69a71b5b9f84c38"
+          ],
+          "support_levels": {
+            "doc-67e8db8df1d1d15d": "",
+            "doc-47de7bf8c30cf985": "",
+            "doc-f69a71b5b9f84c38": ""
+          },
+          "top1_source_id": "doc-67e8db8df1d1d15d",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "Q02",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-c5b5b52aa10f6be7",
+            "doc-47de7bf8c30cf985",
+            "doc-eccf50f58a9a4d9d"
+          ],
+          "support_levels": {
+            "doc-c5b5b52aa10f6be7": "",
+            "doc-47de7bf8c30cf985": "",
+            "doc-eccf50f58a9a4d9d": ""
+          },
+          "top1_source_id": "doc-c5b5b52aa10f6be7",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-c5b5b52aa10f6be7",
+            "doc-47de7bf8c30cf985",
+            "doc-eccf50f58a9a4d9d"
+          ],
+          "support_levels": {
+            "doc-c5b5b52aa10f6be7": "",
+            "doc-47de7bf8c30cf985": "",
+            "doc-eccf50f58a9a4d9d": ""
+          },
+          "top1_source_id": "doc-c5b5b52aa10f6be7",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-c5b5b52aa10f6be7",
+            "doc-47de7bf8c30cf985",
+            "doc-eccf50f58a9a4d9d"
+          ],
+          "support_levels": {
+            "doc-c5b5b52aa10f6be7": "",
+            "doc-47de7bf8c30cf985": "",
+            "doc-eccf50f58a9a4d9d": ""
+          },
+          "top1_source_id": "doc-c5b5b52aa10f6be7",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "Q03",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-21a31aa34e21153f",
+            "doc-84a31f89a1acc2f3",
+            "doc-eccf50f58a9a4d9d"
+          ],
+          "support_levels": {
+            "doc-21a31aa34e21153f": "",
+            "doc-84a31f89a1acc2f3": "",
+            "doc-eccf50f58a9a4d9d": ""
+          },
+          "top1_source_id": "doc-21a31aa34e21153f",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-21a31aa34e21153f",
+            "doc-f69a71b5b9f84c38",
+            "doc-67e8db8df1d1d15d"
+          ],
+          "support_levels": {
+            "doc-21a31aa34e21153f": "",
+            "doc-f69a71b5b9f84c38": "",
+            "doc-67e8db8df1d1d15d": ""
+          },
+          "top1_source_id": "doc-21a31aa34e21153f",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-21a31aa34e21153f",
+            "doc-eccf50f58a9a4d9d",
+            "doc-67e8db8df1d1d15d"
+          ],
+          "support_levels": {
+            "doc-21a31aa34e21153f": "",
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-67e8db8df1d1d15d": ""
+          },
+          "top1_source_id": "doc-21a31aa34e21153f",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "Q04",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-47de7bf8c30cf985",
+            "doc-eccf50f58a9a4d9d",
+            "doc-84a31f89a1acc2f3"
+          ],
+          "support_levels": {
+            "doc-47de7bf8c30cf985": "",
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-84a31f89a1acc2f3": ""
+          },
+          "top1_source_id": "doc-47de7bf8c30cf985",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-47de7bf8c30cf985",
+            "doc-eccf50f58a9a4d9d",
+            "doc-f69a71b5b9f84c38"
+          ],
+          "support_levels": {
+            "doc-47de7bf8c30cf985": "",
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-f69a71b5b9f84c38": ""
+          },
+          "top1_source_id": "doc-47de7bf8c30cf985",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-47de7bf8c30cf985",
+            "doc-eccf50f58a9a4d9d",
+            "doc-84a31f89a1acc2f3"
+          ],
+          "support_levels": {
+            "doc-47de7bf8c30cf985": "",
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-84a31f89a1acc2f3": ""
+          },
+          "top1_source_id": "doc-47de7bf8c30cf985",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "Q05",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-47de7bf8c30cf985",
+            "doc-eccf50f58a9a4d9d",
+            "doc-84a31f89a1acc2f3"
+          ],
+          "support_levels": {
+            "doc-47de7bf8c30cf985": "",
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-84a31f89a1acc2f3": ""
+          },
+          "top1_source_id": "doc-47de7bf8c30cf985",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-47de7bf8c30cf985",
+            "doc-eccf50f58a9a4d9d",
+            "doc-f69a71b5b9f84c38"
+          ],
+          "support_levels": {
+            "doc-47de7bf8c30cf985": "",
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-f69a71b5b9f84c38": ""
+          },
+          "top1_source_id": "doc-47de7bf8c30cf985",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-47de7bf8c30cf985",
+            "doc-eccf50f58a9a4d9d",
+            "doc-f69a71b5b9f84c38"
+          ],
+          "support_levels": {
+            "doc-47de7bf8c30cf985": "",
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-f69a71b5b9f84c38": ""
+          },
+          "top1_source_id": "doc-47de7bf8c30cf985",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "Q06",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-870ad51e4b6db443",
+            "doc-1d7abc3ef0be35c3",
+            "doc-c5b5b52aa10f6be7"
+          ],
+          "support_levels": {
+            "doc-870ad51e4b6db443": "",
+            "doc-1d7abc3ef0be35c3": "",
+            "doc-c5b5b52aa10f6be7": ""
+          },
+          "top1_source_id": "doc-870ad51e4b6db443",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-870ad51e4b6db443",
+            "doc-5149b57efb060e06",
+            "doc-a4d971350c7e5875"
+          ],
+          "support_levels": {
+            "doc-870ad51e4b6db443": "",
+            "doc-5149b57efb060e06": "",
+            "doc-a4d971350c7e5875": ""
+          },
+          "top1_source_id": "doc-870ad51e4b6db443",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-870ad51e4b6db443",
+            "doc-5149b57efb060e06",
+            "doc-c5b5b52aa10f6be7"
+          ],
+          "support_levels": {
+            "doc-870ad51e4b6db443": "",
+            "doc-5149b57efb060e06": "",
+            "doc-c5b5b52aa10f6be7": ""
+          },
+          "top1_source_id": "doc-870ad51e4b6db443",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "Q07",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-76ab5ce75e586d60",
+            "doc-c5b5b52aa10f6be7",
+            "doc-8ed6ac9b3a883cfc"
+          ],
+          "support_levels": {
+            "doc-76ab5ce75e586d60": "",
+            "doc-c5b5b52aa10f6be7": "",
+            "doc-8ed6ac9b3a883cfc": ""
+          },
+          "top1_source_id": "doc-76ab5ce75e586d60",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-76ab5ce75e586d60",
+            "doc-5149b57efb060e06",
+            "doc-47de7bf8c30cf985"
+          ],
+          "support_levels": {
+            "doc-76ab5ce75e586d60": "",
+            "doc-5149b57efb060e06": "",
+            "doc-47de7bf8c30cf985": ""
+          },
+          "top1_source_id": "doc-76ab5ce75e586d60",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-76ab5ce75e586d60",
+            "doc-c5b5b52aa10f6be7",
+            "doc-47de7bf8c30cf985"
+          ],
+          "support_levels": {
+            "doc-76ab5ce75e586d60": "",
+            "doc-c5b5b52aa10f6be7": "",
+            "doc-47de7bf8c30cf985": ""
+          },
+          "top1_source_id": "doc-76ab5ce75e586d60",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "Q08",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-f69a71b5b9f84c38",
+            "doc-47de7bf8c30cf985",
+            "doc-eccf50f58a9a4d9d"
+          ],
+          "support_levels": {
+            "doc-f69a71b5b9f84c38": "",
+            "doc-47de7bf8c30cf985": "",
+            "doc-eccf50f58a9a4d9d": ""
+          },
+          "top1_source_id": "doc-f69a71b5b9f84c38",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-f69a71b5b9f84c38",
+            "doc-47de7bf8c30cf985",
+            "doc-76ab5ce75e586d60"
+          ],
+          "support_levels": {
+            "doc-f69a71b5b9f84c38": "",
+            "doc-47de7bf8c30cf985": "",
+            "doc-76ab5ce75e586d60": ""
+          },
+          "top1_source_id": "doc-f69a71b5b9f84c38",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-f69a71b5b9f84c38",
+            "doc-47de7bf8c30cf985",
+            "doc-76ab5ce75e586d60"
+          ],
+          "support_levels": {
+            "doc-f69a71b5b9f84c38": "",
+            "doc-47de7bf8c30cf985": "",
+            "doc-76ab5ce75e586d60": ""
+          },
+          "top1_source_id": "doc-f69a71b5b9f84c38",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "Q09",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-eccf50f58a9a4d9d",
+            "doc-47de7bf8c30cf985",
+            "doc-84a31f89a1acc2f3"
+          ],
+          "support_levels": {
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-47de7bf8c30cf985": "",
+            "doc-84a31f89a1acc2f3": ""
+          },
+          "top1_source_id": "doc-eccf50f58a9a4d9d",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-eccf50f58a9a4d9d",
+            "doc-47de7bf8c30cf985",
+            "doc-21a31aa34e21153f"
+          ],
+          "support_levels": {
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-47de7bf8c30cf985": "",
+            "doc-21a31aa34e21153f": ""
+          },
+          "top1_source_id": "doc-eccf50f58a9a4d9d",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-eccf50f58a9a4d9d",
+            "doc-47de7bf8c30cf985",
+            "doc-c5b5b52aa10f6be7"
+          ],
+          "support_levels": {
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-47de7bf8c30cf985": "",
+            "doc-c5b5b52aa10f6be7": ""
+          },
+          "top1_source_id": "doc-eccf50f58a9a4d9d",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "Q10",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-8ed6ac9b3a883cfc",
+            "doc-870ad51e4b6db443",
+            "doc-1d7abc3ef0be35c3"
+          ],
+          "support_levels": {
+            "doc-8ed6ac9b3a883cfc": "",
+            "doc-870ad51e4b6db443": "",
+            "doc-1d7abc3ef0be35c3": ""
+          },
+          "top1_source_id": "doc-8ed6ac9b3a883cfc",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-8ed6ac9b3a883cfc",
+            "doc-f69a71b5b9f84c38",
+            "doc-5149b57efb060e06"
+          ],
+          "support_levels": {
+            "doc-8ed6ac9b3a883cfc": "",
+            "doc-f69a71b5b9f84c38": "",
+            "doc-5149b57efb060e06": ""
+          },
+          "top1_source_id": "doc-8ed6ac9b3a883cfc",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-8ed6ac9b3a883cfc",
+            "doc-eccf50f58a9a4d9d",
+            "doc-21a31aa34e21153f"
+          ],
+          "support_levels": {
+            "doc-8ed6ac9b3a883cfc": "",
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-21a31aa34e21153f": ""
+          },
+          "top1_source_id": "doc-8ed6ac9b3a883cfc",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "N01",
+      "group": "baseline",
+      "has_allowed_evidence": false,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-1d7abc3ef0be35c3",
+            "doc-c5b5b52aa10f6be7",
+            "doc-870ad51e4b6db443"
+          ],
+          "support_levels": {
+            "doc-1d7abc3ef0be35c3": "",
+            "doc-c5b5b52aa10f6be7": "",
+            "doc-870ad51e4b6db443": ""
+          },
+          "top1_source_id": "doc-1d7abc3ef0be35c3",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-8ed6ac9b3a883cfc",
+            "doc-870ad51e4b6db443",
+            "doc-5149b57efb060e06"
+          ],
+          "support_levels": {
+            "doc-8ed6ac9b3a883cfc": "",
+            "doc-870ad51e4b6db443": "",
+            "doc-5149b57efb060e06": ""
+          },
+          "top1_source_id": "doc-8ed6ac9b3a883cfc",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-8ed6ac9b3a883cfc",
+            "doc-870ad51e4b6db443",
+            "doc-1d7abc3ef0be35c3"
+          ],
+          "support_levels": {
+            "doc-8ed6ac9b3a883cfc": "",
+            "doc-870ad51e4b6db443": "",
+            "doc-1d7abc3ef0be35c3": ""
+          },
+          "top1_source_id": "doc-8ed6ac9b3a883cfc",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "N02",
+      "group": "baseline",
+      "has_allowed_evidence": false,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-1d7abc3ef0be35c3",
+            "doc-8ed6ac9b3a883cfc",
+            "doc-870ad51e4b6db443"
+          ],
+          "support_levels": {
+            "doc-1d7abc3ef0be35c3": "",
+            "doc-8ed6ac9b3a883cfc": "",
+            "doc-870ad51e4b6db443": ""
+          },
+          "top1_source_id": "doc-1d7abc3ef0be35c3",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-c5b5b52aa10f6be7",
+            "doc-8ed6ac9b3a883cfc",
+            "doc-f69a71b5b9f84c38"
+          ],
+          "support_levels": {
+            "doc-c5b5b52aa10f6be7": "",
+            "doc-8ed6ac9b3a883cfc": "",
+            "doc-f69a71b5b9f84c38": ""
+          },
+          "top1_source_id": "doc-c5b5b52aa10f6be7",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-8ed6ac9b3a883cfc",
+            "doc-c5b5b52aa10f6be7",
+            "doc-1d7abc3ef0be35c3"
+          ],
+          "support_levels": {
+            "doc-8ed6ac9b3a883cfc": "",
+            "doc-c5b5b52aa10f6be7": "",
+            "doc-1d7abc3ef0be35c3": ""
+          },
+          "top1_source_id": "doc-8ed6ac9b3a883cfc",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": true,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "C01",
+      "group": "challenge",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-47de7bf8c30cf985",
+            "doc-eccf50f58a9a4d9d",
+            "doc-84a31f89a1acc2f3"
+          ],
+          "support_levels": {
+            "doc-47de7bf8c30cf985": "",
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-84a31f89a1acc2f3": ""
+          },
+          "top1_source_id": "doc-47de7bf8c30cf985",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-47de7bf8c30cf985",
+            "doc-eccf50f58a9a4d9d",
+            "doc-76ab5ce75e586d60"
+          ],
+          "support_levels": {
+            "doc-47de7bf8c30cf985": "",
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-76ab5ce75e586d60": ""
+          },
+          "top1_source_id": "doc-47de7bf8c30cf985",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-47de7bf8c30cf985",
+            "doc-eccf50f58a9a4d9d",
+            "doc-21a31aa34e21153f"
+          ],
+          "support_levels": {
+            "doc-47de7bf8c30cf985": "",
+            "doc-eccf50f58a9a4d9d": "",
+            "doc-21a31aa34e21153f": ""
+          },
+          "top1_source_id": "doc-47de7bf8c30cf985",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "C02",
+      "group": "challenge",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-67e8db8df1d1d15d",
+            "doc-f69a71b5b9f84c38",
+            "doc-47de7bf8c30cf985"
+          ],
+          "support_levels": {
+            "doc-67e8db8df1d1d15d": "",
+            "doc-f69a71b5b9f84c38": "",
+            "doc-47de7bf8c30cf985": ""
+          },
+          "top1_source_id": "doc-67e8db8df1d1d15d",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-67e8db8df1d1d15d",
+            "doc-c5b5b52aa10f6be7",
+            "doc-21a31aa34e21153f"
+          ],
+          "support_levels": {
+            "doc-67e8db8df1d1d15d": "",
+            "doc-c5b5b52aa10f6be7": "",
+            "doc-21a31aa34e21153f": ""
+          },
+          "top1_source_id": "doc-67e8db8df1d1d15d",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-67e8db8df1d1d15d",
+            "doc-f69a71b5b9f84c38",
+            "doc-21a31aa34e21153f"
+          ],
+          "support_levels": {
+            "doc-67e8db8df1d1d15d": "",
+            "doc-f69a71b5b9f84c38": "",
+            "doc-21a31aa34e21153f": ""
+          },
+          "top1_source_id": "doc-67e8db8df1d1d15d",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "C03",
+      "group": "challenge",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-870ad51e4b6db443",
+            "doc-8ed6ac9b3a883cfc",
+            "doc-1d7abc3ef0be35c3"
+          ],
+          "support_levels": {
+            "doc-870ad51e4b6db443": "",
+            "doc-8ed6ac9b3a883cfc": "",
+            "doc-1d7abc3ef0be35c3": ""
+          },
+          "top1_source_id": "doc-870ad51e4b6db443",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-870ad51e4b6db443",
+            "doc-5149b57efb060e06",
+            "doc-a4d971350c7e5875"
+          ],
+          "support_levels": {
+            "doc-870ad51e4b6db443": "",
+            "doc-5149b57efb060e06": "",
+            "doc-a4d971350c7e5875": ""
+          },
+          "top1_source_id": "doc-870ad51e4b6db443",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-870ad51e4b6db443",
+            "doc-5149b57efb060e06",
+            "doc-8ed6ac9b3a883cfc"
+          ],
+          "support_levels": {
+            "doc-870ad51e4b6db443": "",
+            "doc-5149b57efb060e06": "",
+            "doc-8ed6ac9b3a883cfc": ""
+          },
+          "top1_source_id": "doc-870ad51e4b6db443",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "C04",
+      "group": "challenge",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-5149b57efb060e06",
+            "doc-a4d971350c7e5875"
+          ],
+          "support_levels": {
+            "doc-5149b57efb060e06": "",
+            "doc-a4d971350c7e5875": ""
+          },
+          "top1_source_id": "doc-5149b57efb060e06",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-5149b57efb060e06",
+            "doc-a4d971350c7e5875"
+          ],
+          "support_levels": {
+            "doc-5149b57efb060e06": "",
+            "doc-a4d971350c7e5875": ""
+          },
+          "top1_source_id": "doc-5149b57efb060e06",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-5149b57efb060e06",
+            "doc-a4d971350c7e5875"
+          ],
+          "support_levels": {
+            "doc-5149b57efb060e06": "",
+            "doc-a4d971350c7e5875": ""
+          },
+          "top1_source_id": "doc-5149b57efb060e06",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "C05",
+      "group": "challenge",
+      "has_allowed_evidence": true,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [
+            "doc-5149b57efb060e06",
+            "doc-a4d971350c7e5875"
+          ],
+          "support_levels": {
+            "doc-5149b57efb060e06": "",
+            "doc-a4d971350c7e5875": ""
+          },
+          "top1_source_id": "doc-5149b57efb060e06",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "vector": {
+          "source_ids": [
+            "doc-5149b57efb060e06",
+            "doc-a4d971350c7e5875"
+          ],
+          "support_levels": {
+            "doc-5149b57efb060e06": "",
+            "doc-a4d971350c7e5875": ""
+          },
+          "top1_source_id": "doc-5149b57efb060e06",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-5149b57efb060e06",
+            "doc-a4d971350c7e5875"
+          ],
+          "support_levels": {
+            "doc-5149b57efb060e06": "",
+            "doc-a4d971350c7e5875": ""
+          },
+          "top1_source_id": "doc-5149b57efb060e06",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    },
+    {
+      "query_id": "C06",
+      "group": "challenge",
+      "has_allowed_evidence": false,
+      "status": "ok",
+      "methods": {
+        "keyword": {
+          "source_ids": [],
+          "support_levels": {},
+          "top1_source_id": null,
+          "hit": 0,
+          "top1_support": 0,
+          "context_hit": 0,
+          "unsupported_count": 0,
+          "topic_only_count": 0
+        },
+        "vector": {
+          "source_ids": [
+            "doc-84a31f89a1acc2f3"
+          ],
+          "support_levels": {
+            "doc-84a31f89a1acc2f3": ""
+          },
+          "top1_source_id": "doc-84a31f89a1acc2f3",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        },
+        "rrf": {
+          "source_ids": [
+            "doc-84a31f89a1acc2f3"
+          ],
+          "support_levels": {
+            "doc-84a31f89a1acc2f3": ""
+          },
+          "top1_source_id": "doc-84a31f89a1acc2f3",
+          "hit": null,
+          "top1_support": null,
+          "context_hit": null,
+          "unsupported_count": null,
+          "topic_only_count": null
+        }
+      },
+      "top1_changed_from_vector": false,
+      "rrf_added_unsupported_ids_vs_vector": null
+    }
+  ],
+  "pending_candidate_rows": 121,
+  "human_checked_rows": 0,
+  "failed_query_ids": [],
+  "degraded_query_ids": [],
+  "probe_note": "无允许证据题不计正向命中率；近邻候选不代表证据存在，等级2需核对题目标签。"
+}

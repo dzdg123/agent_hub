@@ -3,6 +3,8 @@ from __future__ import annotations
 import math
 from typing import Any, Protocol, Sequence
 
+from .retrieval_errors import operational_boundary
+
 
 class Embedder(Protocol):
     """Common interface used by retrieval code to create text vectors."""
@@ -35,10 +37,8 @@ class SentenceTransformerEmbedder:
             model_kwargs: dict[str, object] = {"device": device}
             if revision is not None:
                 model_kwargs["revision"] = revision
-            try:
+            with operational_boundary(f"Embedding 模型 {model_name!r} 加载"):
                 model = SentenceTransformer(model_name, **model_kwargs)
-            except Exception as exc:
-                raise RuntimeError(f"Embedding 模型 {model_name!r} 未就绪：加载或下载失败") from exc
 
         self.model = model
         self.model_name = model_name
@@ -54,12 +54,13 @@ class SentenceTransformerEmbedder:
             self._validate_text(text, name=f"texts[{index}]")
             self._validate_model_length(text, name=f"texts[{index}]")
 
-        encoded = self.model.encode(
-            texts,
-            normalize_embeddings=True,
-            convert_to_numpy=True,
-            show_progress_bar=False,
-        )
+        with operational_boundary("Embedding 文档编码"):
+            encoded = self.model.encode(
+                texts,
+                normalize_embeddings=True,
+                convert_to_numpy=True,
+                show_progress_bar=False,
+            )
         rows = encoded.tolist() if hasattr(encoded, "tolist") else encoded
         if len(rows) != len(texts):
             raise ValueError(
@@ -71,12 +72,13 @@ class SentenceTransformerEmbedder:
         self._validate_text(text, name="text")
         query = f"{self.query_instruction}{text}" if self.query_instruction else text
         self._validate_model_length(query, name="query")
-        encoded = self.model.encode(
-            query,
-            normalize_embeddings=True,
-            convert_to_numpy=True,
-            show_progress_bar=False,
-        )
+        with operational_boundary("Embedding 查询编码"):
+            encoded = self.model.encode(
+                query,
+                normalize_embeddings=True,
+                convert_to_numpy=True,
+                show_progress_bar=False,
+            )
         values = encoded.tolist() if hasattr(encoded, "tolist") else encoded
         return self._to_float_vector(values)
 

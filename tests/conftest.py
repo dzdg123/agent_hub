@@ -30,3 +30,16 @@ class ScriptedModel:
 @pytest.fixture
 def scripted_model():
     return ScriptedModel
+
+
+@pytest.fixture(autouse=True)
+def forbid_real_embedding_in_day09_acceptance(request, monkeypatch):
+    """关键行为验收若意外构造真实模型应立即失败，不依赖本机模型缓存。"""
+    if request.node.get_closest_marker("day09_case") is None:
+        return
+    from research_agent.embeddings import SentenceTransformerEmbedder
+
+    def forbidden(*args, **kwargs):
+        pytest.fail("Day09关键行为测试不得加载真实Embedding；请使用假Embedder或独立实验脚本")
+
+    monkeypatch.setattr(SentenceTransformerEmbedder, "__init__", forbidden)

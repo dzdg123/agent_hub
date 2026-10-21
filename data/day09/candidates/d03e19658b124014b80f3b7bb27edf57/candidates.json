@@ -1,0 +1,83 @@
+{
+  "mode": "smoke_controlled_vectors_not_semantic_evaluation",
+  "query": "offset",
+  "run_dir": "E:\\agent_project\\agent-learning-lab\\data\\day09\\candidates\\d03e19658b124014b80f3b7bb27edf57",
+  "dataset_fingerprint": null,
+  "result": {
+    "branches": {
+      "keyword": {
+        "sources": [
+          {
+            "source_id": "doc-offset",
+            "title": "doc-offset",
+            "content": "offset 记录原文位置",
+            "url": null,
+            "file_path": null,
+            "page": null,
+            "score": 0.4082482904638631,
+            "fetched_at": "2026-10-19T09:15:54.671735Z",
+            "metadata": {}
+          }
+        ],
+        "traces": [
+          {
+            "source_id": "doc-offset",
+            "branch": "keyword",
+            "raw_score": 0.4082482904638631,
+            "metric": "token_count_cosine",
+            "rank": 1,
+            "distance": null,
+            "fusion_contribution": null
+          }
+        ],
+        "status": "ok",
+        "elapsed_ms": 0.11329998960718513,
+        "candidate_count": 1,
+        "skip_reason": null
+      },
+      "vector": {
+        "sources": [
+          {
+            "source_id": "doc-offset",
+            "title": "doc-offset",
+            "content": "offset 记录原文位置",
+            "url": null,
+            "file_path": null,
+            "page": null,
+            "score": 1.0,
+            "fetched_at": "2026-10-19T09:15:54.671735Z",
+            "metadata": {
+              "_retrieval": {
+                "metric": "cosine",
+                "distance": 0.0
+              }
+            }
+          }
+        ],
+        "traces": [
+          {
+            "source_id": "doc-offset",
+            "branch": "vector",
+            "raw_score": 1.0,
+            "metric": "embedding_cosine",
+            "rank": 1,
+            "distance": 0.0,
+            "fusion_contribution": null
+          }
+        ],
+        "status": "ok",
+        "elapsed_ms": 2.2456999868154526,
+        "candidate_count": 1,
+        "skip_reason": null
+      }
+    },
+    "requested_candidate_k": 6,
+    "effective_candidate_k": 1,
+    "requested_top_k": 3,
+    "total_source_count": 3,
+    "allowed_source_count": 1,
+    "final_sources": null,
+    "final_count": null,
+    "degraded_reason": null
+  }
+}

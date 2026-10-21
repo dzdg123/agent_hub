@@ -1,0 +1,1284 @@
+{
+  "input": {
+    "mode": "synthetic_hand_calculation",
+    "query": null
+  },
+  "candidate_snapshot": {
+    "keyword": [
+      {
+        "source_id": "A",
+        "title": "A",
+        "content": "content A",
+        "url": null,
+        "file_path": null,
+        "page": null,
+        "score": 0.9,
+        "fetched_at": "2026-10-20T07:10:39.020220Z",
+        "metadata": {}
+      },
+      {
+        "source_id": "B",
+        "title": "B",
+        "content": "content B",
+        "url": null,
+        "file_path": null,
+        "page": null,
+        "score": 0.6,
+        "fetched_at": "2026-10-20T07:10:39.020220Z",
+        "metadata": {}
+      },
+      {
+        "source_id": "C",
+        "title": "C",
+        "content": "content C",
+        "url": null,
+        "file_path": null,
+        "page": null,
+        "score": 0.2,
+        "fetched_at": "2026-10-20T07:10:39.020220Z",
+        "metadata": {}
+      }
+    ],
+    "vector": [
+      {
+        "source_id": "B",
+        "title": "B",
+        "content": "content B",
+        "url": null,
+        "file_path": null,
+        "page": null,
+        "score": 0.7,
+        "fetched_at": "2026-10-20T07:10:39.020220Z",
+        "metadata": {}
+      },
+      {
+        "source_id": "D",
+        "title": "D",
+        "content": "content D",
+        "url": null,
+        "file_path": null,
+        "page": null,
+        "score": 0.5,
+        "fetched_at": "2026-10-20T07:10:39.020220Z",
+        "metadata": {}
+      },
+      {
+        "source_id": "A",
+        "title": "A",
+        "content": "content A",
+        "url": null,
+        "file_path": null,
+        "page": null,
+        "score": -0.1,
+        "fetched_at": "2026-10-20T07:10:39.020220Z",
+        "metadata": {}
+      }
+    ]
+  },
+  "results": {
+    "rrf": {
+      "method": "rrf",
+      "sources": [
+        {
+          "source_id": "B",
+          "title": "B",
+          "content": "content B",
+          "url": null,
+          "file_path": null,
+          "page": null,
+          "score": 0.03252247488101534,
+          "fetched_at": "2026-10-20T07:10:39.020220Z",
+          "metadata": {
+            "_retrieval": {
+              "method": "rrf",
+              "metric": "rrf_fusion",
+              "parameters": {
+                "rank_constant": 60
+              },
+              "branches": [
+                {
+                  "source_id": "B",
+                  "branch": "keyword",
+                  "raw_score": 0.6,
+                  "metric": "token_count_cosine",
+                  "rank": 2,
+                  "normalized_score": null,
+                  "contribution": 0.016129032258064516,
+                  "distance": null
+                },
+                {
+                  "source_id": "B",
+                  "branch": "vector",
+                  "raw_score": 0.7,
+                  "metric": "embedding_cosine",
+                  "rank": 1,
+                  "normalized_score": null,
+                  "contribution": 0.01639344262295082,
+                  "distance": null
+                }
+              ]
+            }
+          }
+        },
+        {
+          "source_id": "A",
+          "title": "A",
+          "content": "content A",
+          "url": null,
+          "file_path": null,
+          "page": null,
+          "score": 0.032266458495966696,
+          "fetched_at": "2026-10-20T07:10:39.020220Z",
+          "metadata": {
+            "_retrieval": {
+              "method": "rrf",
+              "metric": "rrf_fusion",
+              "parameters": {
+                "rank_constant": 60
+              },
+              "branches": [
+                {
+                  "source_id": "A",
+                  "branch": "keyword",
+                  "raw_score": 0.9,
+                  "metric": "token_count_cosine",
+                  "rank": 1,
+                  "normalized_score": null,
+                  "contribution": 0.01639344262295082,
+                  "distance": null
+                },
+                {
+                  "source_id": "A",
+                  "branch": "vector",
+                  "raw_score": -0.1,
+                  "metric": "embedding_cosine",
+                  "rank": 3,
+                  "normalized_score": null,
+                  "contribution": 0.015873015873015872,
+                  "distance": null
+                }
+              ]
+            }
+          }
+        },
+        {
+          "source_id": "D",
+          "title": "D",
+          "content": "content D",
+          "url": null,
+          "file_path": null,
+          "page": null,
+          "score": 0.016129032258064516,
+          "fetched_at": "2026-10-20T07:10:39.020220Z",
+          "metadata": {
+            "_retrieval": {
+              "method": "rrf",
+              "metric": "rrf_fusion",
+              "parameters": {
+                "rank_constant": 60
+              },
+              "branches": [
+                {
+                  "source_id": "D",
+                  "branch": "vector",
+                  "raw_score": 0.5,
+                  "metric": "embedding_cosine",
+                  "rank": 2,
+                  "normalized_score": null,
+                  "contribution": 0.016129032258064516,
+                  "distance": null
+                }
+              ]
+            }
+          }
+        },
+        {
+          "source_id": "C",
+          "title": "C",
+          "content": "content C",
+          "url": null,
+          "file_path": null,
+          "page": null,
+          "score": 0.015873015873015872,
+          "fetched_at": "2026-10-20T07:10:39.020220Z",
+          "metadata": {
+            "_retrieval": {
+              "method": "rrf",
+              "metric": "rrf_fusion",
+              "parameters": {
+                "rank_constant": 60
+              },
+              "branches": [
+                {
+                  "source_id": "C",
+                  "branch": "keyword",
+                  "raw_score": 0.2,
+                  "metric": "token_count_cosine",
+                  "rank": 3,
+                  "normalized_score": null,
+                  "contribution": 0.015873015873015872,
+                  "distance": null
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "traces": [
+        {
+          "source_id": "A",
+          "branch": "keyword",
+          "raw_score": 0.9,
+          "metric": "token_count_cosine",
+          "rank": 1,
+          "normalized_score": null,
+          "contribution": 0.01639344262295082,
+          "distance": null
+        },
+        {
+          "source_id": "B",
+          "branch": "keyword",
+          "raw_score": 0.6,
+          "metric": "token_count_cosine",
+          "rank": 2,
+          "normalized_score": null,
+          "contribution": 0.016129032258064516,
+          "distance": null
+        },
+        {
+          "source_id": "C",
+          "branch": "keyword",
+          "raw_score": 0.2,
+          "metric": "token_count_cosine",
+          "rank": 3,
+          "normalized_score": null,
+          "contribution": 0.015873015873015872,
+          "distance": null
+        },
+        {
+          "source_id": "B",
+          "branch": "vector",
+          "raw_score": 0.7,
+          "metric": "embedding_cosine",
+          "rank": 1,
+          "normalized_score": null,
+          "contribution": 0.01639344262295082,
+          "distance": null
+        },
+        {
+          "source_id": "D",
+          "branch": "vector",
+          "raw_score": 0.5,
+          "metric": "embedding_cosine",
+          "rank": 2,
+          "normalized_score": null,
+          "contribution": 0.016129032258064516,
+          "distance": null
+        },
+        {
+          "source_id": "A",
+          "branch": "vector",
+          "raw_score": -0.1,
+          "metric": "embedding_cosine",
+          "rank": 3,
+          "normalized_score": null,
+          "contribution": 0.015873015873015872,
+          "distance": null
+        }
+      ],
+      "unique_candidate_count": 4,
+      "final_count": 4,
+      "parameters": {
+        "rank_constant": 60
+      }
+    },
+    "min_max_equal_1": {
+      "method": "min_max",
+      "sources": [
+        {
+          "source_id": "B",
+          "title": "B",
+          "content": "content B",
+          "url": null,
+          "file_path": null,
+          "page": null,
+          "score": 0.7857142857142857,
+          "fetched_at": "2026-10-20T07:10:39.020220Z",
+          "metadata": {
+            "_retrieval": {
+              "method": "min_max",
+              "metric": "min_max_fusion",
+              "parameters": {
+                "keyword_weight": 0.5,
+                "vector_weight": 0.5,
+                "equal_score_value": 1.0
+              },
+              "branches": [
+                {
+                  "source_id": "B",
+                  "branch": "keyword",
+                  "raw_score": 0.6,
+                  "metric": "token_count_cosine",
+                  "rank": 2,
+                  "normalized_score": 0.5714285714285714,
+                  "contribution": 0.2857142857142857,
+                  "distance": null
+                },
+                {
+                  "source_id": "B",
+                  "branch": "vector",
+                  "raw_score": 0.7,
+                  "metric": "embedding_cosine",
+                  "rank": 1,
+                  "normalized_score": 1.0,
+                  "contribution": 0.5,
+                  "distance": null
+                }
+              ]
+            }
+          }
+        },
+        {
+          "source_id": "A",
+          "title": "A",
+          "content": "content A",
+          "url": null,
+          "file_path": null,
+          "page": null,
+          "score": 0.5,
+          "fetched_at": "2026-10-20T07:10:39.020220Z",
+          "metadata": {
+            "_retrieval": {
+              "method": "min_max",
+              "metric": "min_max_fusion",
+              "parameters": {
+                "keyword_weight": 0.5,
+                "vector_weight": 0.5,
+                "equal_score_value": 1.0
+              },
+              "branches": [
+                {
+                  "source_id": "A",
+                  "branch": "keyword",
+                  "raw_score": 0.9,
+                  "metric": "token_count_cosine",
+                  "rank": 1,
+                  "normalized_score": 1.0,
+                  "contribution": 0.5,
+                  "distance": null
+                },
+                {
+                  "source_id": "A",
+                  "branch": "vector",
+                  "raw_score": -0.1,
+                  "metric": "embedding_cosine",
+                  "rank": 3,
+                  "normalized_score": 0.0,
+                  "contribution": 0.0,
+                  "distance": null
+                }
+              ]
+            }
+          }
+        },
+        {
+          "source_id": "D",
+          "title": "D",
+          "content": "content D",
+          "url": null,
+          "file_path": null,
+          "page": null,
+          "score": 0.375,
+          "fetched_at": "2026-10-20T07:10:39.020220Z",
+          "metadata": {
+            "_retrieval": {
+              "method": "min_max",
+              "metric": "min_max_fusion",
+              "parameters": {
+                "keyword_weight": 0.5,
+                "vector_weight": 0.5,
+                "equal_score_value": 1.0
+              },
+              "branches": [
+                {
+                  "source_id": "D",
+                  "branch": "vector",
+                  "raw_score": 0.5,
+                  "metric": "embedding_cosine",
+                  "rank": 2,
+                  "normalized_score": 0.75,
+                  "contribution": 0.375,
+                  "distance": null
+                }
+              ]
+            }
+          }
+        },
+        {
+          "source_id": "C",
+          "title": "C",
+          "content": "content C",
+          "url": null,
+          "file_path": null,
+          "page": null,
+          "score": 0.0,
+          "fetched_at": "2026-10-20T07:10:39.020220Z",
+          "metadata": {
+            "_retrieval": {
+              "method": "min_max",
+              "metric": "min_max_fusion",
+              "parameters": {
+                "keyword_weight": 0.5,
+                "vector_weight": 0.5,
+                "equal_score_value": 1.0
+              },
+              "branches": [
+                {
+                  "source_id": "C",
+                  "branch": "keyword",
+                  "raw_score": 0.2,
+                  "metric": "token_count_cosine",
+                  "rank": 3,
+                  "normalized_score": 0.0,
+                  "contribution": 0.0,
+                  "distance": null
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "traces": [
+        {
+          "source_id": "A",
+          "branch": "keyword",
+          "raw_score": 0.9,
+          "metric": "token_count_cosine",
+          "rank": 1,
+          "normalized_score": 1.0,
+          "contribution": 0.5,
+          "distance": null
+        },
+        {
+          "source_id": "B",
+          "branch": "keyword",
+          "raw_score": 0.6,
+          "metric": "token_count_cosine",
+          "rank": 2,
+          "normalized_score": 0.5714285714285714,
+          "contribution": 0.2857142857142857,
+          "distance": null
+        },
+        {
+          "source_id": "C",
+          "branch": "keyword",
+          "raw_score": 0.2,
+          "metric": "token_count_cosine",
+          "rank": 3,
+          "normalized_score": 0.0,
+          "contribution": 0.0,
+          "distance": null
+        },
+        {
+          "source_id": "B",
+          "branch": "vector",
+          "raw_score": 0.7,
+          "metric": "embedding_cosine",
+          "rank": 1,
+          "normalized_score": 1.0,
+          "contribution": 0.5,
+          "distance": null
+        },
+        {
+          "source_id": "D",
+          "branch": "vector",
+          "raw_score": 0.5,
+          "metric": "embedding_cosine",
+          "rank": 2,
+          "normalized_score": 0.75,
+          "contribution": 0.375,
+          "distance": null
+        },
+        {
+          "source_id": "A",
+          "branch": "vector",
+          "raw_score": -0.1,
+          "metric": "embedding_cosine",
+          "rank": 3,
+          "normalized_score": 0.0,
+          "contribution": 0.0,
+          "distance": null
+        }
+      ],
+      "unique_candidate_count": 4,
+      "final_count": 4,
+      "parameters": {
+        "keyword_weight": 0.5,
+        "vector_weight": 0.5,
+        "equal_score_value": 1.0
+      }
+    },
+    "min_max_equal_0": {
+      "method": "min_max",
+      "sources": [
+        {
+          "source_id": "B",
+          "title": "B",
+          "content": "content B",
+          "url": null,
+          "file_path": null,
+          "page": null,
+          "score": 0.7857142857142857,
+          "fetched_at": "2026-10-20T07:10:39.020220Z",
+          "metadata": {
+            "_retrieval": {
+              "method": "min_max",
+              "metric": "min_max_fusion",
+              "parameters": {
+                "keyword_weight": 0.5,
+                "vector_weight": 0.5,
+                "equal_score_value": 0.0
+              },
+              "branches": [
+                {
+                  "source_id": "B",
+                  "branch": "keyword",
+                  "raw_score": 0.6,
+                  "metric": "token_count_cosine",
+                  "rank": 2,
+                  "normalized_score": 0.5714285714285714,
+                  "contribution": 0.2857142857142857,
+                  "distance": null
+                },
+                {
+                  "source_id": "B",
+                  "branch": "vector",
+                  "raw_score": 0.7,
+                  "metric": "embedding_cosine",
+                  "rank": 1,
+                  "normalized_score": 1.0,
+                  "contribution": 0.5,
+                  "distance": null
+                }
+              ]
+            }
+          }
+        },
+        {
+          "source_id": "A",
+          "title": "A",
+          "content": "content A",
+          "url": null,
+          "file_path": null,
+          "page": null,
+          "score": 0.5,
+          "fetched_at": "2026-10-20T07:10:39.020220Z",
+          "metadata": {
+            "_retrieval": {
+              "method": "min_max",
+              "metric": "min_max_fusion",
+              "parameters": {
+                "keyword_weight": 0.5,
+                "vector_weight": 0.5,
+                "equal_score_value": 0.0
+              },
+              "branches": [
+                {
+                  "source_id": "A",
+                  "branch": "keyword",
+                  "raw_score": 0.9,
+                  "metric": "token_count_cosine",
+                  "rank": 1,
+                  "normalized_score": 1.0,
+                  "contribution": 0.5,
+                  "distance": null
+                },
+                {
+                  "source_id": "A",
+                  "branch": "vector",
+                  "raw_score": -0.1,
+                  "metric": "embedding_cosine",
+                  "rank": 3,
+                  "normalized_score": 0.0,
+                  "contribution": 0.0,
+                  "distance": null
+                }
+              ]
+            }
+          }
+        },
+        {
+          "source_id": "D",
+          "title": "D",
+          "content": "content D",
+          "url": null,
+          "file_path": null,
+          "page": null,
+          "score": 0.375,
+          "fetched_at": "2026-10-20T07:10:39.020220Z",
+          "metadata": {
+            "_retrieval": {
+              "method": "min_max",
+              "metric": "min_max_fusion",
+              "parameters": {
+                "keyword_weight": 0.5,
+                "vector_weight": 0.5,
+                "equal_score_value": 0.0
+              },
+              "branches": [
+                {
+                  "source_id": "D",
+                  "branch": "vector",
+                  "raw_score": 0.5,
+                  "metric": "embedding_cosine",
+                  "rank": 2,
+                  "normalized_score": 0.75,
+                  "contribution": 0.375,
+                  "distance": null
+                }
+              ]
+            }
+          }
+        },
+        {
+          "source_id": "C",
+          "title": "C",
+          "content": "content C",
+          "url": null,
+          "file_path": null,
+          "page": null,
+          "score": 0.0,
+          "fetched_at": "2026-10-20T07:10:39.020220Z",
+          "metadata": {
+            "_retrieval": {
+              "method": "min_max",
+              "metric": "min_max_fusion",
+              "parameters": {
+                "keyword_weight": 0.5,
+                "vector_weight": 0.5,
+                "equal_score_value": 0.0
+              },
+              "branches": [
+                {
+                  "source_id": "C",
+                  "branch": "keyword",
+                  "raw_score": 0.2,
+                  "metric": "token_count_cosine",
+                  "rank": 3,
+                  "normalized_score": 0.0,
+                  "contribution": 0.0,
+                  "distance": null
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "traces": [
+        {
+          "source_id": "A",
+          "branch": "keyword",
+          "raw_score": 0.9,
+          "metric": "token_count_cosine",
+          "rank": 1,
+          "normalized_score": 1.0,
+          "contribution": 0.5,
+          "distance": null
+        },
+        {
+          "source_id": "B",
+          "branch": "keyword",
+          "raw_score": 0.6,
+          "metric": "token_count_cosine",
+          "rank": 2,
+          "normalized_score": 0.5714285714285714,
+          "contribution": 0.2857142857142857,
+          "distance": null
+        },
+        {
+          "source_id": "C",
+          "branch": "keyword",
+          "raw_score": 0.2,
+          "metric": "token_count_cosine",
+          "rank": 3,
+          "normalized_score": 0.0,
+          "contribution": 0.0,
+          "distance": null
+        },
+        {
+          "source_id": "B",
+          "branch": "vector",
+          "raw_score": 0.7,
+          "metric": "embedding_cosine",
+          "rank": 1,
+          "normalized_score": 1.0,
+          "contribution": 0.5,
+          "distance": null
+        },
+        {
+          "source_id": "D",
+          "branch": "vector",
+          "raw_score": 0.5,
+          "metric": "embedding_cosine",
+          "rank": 2,
+          "normalized_score": 0.75,
+          "contribution": 0.375,
+          "distance": null
+        },
+        {
+          "source_id": "A",
+          "branch": "vector",
+          "raw_score": -0.1,
+          "metric": "embedding_cosine",
+          "rank": 3,
+          "normalized_score": 0.0,
+          "contribution": 0.0,
+          "distance": null
+        }
+      ],
+      "unique_candidate_count": 4,
+      "final_count": 4,
+      "parameters": {
+        "keyword_weight": 0.5,
+        "vector_weight": 0.5,
+        "equal_score_value": 0.0
+      }
+    }
+  },
+  "normalization_examples": {
+    "singleton_policy": {
+      "1": {
+        "method": "min_max",
+        "sources": [
+          {
+            "source_id": "A",
+            "title": "A",
+            "content": "content A",
+            "url": null,
+            "file_path": null,
+            "page": null,
+            "score": 0.5,
+            "fetched_at": "2026-10-20T07:10:39.021220Z",
+            "metadata": {
+              "_retrieval": {
+                "method": "min_max",
+                "metric": "min_max_fusion",
+                "parameters": {
+                  "keyword_weight": 0.5,
+                  "vector_weight": 0.5,
+                  "equal_score_value": 1.0
+                },
+                "branches": [
+                  {
+                    "source_id": "A",
+                    "branch": "keyword",
+                    "raw_score": 0.001,
+                    "metric": "token_count_cosine",
+                    "rank": 1,
+                    "normalized_score": 1.0,
+                    "contribution": 0.5,
+                    "distance": null
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "source_id": "B",
+            "title": "B",
+            "content": "content B",
+            "url": null,
+            "file_path": null,
+            "page": null,
+            "score": 0.5,
+            "fetched_at": "2026-10-20T07:10:39.021220Z",
+            "metadata": {
+              "_retrieval": {
+                "method": "min_max",
+                "metric": "min_max_fusion",
+                "parameters": {
+                  "keyword_weight": 0.5,
+                  "vector_weight": 0.5,
+                  "equal_score_value": 1.0
+                },
+                "branches": [
+                  {
+                    "source_id": "B",
+                    "branch": "vector",
+                    "raw_score": 0.9,
+                    "metric": "embedding_cosine",
+                    "rank": 1,
+                    "normalized_score": 1.0,
+                    "contribution": 0.5,
+                    "distance": null
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "source_id": "D",
+            "title": "D",
+            "content": "content D",
+            "url": null,
+            "file_path": null,
+            "page": null,
+            "score": 0.0,
+            "fetched_at": "2026-10-20T07:10:39.021220Z",
+            "metadata": {
+              "_retrieval": {
+                "method": "min_max",
+                "metric": "min_max_fusion",
+                "parameters": {
+                  "keyword_weight": 0.5,
+                  "vector_weight": 0.5,
+                  "equal_score_value": 1.0
+                },
+                "branches": [
+                  {
+                    "source_id": "D",
+                    "branch": "vector",
+                    "raw_score": 0.3,
+                    "metric": "embedding_cosine",
+                    "rank": 2,
+                    "normalized_score": 0.0,
+                    "contribution": 0.0,
+                    "distance": null
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "traces": [
+          {
+            "source_id": "A",
+            "branch": "keyword",
+            "raw_score": 0.001,
+            "metric": "token_count_cosine",
+            "rank": 1,
+            "normalized_score": 1.0,
+            "contribution": 0.5,
+            "distance": null
+          },
+          {
+            "source_id": "B",
+            "branch": "vector",
+            "raw_score": 0.9,
+            "metric": "embedding_cosine",
+            "rank": 1,
+            "normalized_score": 1.0,
+            "contribution": 0.5,
+            "distance": null
+          },
+          {
+            "source_id": "D",
+            "branch": "vector",
+            "raw_score": 0.3,
+            "metric": "embedding_cosine",
+            "rank": 2,
+            "normalized_score": 0.0,
+            "contribution": 0.0,
+            "distance": null
+          }
+        ],
+        "unique_candidate_count": 3,
+        "final_count": 3,
+        "parameters": {
+          "keyword_weight": 0.5,
+          "vector_weight": 0.5,
+          "equal_score_value": 1.0
+        }
+      },
+      "0": {
+        "method": "min_max",
+        "sources": [
+          {
+            "source_id": "B",
+            "title": "B",
+            "content": "content B",
+            "url": null,
+            "file_path": null,
+            "page": null,
+            "score": 0.5,
+            "fetched_at": "2026-10-20T07:10:39.021220Z",
+            "metadata": {
+              "_retrieval": {
+                "method": "min_max",
+                "metric": "min_max_fusion",
+                "parameters": {
+                  "keyword_weight": 0.5,
+                  "vector_weight": 0.5,
+                  "equal_score_value": 0.0
+                },
+                "branches": [
+                  {
+                    "source_id": "B",
+                    "branch": "vector",
+                    "raw_score": 0.9,
+                    "metric": "embedding_cosine",
+                    "rank": 1,
+                    "normalized_score": 1.0,
+                    "contribution": 0.5,
+                    "distance": null
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "source_id": "A",
+            "title": "A",
+            "content": "content A",
+            "url": null,
+            "file_path": null,
+            "page": null,
+            "score": 0.0,
+            "fetched_at": "2026-10-20T07:10:39.021220Z",
+            "metadata": {
+              "_retrieval": {
+                "method": "min_max",
+                "metric": "min_max_fusion",
+                "parameters": {
+                  "keyword_weight": 0.5,
+                  "vector_weight": 0.5,
+                  "equal_score_value": 0.0
+                },
+                "branches": [
+                  {
+                    "source_id": "A",
+                    "branch": "keyword",
+                    "raw_score": 0.001,
+                    "metric": "token_count_cosine",
+                    "rank": 1,
+                    "normalized_score": 0.0,
+                    "contribution": 0.0,
+                    "distance": null
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "source_id": "D",
+            "title": "D",
+            "content": "content D",
+            "url": null,
+            "file_path": null,
+            "page": null,
+            "score": 0.0,
+            "fetched_at": "2026-10-20T07:10:39.021220Z",
+            "metadata": {
+              "_retrieval": {
+                "method": "min_max",
+                "metric": "min_max_fusion",
+                "parameters": {
+                  "keyword_weight": 0.5,
+                  "vector_weight": 0.5,
+                  "equal_score_value": 0.0
+                },
+                "branches": [
+                  {
+                    "source_id": "D",
+                    "branch": "vector",
+                    "raw_score": 0.3,
+                    "metric": "embedding_cosine",
+                    "rank": 2,
+                    "normalized_score": 0.0,
+                    "contribution": 0.0,
+                    "distance": null
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "traces": [
+          {
+            "source_id": "A",
+            "branch": "keyword",
+            "raw_score": 0.001,
+            "metric": "token_count_cosine",
+            "rank": 1,
+            "normalized_score": 0.0,
+            "contribution": 0.0,
+            "distance": null
+          },
+          {
+            "source_id": "B",
+            "branch": "vector",
+            "raw_score": 0.9,
+            "metric": "embedding_cosine",
+            "rank": 1,
+            "normalized_score": 1.0,
+            "contribution": 0.5,
+            "distance": null
+          },
+          {
+            "source_id": "D",
+            "branch": "vector",
+            "raw_score": 0.3,
+            "metric": "embedding_cosine",
+            "rank": 2,
+            "normalized_score": 0.0,
+            "contribution": 0.0,
+            "distance": null
+          }
+        ],
+        "unique_candidate_count": 3,
+        "final_count": 3,
+        "parameters": {
+          "keyword_weight": 0.5,
+          "vector_weight": 0.5,
+          "equal_score_value": 0.0
+        }
+      }
+    },
+    "candidate_window": {
+      "2": {
+        "method": "min_max",
+        "sources": [
+          {
+            "source_id": "A",
+            "title": "A",
+            "content": "content A",
+            "url": null,
+            "file_path": null,
+            "page": null,
+            "score": 0.5,
+            "fetched_at": "2026-10-20T07:10:39.021220Z",
+            "metadata": {
+              "_retrieval": {
+                "method": "min_max",
+                "metric": "min_max_fusion",
+                "parameters": {
+                  "keyword_weight": 0.5,
+                  "vector_weight": 0.5,
+                  "equal_score_value": 1.0
+                },
+                "branches": [
+                  {
+                    "source_id": "A",
+                    "branch": "vector",
+                    "raw_score": 0.9,
+                    "metric": "embedding_cosine",
+                    "rank": 1,
+                    "normalized_score": 1.0,
+                    "contribution": 0.5,
+                    "distance": null
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "source_id": "B",
+            "title": "B",
+            "content": "content B",
+            "url": null,
+            "file_path": null,
+            "page": null,
+            "score": 0.0,
+            "fetched_at": "2026-10-20T07:10:39.021220Z",
+            "metadata": {
+              "_retrieval": {
+                "method": "min_max",
+                "metric": "min_max_fusion",
+                "parameters": {
+                  "keyword_weight": 0.5,
+                  "vector_weight": 0.5,
+                  "equal_score_value": 1.0
+                },
+                "branches": [
+                  {
+                    "source_id": "B",
+                    "branch": "vector",
+                    "raw_score": 0.8,
+                    "metric": "embedding_cosine",
+                    "rank": 2,
+                    "normalized_score": 0.0,
+                    "contribution": 0.0,
+                    "distance": null
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "traces": [
+          {
+            "source_id": "A",
+            "branch": "vector",
+            "raw_score": 0.9,
+            "metric": "embedding_cosine",
+            "rank": 1,
+            "normalized_score": 1.0,
+            "contribution": 0.5,
+            "distance": null
+          },
+          {
+            "source_id": "B",
+            "branch": "vector",
+            "raw_score": 0.8,
+            "metric": "embedding_cosine",
+            "rank": 2,
+            "normalized_score": 0.0,
+            "contribution": 0.0,
+            "distance": null
+          }
+        ],
+        "unique_candidate_count": 2,
+        "final_count": 2,
+        "parameters": {
+          "keyword_weight": 0.5,
+          "vector_weight": 0.5,
+          "equal_score_value": 1.0
+        }
+      },
+      "3": {
+        "method": "min_max",
+        "sources": [
+          {
+            "source_id": "A",
+            "title": "A",
+            "content": "content A",
+            "url": null,
+            "file_path": null,
+            "page": null,
+            "score": 0.5,
+            "fetched_at": "2026-10-20T07:10:39.021220Z",
+            "metadata": {
+              "_retrieval": {
+                "method": "min_max",
+                "metric": "min_max_fusion",
+                "parameters": {
+                  "keyword_weight": 0.5,
+                  "vector_weight": 0.5,
+                  "equal_score_value": 1.0
+                },
+                "branches": [
+                  {
+                    "source_id": "A",
+                    "branch": "vector",
+                    "raw_score": 0.9,
+                    "metric": "embedding_cosine",
+                    "rank": 1,
+                    "normalized_score": 1.0,
+                    "contribution": 0.5,
+                    "distance": null
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "source_id": "B",
+            "title": "B",
+            "content": "content B",
+            "url": null,
+            "file_path": null,
+            "page": null,
+            "score": 0.4375,
+            "fetched_at": "2026-10-20T07:10:39.021220Z",
+            "metadata": {
+              "_retrieval": {
+                "method": "min_max",
+                "metric": "min_max_fusion",
+                "parameters": {
+                  "keyword_weight": 0.5,
+                  "vector_weight": 0.5,
+                  "equal_score_value": 1.0
+                },
+                "branches": [
+                  {
+                    "source_id": "B",
+                    "branch": "vector",
+                    "raw_score": 0.8,
+                    "metric": "embedding_cosine",
+                    "rank": 2,
+                    "normalized_score": 0.875,
+                    "contribution": 0.4375,
+                    "distance": null
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "source_id": "C",
+            "title": "C",
+            "content": "content C",
+            "url": null,
+            "file_path": null,
+            "page": null,
+            "score": 0.0,
+            "fetched_at": "2026-10-20T07:10:39.021220Z",
+            "metadata": {
+              "_retrieval": {
+                "method": "min_max",
+                "metric": "min_max_fusion",
+                "parameters": {
+                  "keyword_weight": 0.5,
+                  "vector_weight": 0.5,
+                  "equal_score_value": 1.0
+                },
+                "branches": [
+                  {
+                    "source_id": "C",
+                    "branch": "vector",
+                    "raw_score": 0.1,
+                    "metric": "embedding_cosine",
+                    "rank": 3,
+                    "normalized_score": 0.0,
+                    "contribution": 0.0,
+                    "distance": null
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "traces": [
+          {
+            "source_id": "A",
+            "branch": "vector",
+            "raw_score": 0.9,
+            "metric": "embedding_cosine",
+            "rank": 1,
+            "normalized_score": 1.0,
+            "contribution": 0.5,
+            "distance": null
+          },
+          {
+            "source_id": "B",
+            "branch": "vector",
+            "raw_score": 0.8,
+            "metric": "embedding_cosine",
+            "rank": 2,
+            "normalized_score": 0.875,
+            "contribution": 0.4375,
+            "distance": null
+          },
+          {
+            "source_id": "C",
+            "branch": "vector",
+            "raw_score": 0.1,
+            "metric": "embedding_cosine",
+            "rank": 3,
+            "normalized_score": 0.0,
+            "contribution": 0.0,
+            "distance": null
+          }
+        ],
+        "unique_candidate_count": 3,
+        "final_count": 3,
+        "parameters": {
+          "keyword_weight": 0.5,
+          "vector_weight": 0.5,
+          "equal_score_value": 1.0
+        }
+      }
+    },
+    "note": "同分赋值是教学约定；归一化和 RRF 分数都不是证据可信度或答案正确概率。"
+  }
+}

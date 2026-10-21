@@ -1,0 +1,175 @@
+{
+  "model_limit": 512,
+  "max_document_tokens": 177,
+  "over_limit_document_count": 0,
+  "max_query_tokens": 25,
+  "over_limit_query_count": 0,
+  "includes_special_tokens": true,
+  "documents": [
+    {
+      "source_id": "doc-eccf50f58a9a4d9d",
+      "relative_path": "agent_control.md",
+      "page": null,
+      "character_count": 155,
+      "token_count": 148
+    },
+    {
+      "source_id": "doc-21a31aa34e21153f",
+      "relative_path": "async.md",
+      "page": null,
+      "character_count": 181,
+      "token_count": 160
+    },
+    {
+      "source_id": "doc-84a31f89a1acc2f3",
+      "relative_path": "cooking.txt",
+      "page": null,
+      "character_count": 133,
+      "token_count": 132
+    },
+    {
+      "source_id": "doc-5149b57efb060e06",
+      "relative_path": "document_tracking.pdf",
+      "page": 1,
+      "character_count": 189,
+      "token_count": 60
+    },
+    {
+      "source_id": "doc-a4d971350c7e5875",
+      "relative_path": "document_tracking.pdf",
+      "page": 3,
+      "character_count": 250,
+      "token_count": 84
+    },
+    {
+      "source_id": "doc-f69a71b5b9f84c38",
+      "relative_path": "embeddings.md",
+      "page": null,
+      "character_count": 178,
+      "token_count": 170
+    },
+    {
+      "source_id": "doc-67e8db8df1d1d15d",
+      "relative_path": "environment.txt",
+      "page": null,
+      "character_count": 164,
+      "token_count": 143
+    },
+    {
+      "source_id": "doc-8ed6ac9b3a883cfc",
+      "relative_path": "evidence.md",
+      "page": null,
+      "character_count": 158,
+      "token_count": 156
+    },
+    {
+      "source_id": "doc-1d7abc3ef0be35c3",
+      "relative_path": "gardening.md",
+      "page": null,
+      "character_count": 136,
+      "token_count": 134
+    },
+    {
+      "source_id": "doc-76ab5ce75e586d60",
+      "relative_path": "offset.md",
+      "page": null,
+      "character_count": 229,
+      "token_count": 169
+    },
+    {
+      "source_id": "doc-870ad51e4b6db443",
+      "relative_path": "printed_pages.md",
+      "page": null,
+      "character_count": 155,
+      "token_count": 145
+    },
+    {
+      "source_id": "doc-c5b5b52aa10f6be7",
+      "relative_path": "security.md",
+      "page": null,
+      "character_count": 166,
+      "token_count": 155
+    },
+    {
+      "source_id": "doc-47de7bf8c30cf985",
+      "relative_path": "tools.md",
+      "page": null,
+      "character_count": 195,
+      "token_count": 177
+    }
+  ],
+  "queries": [
+    {
+      "query_id": "Q01",
+      "token_count": 19
+    },
+    {
+      "query_id": "Q02",
+      "token_count": 25
+    },
+    {
+      "query_id": "Q03",
+      "token_count": 21
+    },
+    {
+      "query_id": "Q04",
+      "token_count": 18
+    },
+    {
+      "query_id": "Q05",
+      "token_count": 25
+    },
+    {
+      "query_id": "Q06",
+      "token_count": 23
+    },
+    {
+      "query_id": "Q07",
+      "token_count": 20
+    },
+    {
+      "query_id": "Q08",
+      "token_count": 23
+    },
+    {
+      "query_id": "Q09",
+      "token_count": 18
+    },
+    {
+      "query_id": "Q10",
+      "token_count": 22
+    },
+    {
+      "query_id": "N01",
+      "token_count": 18
+    },
+    {
+      "query_id": "N02",
+      "token_count": 20
+    },
+    {
+      "query_id": "C01",
+      "token_count": 23
+    },
+    {
+      "query_id": "C02",
+      "token_count": 25
+    },
+    {
+      "query_id": "C03",
+      "token_count": 24
+    },
+    {
+      "query_id": "C04",
+      "token_count": 24
+    },
+    {
+      "query_id": "C05",
+      "token_count": 24
+    },
+    {
+      "query_id": "C06",
+      "token_count": 18
+    }
+  ]
+}

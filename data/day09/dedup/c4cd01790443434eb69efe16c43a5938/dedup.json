@@ -1,0 +1,451 @@
+{
+  "input": {
+    "mode": "synthetic_provenance_demo"
+  },
+  "candidate_snapshot": {
+    "keyword": [
+      {
+        "source_id": "A",
+        "title": "guide.pdf page 1 chunk 0",
+        "content": "abcdef",
+        "url": null,
+        "file_path": "guide.pdf",
+        "page": 1,
+        "score": 0.0,
+        "fetched_at": "2026-10-20T12:04:52.290255Z",
+        "metadata": {
+          "offset": 0,
+          "end_offset": 6,
+          "offset_basis": "normalized_page_text",
+          "chunk_index": 0
+        }
+      },
+      {
+        "source_id": "A",
+        "title": "guide.pdf page 1 chunk 0",
+        "content": "abcdef",
+        "url": null,
+        "file_path": "guide.pdf",
+        "page": 1,
+        "score": 0.0,
+        "fetched_at": "2026-10-20T12:04:52.290255Z",
+        "metadata": {
+          "offset": 0,
+          "end_offset": 6,
+          "offset_basis": "normalized_page_text",
+          "chunk_index": 0
+        }
+      },
+      {
+        "source_id": "B",
+        "title": "guide.pdf page 1 chunk 1",
+        "content": "efghij",
+        "url": null,
+        "file_path": "guide.pdf",
+        "page": 1,
+        "score": 0.0,
+        "fetched_at": "2026-10-20T12:04:52.290255Z",
+        "metadata": {
+          "offset": 4,
+          "end_offset": 10,
+          "offset_basis": "normalized_page_text",
+          "chunk_index": 1
+        }
+      },
+      {
+        "source_id": "C",
+        "title": "guide.pdf page 2 chunk 0",
+        "content": "abcdef",
+        "url": null,
+        "file_path": "guide.pdf",
+        "page": 2,
+        "score": 0.0,
+        "fetched_at": "2026-10-20T12:04:52.290255Z",
+        "metadata": {
+          "offset": 0,
+          "end_offset": 6,
+          "offset_basis": "normalized_page_text",
+          "chunk_index": 0
+        }
+      }
+    ],
+    "vector": [
+      {
+        "source_id": "B",
+        "title": "guide.pdf page 1 chunk 1",
+        "content": "efghij",
+        "url": null,
+        "file_path": "guide.pdf",
+        "page": 1,
+        "score": 0.0,
+        "fetched_at": "2026-10-20T12:04:52.290255Z",
+        "metadata": {
+          "offset": 4,
+          "end_offset": 10,
+          "offset_basis": "normalized_page_text",
+          "chunk_index": 1
+        }
+      },
+      {
+        "source_id": "D",
+        "title": "archive.pdf page 9 chunk 0",
+        "content": "abcdef",
+        "url": null,
+        "file_path": "archive.pdf",
+        "page": 9,
+        "score": 0.0,
+        "fetched_at": "2026-10-20T12:04:52.290255Z",
+        "metadata": {
+          "offset": 0,
+          "end_offset": 6,
+          "offset_basis": "normalized_page_text",
+          "chunk_index": 0
+        }
+      },
+      {
+        "source_id": "A",
+        "title": "guide.pdf page 1 chunk 0",
+        "content": "abcdef",
+        "url": null,
+        "file_path": "guide.pdf",
+        "page": 1,
+        "score": 0.0,
+        "fetched_at": "2026-10-20T12:04:52.290255Z",
+        "metadata": {
+          "offset": 0,
+          "end_offset": 6,
+          "offset_basis": "normalized_page_text",
+          "chunk_index": 0
+        }
+      }
+    ]
+  },
+  "inputs_unchanged": true,
+  "result": {
+    "method": "rrf",
+    "sources": [
+      {
+        "source_id": "B",
+        "title": "guide.pdf page 1 chunk 1",
+        "content": "efghij",
+        "url": null,
+        "file_path": "guide.pdf",
+        "page": 1,
+        "score": 0.03252247488101534,
+        "fetched_at": "2026-10-20T12:04:52.290255Z",
+        "metadata": {
+          "offset": 4,
+          "end_offset": 10,
+          "offset_basis": "normalized_page_text",
+          "chunk_index": 1,
+          "_retrieval": {
+            "method": "rrf",
+            "metric": "rrf_fusion",
+            "parameters": {
+              "rank_constant": 60
+            },
+            "branches": [
+              {
+                "source_id": "B",
+                "branch": "keyword",
+                "raw_score": 0.0,
+                "metric": "token_count_cosine",
+                "rank": 2,
+                "normalized_score": null,
+                "contribution": 0.016129032258064516,
+                "distance": null
+              },
+              {
+                "source_id": "B",
+                "branch": "vector",
+                "raw_score": 0.0,
+                "metric": "embedding_cosine",
+                "rank": 1,
+                "normalized_score": null,
+                "contribution": 0.01639344262295082,
+                "distance": null
+              }
+            ]
+          }
+        }
+      },
+      {
+        "source_id": "A",
+        "title": "guide.pdf page 1 chunk 0",
+        "content": "abcdef",
+        "url": null,
+        "file_path": "guide.pdf",
+        "page": 1,
+        "score": 0.032266458495966696,
+        "fetched_at": "2026-10-20T12:04:52.290255Z",
+        "metadata": {
+          "offset": 0,
+          "end_offset": 6,
+          "offset_basis": "normalized_page_text",
+          "chunk_index": 0,
+          "_retrieval": {
+            "method": "rrf",
+            "metric": "rrf_fusion",
+            "parameters": {
+              "rank_constant": 60
+            },
+            "branches": [
+              {
+                "source_id": "A",
+                "branch": "keyword",
+                "raw_score": 0.0,
+                "metric": "token_count_cosine",
+                "rank": 1,
+                "normalized_score": null,
+                "contribution": 0.01639344262295082,
+                "distance": null
+              },
+              {
+                "source_id": "A",
+                "branch": "vector",
+                "raw_score": 0.0,
+                "metric": "embedding_cosine",
+                "rank": 3,
+                "normalized_score": null,
+                "contribution": 0.015873015873015872,
+                "distance": null
+              }
+            ]
+          }
+        }
+      },
+      {
+        "source_id": "D",
+        "title": "archive.pdf page 9 chunk 0",
+        "content": "abcdef",
+        "url": null,
+        "file_path": "archive.pdf",
+        "page": 9,
+        "score": 0.016129032258064516,
+        "fetched_at": "2026-10-20T12:04:52.290255Z",
+        "metadata": {
+          "offset": 0,
+          "end_offset": 6,
+          "offset_basis": "normalized_page_text",
+          "chunk_index": 0,
+          "_retrieval": {
+            "method": "rrf",
+            "metric": "rrf_fusion",
+            "parameters": {
+              "rank_constant": 60
+            },
+            "branches": [
+              {
+                "source_id": "D",
+                "branch": "vector",
+                "raw_score": 0.0,
+                "metric": "embedding_cosine",
+                "rank": 2,
+                "normalized_score": null,
+                "contribution": 0.016129032258064516,
+                "distance": null
+              }
+            ]
+          }
+        }
+      },
+      {
+        "source_id": "C",
+        "title": "guide.pdf page 2 chunk 0",
+        "content": "abcdef",
+        "url": null,
+        "file_path": "guide.pdf",
+        "page": 2,
+        "score": 0.015873015873015872,
+        "fetched_at": "2026-10-20T12:04:52.290255Z",
+        "metadata": {
+          "offset": 0,
+          "end_offset": 6,
+          "offset_basis": "normalized_page_text",
+          "chunk_index": 0,
+          "_retrieval": {
+            "method": "rrf",
+            "metric": "rrf_fusion",
+            "parameters": {
+              "rank_constant": 60
+            },
+            "branches": [
+              {
+                "source_id": "C",
+                "branch": "keyword",
+                "raw_score": 0.0,
+                "metric": "token_count_cosine",
+                "rank": 3,
+                "normalized_score": null,
+                "contribution": 0.015873015873015872,
+                "distance": null
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "traces": [
+      {
+        "source_id": "A",
+        "branch": "keyword",
+        "raw_score": 0.0,
+        "metric": "token_count_cosine",
+        "rank": 1,
+        "normalized_score": null,
+        "contribution": 0.01639344262295082,
+        "distance": null
+      },
+      {
+        "source_id": "B",
+        "branch": "keyword",
+        "raw_score": 0.0,
+        "metric": "token_count_cosine",
+        "rank": 2,
+        "normalized_score": null,
+        "contribution": 0.016129032258064516,
+        "distance": null
+      },
+      {
+        "source_id": "C",
+        "branch": "keyword",
+        "raw_score": 0.0,
+        "metric": "token_count_cosine",
+        "rank": 3,
+        "normalized_score": null,
+        "contribution": 0.015873015873015872,
+        "distance": null
+      },
+      {
+        "source_id": "B",
+        "branch": "vector",
+        "raw_score": 0.0,
+        "metric": "embedding_cosine",
+        "rank": 1,
+        "normalized_score": null,
+        "contribution": 0.01639344262295082,
+        "distance": null
+      },
+      {
+        "source_id": "D",
+        "branch": "vector",
+        "raw_score": 0.0,
+        "metric": "embedding_cosine",
+        "rank": 2,
+        "normalized_score": null,
+        "contribution": 0.016129032258064516,
+        "distance": null
+      },
+      {
+        "source_id": "A",
+        "branch": "vector",
+        "raw_score": 0.0,
+        "metric": "embedding_cosine",
+        "rank": 3,
+        "normalized_score": null,
+        "contribution": 0.015873015873015872,
+        "distance": null
+      }
+    ],
+    "unique_candidate_count": 4,
+    "final_count": 4,
+    "parameters": {
+      "rank_constant": 60
+    },
+    "id_dedup_diagnostics": {
+      "raw_count_by_branch": {
+        "keyword": 4,
+        "vector": 3
+      },
+      "unique_count_by_branch": {
+        "keyword": 3,
+        "vector": 3
+      },
+      "removed_count_by_branch": {
+        "keyword": 1,
+        "vector": 0
+      },
+      "shared_source_ids": [
+        "A",
+        "B"
+      ],
+      "unique_source_count": 4,
+      "raw_candidate_count": 7,
+      "within_branch_duplicate_count": 1,
+      "across_branch_extra_count": 2,
+      "repeated_candidate_rate": 0.42857142857142855
+    },
+    "content_redundancy_diagnostics": {
+      "scope": "unique_candidates_before_top_k",
+      "selected_source_ids": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "source_count": 4,
+      "duplicate_content_groups": [
+        {
+          "source_ids": [
+            "A",
+            "C",
+            "D"
+          ],
+          "locations": [
+            {
+              "source_id": "A",
+              "title": "guide.pdf page 1 chunk 0",
+              "file_path": "guide.pdf",
+              "page": 1,
+              "url": null,
+              "offset": 0,
+              "end_offset": 6,
+              "offset_basis": "normalized_page_text",
+              "chunk_index": 0
+            },
+            {
+              "source_id": "C",
+              "title": "guide.pdf page 2 chunk 0",
+              "file_path": "guide.pdf",
+              "page": 2,
+              "url": null,
+              "offset": 0,
+              "end_offset": 6,
+              "offset_basis": "normalized_page_text",
+              "chunk_index": 0
+            },
+            {
+              "source_id": "D",
+              "title": "archive.pdf page 9 chunk 0",
+              "file_path": "archive.pdf",
+              "page": 9,
+              "url": null,
+              "offset": 0,
+              "end_offset": 6,
+              "offset_basis": "normalized_page_text",
+              "chunk_index": 0
+            }
+          ]
+        }
+      ],
+      "duplicate_content_group_count": 1,
+      "duplicate_content_extra_count": 2,
+      "adjacent_pairs_checked": 1,
+      "overlapping_adjacent_pair_count": 1,
+      "overlap_pairs": [
+        {
+          "left_source_id": "A",
+          "right_source_id": "B",
+          "file_path": "guide.pdf",
+          "page": 1,
+          "offset_basis": "normalized_page_text",
+          "overlap_start": 4,
+          "overlap_end": 6,
+          "overlap_chars": 2
+        }
+      ],
+      "coordinate_issues": [],
+      "overlap_check_complete": true
+    }
+  }
+}

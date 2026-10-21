@@ -15,3 +15,10 @@ data/day05/
 .ua/
 data/day06/
 data/day07/
+
+# Day 08 temporary files and vector databases
+.pytest-*/
+tmp/
+data/day08/chroma*/
+data/day08/**/chroma/
+data/day09/

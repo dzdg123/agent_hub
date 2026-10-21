@@ -1,0 +1,497 @@
+﻿query_id,group,question,has_allowed_evidence,filters,reference_quote,source_id,file_path,page,content,appearances,preannotated_match,support_level,reason,reviewer,human_checked
+Q01,baseline,怎样避免不同项目安装的包互相干扰？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-1d7abc3ef0be35c3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\gardening.md,,"# 阳台种植笔记
+罗勒适合放在光照充足、排水良好的位置。浇水前观察表层土壤，避免盆底长期积水。
+种植记录包括播种日期、叶片状态、浇水次数和施肥情况。这些是植物养护信息。
+给不同花盆贴标签有助于追踪品种，但花盆标签不具有软件依赖隔离的功能。本资料不记录任何数据库账号或密码。",keyword:2,False,,,,
+Q01,baseline,怎样避免不同项目安装的包互相干扰？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-21a31aa34e21153f,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\async.md,,"# 网络任务观察
+对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。
+如果在循环里逐个 await 每次请求，前一个请求返回后才会启动下一个，就仍然是顺序等待。
+异步并发适用于 I/O 等待，不意味着 CPU 计算会自动并行。实际调用还应限制并发数量，并明确超时和单个任务失败的处理策略。",vector:5,False,,,,
+Q01,baseline,怎样避免不同项目安装的包互相干扰？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-47de7bf8c30cf985,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md,,"# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。",keyword:4;vector:3,False,,,,
+Q01,baseline,怎样避免不同项目安装的包互相干扰？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-67e8db8df1d1d15d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\environment.txt,,"项目实验记录
+为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。
+运行脚本和安装包时应选择同一个环境中的 Python 解释器。可以使用 python -m pip 安装依赖，减少 pip 指向另一个解释器的风险。
+虚拟环境隔离软件依赖，不会自动隔离文件、网络或操作系统权限。复制项目时保留依赖清单，通常不复制整个环境目录。",keyword:1;vector:1,True,,,,
+Q01,baseline,怎样避免不同项目安装的包互相干扰？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-c5b5b52aa10f6be7,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md,,"# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。",vector:2,False,,,,
+Q01,baseline,怎样避免不同项目安装的包互相干扰？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-eccf50f58a9a4d9d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md,,"# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。",keyword:5;vector:4,False,,,,
+Q01,baseline,怎样避免不同项目安装的包互相干扰？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-f69a71b5b9f84c38,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md,,"# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。",keyword:3;vector:6,False,,,,
+Q02,baseline,调用模型的密钥应放在哪里，哪些地方不应该出现？,True,{},API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。,doc-1d7abc3ef0be35c3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\gardening.md,,"# 阳台种植笔记
+罗勒适合放在光照充足、排水良好的位置。浇水前观察表层土壤，避免盆底长期积水。
+种植记录包括播种日期、叶片状态、浇水次数和施肥情况。这些是植物养护信息。
+给不同花盆贴标签有助于追踪品种，但花盆标签不具有软件依赖隔离的功能。本资料不记录任何数据库账号或密码。",keyword:5,False,,,,
+Q02,baseline,调用模型的密钥应放在哪里，哪些地方不应该出现？,True,{},API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。,doc-47de7bf8c30cf985,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md,,"# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。",keyword:2;vector:2,False,,,,
+Q02,baseline,调用模型的密钥应放在哪里，哪些地方不应该出现？,True,{},API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。,doc-76ab5ce75e586d60,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\offset.md,,"# 文本位置记录
+offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。
+文本文件以规范化整篇原文为坐标基准；PDF 片段以规范化的对应物理页文本为基准。坐标既不是 UTF-8 字节偏移，也不是 token 下标。
+重新切片应从原始文档开始，并重新生成坐标和 ID。旧片段再次切碎后不能直接沿用原来的 offset。",vector:5,False,,,,
+Q02,baseline,调用模型的密钥应放在哪里，哪些地方不应该出现？,True,{},API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。,doc-84a31f89a1acc2f3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\cooking.txt,,"家庭厨房记录
+番茄炒蛋可以先炒鸡蛋盛出，再炒番茄，最后合炒调味。锅温和食材含水量会影响成品口感。
+这份菜谱讨论的是烹饪步骤，不包含软件工具调用流程。做菜时所说的工具是锅铲、菜刀和量勺。
+准备多道菜可以先整理食材，但厨房操作的先后顺序并不能解释异步网络请求的调度机制。",keyword:6,False,,,,
+Q02,baseline,调用模型的密钥应放在哪里，哪些地方不应该出现？,True,{},API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。,doc-a4d971350c7e5875,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,3,"Citation coordinates
+Count every physical PDF page, including blank pages, when recording citations.
+This text is on physical page 3, even though page 2 has no extracted text.
+Do not renumber later pages after skipping a blank page during extraction.",vector:6,False,,,,
+Q02,baseline,调用模型的密钥应放在哪里，哪些地方不应该出现？,True,{},API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。,doc-c5b5b52aa10f6be7,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md,,"# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。",keyword:1;vector:1,True,,,,
+Q02,baseline,调用模型的密钥应放在哪里，哪些地方不应该出现？,True,{},API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。,doc-eccf50f58a9a4d9d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md,,"# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。",keyword:3;vector:3,False,,,,
+Q02,baseline,调用模型的密钥应放在哪里，哪些地方不应该出现？,True,{},API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。,doc-f69a71b5b9f84c38,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md,,"# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。",keyword:4;vector:4,False,,,,
+Q03,baseline,多个网络请求怎样同时等待而不逐个排队？,True,{},对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。,doc-21a31aa34e21153f,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\async.md,,"# 网络任务观察
+对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。
+如果在循环里逐个 await 每次请求，前一个请求返回后才会启动下一个，就仍然是顺序等待。
+异步并发适用于 I/O 等待，不意味着 CPU 计算会自动并行。实际调用还应限制并发数量，并明确超时和单个任务失败的处理策略。",keyword:1;vector:1,True,,,,
+Q03,baseline,多个网络请求怎样同时等待而不逐个排队？,True,{},对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。,doc-47de7bf8c30cf985,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md,,"# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。",keyword:6,False,,,,
+Q03,baseline,多个网络请求怎样同时等待而不逐个排队？,True,{},对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。,doc-67e8db8df1d1d15d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\environment.txt,,"项目实验记录
+为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。
+运行脚本和安装包时应选择同一个环境中的 Python 解释器。可以使用 python -m pip 安装依赖，减少 pip 指向另一个解释器的风险。
+虚拟环境隔离软件依赖，不会自动隔离文件、网络或操作系统权限。复制项目时保留依赖清单，通常不复制整个环境目录。",keyword:5;vector:3,False,,,,
+Q03,baseline,多个网络请求怎样同时等待而不逐个排队？,True,{},对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。,doc-84a31f89a1acc2f3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\cooking.txt,,"家庭厨房记录
+番茄炒蛋可以先炒鸡蛋盛出，再炒番茄，最后合炒调味。锅温和食材含水量会影响成品口感。
+这份菜谱讨论的是烹饪步骤，不包含软件工具调用流程。做菜时所说的工具是锅铲、菜刀和量勺。
+准备多道菜可以先整理食材，但厨房操作的先后顺序并不能解释异步网络请求的调度机制。",keyword:2,False,,,,
+Q03,baseline,多个网络请求怎样同时等待而不逐个排队？,True,{},对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。,doc-8ed6ac9b3a883cfc,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\evidence.md,,"# 研究记录准则
+资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。
+找到主题相近的片段只是候选检索成功。回答前还要核对原句是否支持具体结论，以及来源是否适用。
+如果只能支持问题的一部分，可以回答已证实的部分并标明其余部分未知。检索分数不是结论正确的概率。",vector:6,False,,,,
+Q03,baseline,多个网络请求怎样同时等待而不逐个排队？,True,{},对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。,doc-a4d971350c7e5875,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,3,"Citation coordinates
+Count every physical PDF page, including blank pages, when recording citations.
+This text is on physical page 3, even though page 2 has no extracted text.
+Do not renumber later pages after skipping a blank page during extraction.",vector:5,False,,,,
+Q03,baseline,多个网络请求怎样同时等待而不逐个排队？,True,{},对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。,doc-c5b5b52aa10f6be7,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md,,"# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。",keyword:4,False,,,,
+Q03,baseline,多个网络请求怎样同时等待而不逐个排队？,True,{},对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。,doc-eccf50f58a9a4d9d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md,,"# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。",keyword:3;vector:4,False,,,,
+Q03,baseline,多个网络请求怎样同时等待而不逐个排队？,True,{},对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。,doc-f69a71b5b9f84c38,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md,,"# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。",vector:2,False,,,,
+Q04,baseline,为什么工具函数执行前要验证参数？,True,{},工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。,doc-47de7bf8c30cf985,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md,,"# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。",keyword:1;vector:1,True,,,,
+Q04,baseline,为什么工具函数执行前要验证参数？,True,{},工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。,doc-67e8db8df1d1d15d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\environment.txt,,"项目实验记录
+为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。
+运行脚本和安装包时应选择同一个环境中的 Python 解释器。可以使用 python -m pip 安装依赖，减少 pip 指向另一个解释器的风险。
+虚拟环境隔离软件依赖，不会自动隔离文件、网络或操作系统权限。复制项目时保留依赖清单，通常不复制整个环境目录。",vector:6,False,,,,
+Q04,baseline,为什么工具函数执行前要验证参数？,True,{},工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。,doc-76ab5ce75e586d60,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\offset.md,,"# 文本位置记录
+offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。
+文本文件以规范化整篇原文为坐标基准；PDF 片段以规范化的对应物理页文本为基准。坐标既不是 UTF-8 字节偏移，也不是 token 下标。
+重新切片应从原始文档开始，并重新生成坐标和 ID。旧片段再次切碎后不能直接沿用原来的 offset。",vector:5,False,,,,
+Q04,baseline,为什么工具函数执行前要验证参数？,True,{},工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。,doc-84a31f89a1acc2f3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\cooking.txt,,"家庭厨房记录
+番茄炒蛋可以先炒鸡蛋盛出，再炒番茄，最后合炒调味。锅温和食材含水量会影响成品口感。
+这份菜谱讨论的是烹饪步骤，不包含软件工具调用流程。做菜时所说的工具是锅铲、菜刀和量勺。
+准备多道菜可以先整理食材，但厨房操作的先后顺序并不能解释异步网络请求的调度机制。",keyword:3,False,,,,
+Q04,baseline,为什么工具函数执行前要验证参数？,True,{},工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。,doc-8ed6ac9b3a883cfc,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\evidence.md,,"# 研究记录准则
+资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。
+找到主题相近的片段只是候选检索成功。回答前还要核对原句是否支持具体结论，以及来源是否适用。
+如果只能支持问题的一部分，可以回答已证实的部分并标明其余部分未知。检索分数不是结论正确的概率。",vector:4,False,,,,
+Q04,baseline,为什么工具函数执行前要验证参数？,True,{},工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。,doc-eccf50f58a9a4d9d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md,,"# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。",keyword:2;vector:2,False,,,,
+Q04,baseline,为什么工具函数执行前要验证参数？,True,{},工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。,doc-f69a71b5b9f84c38,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md,,"# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。",vector:3,False,,,,
+Q05,baseline,模型提出调用工具后，谁执行函数，结果怎样传回？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-21a31aa34e21153f,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\async.md,,"# 网络任务观察
+对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。
+如果在循环里逐个 await 每次请求，前一个请求返回后才会启动下一个，就仍然是顺序等待。
+异步并发适用于 I/O 等待，不意味着 CPU 计算会自动并行。实际调用还应限制并发数量，并明确超时和单个任务失败的处理策略。",keyword:5;vector:4,False,,,,
+Q05,baseline,模型提出调用工具后，谁执行函数，结果怎样传回？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-47de7bf8c30cf985,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md,,"# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。",keyword:1;vector:1,True,,,,
+Q05,baseline,模型提出调用工具后，谁执行函数，结果怎样传回？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-67e8db8df1d1d15d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\environment.txt,,"项目实验记录
+为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。
+运行脚本和安装包时应选择同一个环境中的 Python 解释器。可以使用 python -m pip 安装依赖，减少 pip 指向另一个解释器的风险。
+虚拟环境隔离软件依赖，不会自动隔离文件、网络或操作系统权限。复制项目时保留依赖清单，通常不复制整个环境目录。",vector:6,False,,,,
+Q05,baseline,模型提出调用工具后，谁执行函数，结果怎样传回？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-84a31f89a1acc2f3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\cooking.txt,,"家庭厨房记录
+番茄炒蛋可以先炒鸡蛋盛出，再炒番茄，最后合炒调味。锅温和食材含水量会影响成品口感。
+这份菜谱讨论的是烹饪步骤，不包含软件工具调用流程。做菜时所说的工具是锅铲、菜刀和量勺。
+准备多道菜可以先整理食材，但厨房操作的先后顺序并不能解释异步网络请求的调度机制。",keyword:3,False,,,,
+Q05,baseline,模型提出调用工具后，谁执行函数，结果怎样传回？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-8ed6ac9b3a883cfc,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\evidence.md,,"# 研究记录准则
+资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。
+找到主题相近的片段只是候选检索成功。回答前还要核对原句是否支持具体结论，以及来源是否适用。
+如果只能支持问题的一部分，可以回答已证实的部分并标明其余部分未知。检索分数不是结论正确的概率。",vector:5,False,,,,
+Q05,baseline,模型提出调用工具后，谁执行函数，结果怎样传回？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-eccf50f58a9a4d9d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md,,"# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。",keyword:2;vector:2,False,,,,
+Q05,baseline,模型提出调用工具后，谁执行函数，结果怎样传回？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-f69a71b5b9f84c38,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md,,"# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。",keyword:4;vector:3,False,,,,
+Q06,baseline,PDF 中间有空白页，后续引用的页数该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-1d7abc3ef0be35c3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\gardening.md,,"# 阳台种植笔记
+罗勒适合放在光照充足、排水良好的位置。浇水前观察表层土壤，避免盆底长期积水。
+种植记录包括播种日期、叶片状态、浇水次数和施肥情况。这些是植物养护信息。
+给不同花盆贴标签有助于追踪品种，但花盆标签不具有软件依赖隔离的功能。本资料不记录任何数据库账号或密码。",keyword:2,False,,,,
+Q06,baseline,PDF 中间有空白页，后续引用的页数该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-5149b57efb060e06,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,1,"Document tracking notes
+This fixture contains three physical PDF pages.
+The second physical page is intentionally blank.
+Page labels printed on a page may differ from its physical position.",keyword:4;vector:2,False,,,,
+Q06,baseline,PDF 中间有空白页，后续引用的页数该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-76ab5ce75e586d60,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\offset.md,,"# 文本位置记录
+offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。
+文本文件以规范化整篇原文为坐标基准；PDF 片段以规范化的对应物理页文本为基准。坐标既不是 UTF-8 字节偏移，也不是 token 下标。
+重新切片应从原始文档开始，并重新生成坐标和 ID。旧片段再次切碎后不能直接沿用原来的 offset。",keyword:6;vector:4,False,,,,
+Q06,baseline,PDF 中间有空白页，后续引用的页数该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-870ad51e4b6db443,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\printed_pages.md,,"# 纸质书编排说明
+纸质书的印刷页码可能从正文开始编号，封面和目录可能不编号，也可能使用罗马数字。
+这里的页码是排版者印在纸上的标记，讨论的是纸质出版物。某张纸上没有印刷数字，并不等于文件解析时应该忽略该页。
+本说明没有规定 PDF 加载器如何记录物理页号，不能单独用它支持 PDF 中间空白页之后的引用坐标。",keyword:1;vector:1,False,,,,
+Q06,baseline,PDF 中间有空白页，后续引用的页数该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-8ed6ac9b3a883cfc,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\evidence.md,,"# 研究记录准则
+资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。
+找到主题相近的片段只是候选检索成功。回答前还要核对原句是否支持具体结论，以及来源是否适用。
+如果只能支持问题的一部分，可以回答已证实的部分并标明其余部分未知。检索分数不是结论正确的概率。",keyword:5;vector:5,False,,,,
+Q06,baseline,PDF 中间有空白页，后续引用的页数该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-a4d971350c7e5875,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,3,"Citation coordinates
+Count every physical PDF page, including blank pages, when recording citations.
+This text is on physical page 3, even though page 2 has no extracted text.
+Do not renumber later pages after skipping a blank page during extraction.",vector:3,True,,,,
+Q06,baseline,PDF 中间有空白页，后续引用的页数该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-c5b5b52aa10f6be7,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md,,"# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。",keyword:3;vector:6,False,,,,
+Q07,baseline,怎样利用 offset 与 end_offset 找回片段原文？,True,{},offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。,doc-21a31aa34e21153f,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\async.md,,"# 网络任务观察
+对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。
+如果在循环里逐个 await 每次请求，前一个请求返回后才会启动下一个，就仍然是顺序等待。
+异步并发适用于 I/O 等待，不意味着 CPU 计算会自动并行。实际调用还应限制并发数量，并明确超时和单个任务失败的处理策略。",keyword:5,False,,,,
+Q07,baseline,怎样利用 offset 与 end_offset 找回片段原文？,True,{},offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。,doc-47de7bf8c30cf985,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md,,"# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。",keyword:6;vector:3,False,,,,
+Q07,baseline,怎样利用 offset 与 end_offset 找回片段原文？,True,{},offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。,doc-5149b57efb060e06,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,1,"Document tracking notes
+This fixture contains three physical PDF pages.
+The second physical page is intentionally blank.
+Page labels printed on a page may differ from its physical position.",vector:2,False,,,,
+Q07,baseline,怎样利用 offset 与 end_offset 找回片段原文？,True,{},offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。,doc-67e8db8df1d1d15d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\environment.txt,,"项目实验记录
+为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。
+运行脚本和安装包时应选择同一个环境中的 Python 解释器。可以使用 python -m pip 安装依赖，减少 pip 指向另一个解释器的风险。
+虚拟环境隔离软件依赖，不会自动隔离文件、网络或操作系统权限。复制项目时保留依赖清单，通常不复制整个环境目录。",keyword:4,False,,,,
+Q07,baseline,怎样利用 offset 与 end_offset 找回片段原文？,True,{},offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。,doc-76ab5ce75e586d60,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\offset.md,,"# 文本位置记录
+offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。
+文本文件以规范化整篇原文为坐标基准；PDF 片段以规范化的对应物理页文本为基准。坐标既不是 UTF-8 字节偏移，也不是 token 下标。
+重新切片应从原始文档开始，并重新生成坐标和 ID。旧片段再次切碎后不能直接沿用原来的 offset。",keyword:1;vector:1,True,,,,
+Q07,baseline,怎样利用 offset 与 end_offset 找回片段原文？,True,{},offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。,doc-8ed6ac9b3a883cfc,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\evidence.md,,"# 研究记录准则
+资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。
+找到主题相近的片段只是候选检索成功。回答前还要核对原句是否支持具体结论，以及来源是否适用。
+如果只能支持问题的一部分，可以回答已证实的部分并标明其余部分未知。检索分数不是结论正确的概率。",keyword:3,False,,,,
+Q07,baseline,怎样利用 offset 与 end_offset 找回片段原文？,True,{},offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。,doc-a4d971350c7e5875,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,3,"Citation coordinates
+Count every physical PDF page, including blank pages, when recording citations.
+This text is on physical page 3, even though page 2 has no extracted text.
+Do not renumber later pages after skipping a blank page during extraction.",vector:4,False,,,,
+Q07,baseline,怎样利用 offset 与 end_offset 找回片段原文？,True,{},offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。,doc-c5b5b52aa10f6be7,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md,,"# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。",keyword:2;vector:5,False,,,,
+Q07,baseline,怎样利用 offset 与 end_offset 找回片段原文？,True,{},offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。,doc-eccf50f58a9a4d9d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md,,"# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。",vector:6,False,,,,
+Q08,baseline,文档与查询为什么不能分别使用两种向量模型？,True,{},文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。,doc-47de7bf8c30cf985,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md,,"# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。",keyword:2;vector:2,False,,,,
+Q08,baseline,文档与查询为什么不能分别使用两种向量模型？,True,{},文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。,doc-76ab5ce75e586d60,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\offset.md,,"# 文本位置记录
+offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。
+文本文件以规范化整篇原文为坐标基准；PDF 片段以规范化的对应物理页文本为基准。坐标既不是 UTF-8 字节偏移，也不是 token 下标。
+重新切片应从原始文档开始，并重新生成坐标和 ID。旧片段再次切碎后不能直接沿用原来的 offset。",keyword:6;vector:3,False,,,,
+Q08,baseline,文档与查询为什么不能分别使用两种向量模型？,True,{},文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。,doc-870ad51e4b6db443,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\printed_pages.md,,"# 纸质书编排说明
+纸质书的印刷页码可能从正文开始编号，封面和目录可能不编号，也可能使用罗马数字。
+这里的页码是排版者印在纸上的标记，讨论的是纸质出版物。某张纸上没有印刷数字，并不等于文件解析时应该忽略该页。
+本说明没有规定 PDF 加载器如何记录物理页号，不能单独用它支持 PDF 中间空白页之后的引用坐标。",keyword:5,False,,,,
+Q08,baseline,文档与查询为什么不能分别使用两种向量模型？,True,{},文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。,doc-8ed6ac9b3a883cfc,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\evidence.md,,"# 研究记录准则
+资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。
+找到主题相近的片段只是候选检索成功。回答前还要核对原句是否支持具体结论，以及来源是否适用。
+如果只能支持问题的一部分，可以回答已证实的部分并标明其余部分未知。检索分数不是结论正确的概率。",vector:5,False,,,,
+Q08,baseline,文档与查询为什么不能分别使用两种向量模型？,True,{},文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。,doc-a4d971350c7e5875,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,3,"Citation coordinates
+Count every physical PDF page, including blank pages, when recording citations.
+This text is on physical page 3, even though page 2 has no extracted text.
+Do not renumber later pages after skipping a blank page during extraction.",vector:4,False,,,,
+Q08,baseline,文档与查询为什么不能分别使用两种向量模型？,True,{},文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。,doc-c5b5b52aa10f6be7,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md,,"# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。",keyword:4,False,,,,
+Q08,baseline,文档与查询为什么不能分别使用两种向量模型？,True,{},文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。,doc-eccf50f58a9a4d9d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md,,"# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。",keyword:3;vector:6,False,,,,
+Q08,baseline,文档与查询为什么不能分别使用两种向量模型？,True,{},文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。,doc-f69a71b5b9f84c38,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md,,"# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。",keyword:1;vector:1,True,,,,
+Q09,baseline,如何避免 Agent 一直调用工具而不结束？,True,{},Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。,doc-1d7abc3ef0be35c3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\gardening.md,,"# 阳台种植笔记
+罗勒适合放在光照充足、排水良好的位置。浇水前观察表层土壤，避免盆底长期积水。
+种植记录包括播种日期、叶片状态、浇水次数和施肥情况。这些是植物养护信息。
+给不同花盆贴标签有助于追踪品种，但花盆标签不具有软件依赖隔离的功能。本资料不记录任何数据库账号或密码。",keyword:4,False,,,,
+Q09,baseline,如何避免 Agent 一直调用工具而不结束？,True,{},Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。,doc-21a31aa34e21153f,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\async.md,,"# 网络任务观察
+对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。
+如果在循环里逐个 await 每次请求，前一个请求返回后才会启动下一个，就仍然是顺序等待。
+异步并发适用于 I/O 等待，不意味着 CPU 计算会自动并行。实际调用还应限制并发数量，并明确超时和单个任务失败的处理策略。",vector:3,False,,,,
+Q09,baseline,如何避免 Agent 一直调用工具而不结束？,True,{},Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。,doc-47de7bf8c30cf985,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md,,"# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。",keyword:2;vector:2,False,,,,
+Q09,baseline,如何避免 Agent 一直调用工具而不结束？,True,{},Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。,doc-67e8db8df1d1d15d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\environment.txt,,"项目实验记录
+为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。
+运行脚本和安装包时应选择同一个环境中的 Python 解释器。可以使用 python -m pip 安装依赖，减少 pip 指向另一个解释器的风险。
+虚拟环境隔离软件依赖，不会自动隔离文件、网络或操作系统权限。复制项目时保留依赖清单，通常不复制整个环境目录。",vector:5,False,,,,
+Q09,baseline,如何避免 Agent 一直调用工具而不结束？,True,{},Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。,doc-84a31f89a1acc2f3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\cooking.txt,,"家庭厨房记录
+番茄炒蛋可以先炒鸡蛋盛出，再炒番茄，最后合炒调味。锅温和食材含水量会影响成品口感。
+这份菜谱讨论的是烹饪步骤，不包含软件工具调用流程。做菜时所说的工具是锅铲、菜刀和量勺。
+准备多道菜可以先整理食材，但厨房操作的先后顺序并不能解释异步网络请求的调度机制。",keyword:3,False,,,,
+Q09,baseline,如何避免 Agent 一直调用工具而不结束？,True,{},Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。,doc-870ad51e4b6db443,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\printed_pages.md,,"# 纸质书编排说明
+纸质书的印刷页码可能从正文开始编号，封面和目录可能不编号，也可能使用罗马数字。
+这里的页码是排版者印在纸上的标记，讨论的是纸质出版物。某张纸上没有印刷数字，并不等于文件解析时应该忽略该页。
+本说明没有规定 PDF 加载器如何记录物理页号，不能单独用它支持 PDF 中间空白页之后的引用坐标。",keyword:6,False,,,,
+Q09,baseline,如何避免 Agent 一直调用工具而不结束？,True,{},Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。,doc-a4d971350c7e5875,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,3,"Citation coordinates
+Count every physical PDF page, including blank pages, when recording citations.
+This text is on physical page 3, even though page 2 has no extracted text.
+Do not renumber later pages after skipping a blank page during extraction.",vector:6,False,,,,
+Q09,baseline,如何避免 Agent 一直调用工具而不结束？,True,{},Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。,doc-c5b5b52aa10f6be7,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md,,"# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。",keyword:5;vector:4,False,,,,
+Q09,baseline,如何避免 Agent 一直调用工具而不结束？,True,{},Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。,doc-eccf50f58a9a4d9d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md,,"# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。",keyword:1;vector:1,True,,,,
+Q10,baseline,资料没有支持结论时，研究系统应怎样处理？,True,{},资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。,doc-1d7abc3ef0be35c3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\gardening.md,,"# 阳台种植笔记
+罗勒适合放在光照充足、排水良好的位置。浇水前观察表层土壤，避免盆底长期积水。
+种植记录包括播种日期、叶片状态、浇水次数和施肥情况。这些是植物养护信息。
+给不同花盆贴标签有助于追踪品种，但花盆标签不具有软件依赖隔离的功能。本资料不记录任何数据库账号或密码。",keyword:3,False,,,,
+Q10,baseline,资料没有支持结论时，研究系统应怎样处理？,True,{},资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。,doc-21a31aa34e21153f,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\async.md,,"# 网络任务观察
+对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。
+如果在循环里逐个 await 每次请求，前一个请求返回后才会启动下一个，就仍然是顺序等待。
+异步并发适用于 I/O 等待，不意味着 CPU 计算会自动并行。实际调用还应限制并发数量，并明确超时和单个任务失败的处理策略。",keyword:6;vector:6,False,,,,
+Q10,baseline,资料没有支持结论时，研究系统应怎样处理？,True,{},资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。,doc-5149b57efb060e06,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,1,"Document tracking notes
+This fixture contains three physical PDF pages.
+The second physical page is intentionally blank.
+Page labels printed on a page may differ from its physical position.",vector:3,False,,,,
+Q10,baseline,资料没有支持结论时，研究系统应怎样处理？,True,{},资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。,doc-67e8db8df1d1d15d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\environment.txt,,"项目实验记录
+为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。
+运行脚本和安装包时应选择同一个环境中的 Python 解释器。可以使用 python -m pip 安装依赖，减少 pip 指向另一个解释器的风险。
+虚拟环境隔离软件依赖，不会自动隔离文件、网络或操作系统权限。复制项目时保留依赖清单，通常不复制整个环境目录。",keyword:5,False,,,,
+Q10,baseline,资料没有支持结论时，研究系统应怎样处理？,True,{},资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。,doc-870ad51e4b6db443,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\printed_pages.md,,"# 纸质书编排说明
+纸质书的印刷页码可能从正文开始编号，封面和目录可能不编号，也可能使用罗马数字。
+这里的页码是排版者印在纸上的标记，讨论的是纸质出版物。某张纸上没有印刷数字，并不等于文件解析时应该忽略该页。
+本说明没有规定 PDF 加载器如何记录物理页号，不能单独用它支持 PDF 中间空白页之后的引用坐标。",keyword:2,False,,,,
+Q10,baseline,资料没有支持结论时，研究系统应怎样处理？,True,{},资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。,doc-8ed6ac9b3a883cfc,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\evidence.md,,"# 研究记录准则
+资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。
+找到主题相近的片段只是候选检索成功。回答前还要核对原句是否支持具体结论，以及来源是否适用。
+如果只能支持问题的一部分，可以回答已证实的部分并标明其余部分未知。检索分数不是结论正确的概率。",keyword:1;vector:1,True,,,,
+Q10,baseline,资料没有支持结论时，研究系统应怎样处理？,True,{},资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。,doc-a4d971350c7e5875,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,3,"Citation coordinates
+Count every physical PDF page, including blank pages, when recording citations.
+This text is on physical page 3, even though page 2 has no extracted text.
+Do not renumber later pages after skipping a blank page during extraction.",vector:4,False,,,,
+Q10,baseline,资料没有支持结论时，研究系统应怎样处理？,True,{},资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。,doc-eccf50f58a9a4d9d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md,,"# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。",keyword:4;vector:5,False,,,,
+Q10,baseline,资料没有支持结论时，研究系统应怎样处理？,True,{},资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。,doc-f69a71b5b9f84c38,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md,,"# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。",vector:2,False,,,,
+N01,baseline,本资料里的公司 2027 年营收是多少？,False,{},,doc-1d7abc3ef0be35c3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\gardening.md,,"# 阳台种植笔记
+罗勒适合放在光照充足、排水良好的位置。浇水前观察表层土壤，避免盆底长期积水。
+种植记录包括播种日期、叶片状态、浇水次数和施肥情况。这些是植物养护信息。
+给不同花盆贴标签有助于追踪品种，但花盆标签不具有软件依赖隔离的功能。本资料不记录任何数据库账号或密码。",keyword:1,False,,,,
+N01,baseline,本资料里的公司 2027 年营收是多少？,False,{},,doc-47de7bf8c30cf985,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md,,"# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。",vector:5,False,,,,
+N01,baseline,本资料里的公司 2027 年营收是多少？,False,{},,doc-5149b57efb060e06,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,1,"Document tracking notes
+This fixture contains three physical PDF pages.
+The second physical page is intentionally blank.
+Page labels printed on a page may differ from its physical position.",vector:3,False,,,,
+N01,baseline,本资料里的公司 2027 年营收是多少？,False,{},,doc-76ab5ce75e586d60,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\offset.md,,"# 文本位置记录
+offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。
+文本文件以规范化整篇原文为坐标基准；PDF 片段以规范化的对应物理页文本为基准。坐标既不是 UTF-8 字节偏移，也不是 token 下标。
+重新切片应从原始文档开始，并重新生成坐标和 ID。旧片段再次切碎后不能直接沿用原来的 offset。",vector:6,False,,,,
+N01,baseline,本资料里的公司 2027 年营收是多少？,False,{},,doc-870ad51e4b6db443,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\printed_pages.md,,"# 纸质书编排说明
+纸质书的印刷页码可能从正文开始编号，封面和目录可能不编号，也可能使用罗马数字。
+这里的页码是排版者印在纸上的标记，讨论的是纸质出版物。某张纸上没有印刷数字，并不等于文件解析时应该忽略该页。
+本说明没有规定 PDF 加载器如何记录物理页号，不能单独用它支持 PDF 中间空白页之后的引用坐标。",keyword:3;vector:2,False,,,,
+N01,baseline,本资料里的公司 2027 年营收是多少？,False,{},,doc-8ed6ac9b3a883cfc,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\evidence.md,,"# 研究记录准则
+资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。
+找到主题相近的片段只是候选检索成功。回答前还要核对原句是否支持具体结论，以及来源是否适用。
+如果只能支持问题的一部分，可以回答已证实的部分并标明其余部分未知。检索分数不是结论正确的概率。",keyword:4;vector:1,False,,,,
+N01,baseline,本资料里的公司 2027 年营收是多少？,False,{},,doc-c5b5b52aa10f6be7,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md,,"# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。",keyword:2,False,,,,
+N01,baseline,本资料里的公司 2027 年营收是多少？,False,{},,doc-f69a71b5b9f84c38,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md,,"# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。",vector:4,False,,,,
+N02,baseline,园艺资料是否说明了数据库管理员密码？,False,{},,doc-1d7abc3ef0be35c3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\gardening.md,,"# 阳台种植笔记
+罗勒适合放在光照充足、排水良好的位置。浇水前观察表层土壤，避免盆底长期积水。
+种植记录包括播种日期、叶片状态、浇水次数和施肥情况。这些是植物养护信息。
+给不同花盆贴标签有助于追踪品种，但花盆标签不具有软件依赖隔离的功能。本资料不记录任何数据库账号或密码。",keyword:1;vector:5,False,,,,
+N02,baseline,园艺资料是否说明了数据库管理员密码？,False,{},,doc-47de7bf8c30cf985,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md,,"# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。",vector:4,False,,,,
+N02,baseline,园艺资料是否说明了数据库管理员密码？,False,{},,doc-5149b57efb060e06,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,1,"Document tracking notes
+This fixture contains three physical PDF pages.
+The second physical page is intentionally blank.
+Page labels printed on a page may differ from its physical position.",vector:6,False,,,,
+N02,baseline,园艺资料是否说明了数据库管理员密码？,False,{},,doc-870ad51e4b6db443,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\printed_pages.md,,"# 纸质书编排说明
+纸质书的印刷页码可能从正文开始编号，封面和目录可能不编号，也可能使用罗马数字。
+这里的页码是排版者印在纸上的标记，讨论的是纸质出版物。某张纸上没有印刷数字，并不等于文件解析时应该忽略该页。
+本说明没有规定 PDF 加载器如何记录物理页号，不能单独用它支持 PDF 中间空白页之后的引用坐标。",keyword:3,False,,,,
+N02,baseline,园艺资料是否说明了数据库管理员密码？,False,{},,doc-8ed6ac9b3a883cfc,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\evidence.md,,"# 研究记录准则
+资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。
+找到主题相近的片段只是候选检索成功。回答前还要核对原句是否支持具体结论，以及来源是否适用。
+如果只能支持问题的一部分，可以回答已证实的部分并标明其余部分未知。检索分数不是结论正确的概率。",keyword:2;vector:2,False,,,,
+N02,baseline,园艺资料是否说明了数据库管理员密码？,False,{},,doc-c5b5b52aa10f6be7,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md,,"# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。",keyword:4;vector:1,False,,,,
+N02,baseline,园艺资料是否说明了数据库管理员密码？,False,{},,doc-f69a71b5b9f84c38,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md,,"# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。",vector:3,False,,,,
+C01,challenge,工具返回结果为什么需要关联原 tool_call_id？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-21a31aa34e21153f,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\async.md,,"# 网络任务观察
+对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。
+如果在循环里逐个 await 每次请求，前一个请求返回后才会启动下一个，就仍然是顺序等待。
+异步并发适用于 I/O 等待，不意味着 CPU 计算会自动并行。实际调用还应限制并发数量，并明确超时和单个任务失败的处理策略。",keyword:4;vector:5,False,,,,
+C01,challenge,工具返回结果为什么需要关联原 tool_call_id？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-47de7bf8c30cf985,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md,,"# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。",keyword:1;vector:1,True,,,,
+C01,challenge,工具返回结果为什么需要关联原 tool_call_id？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-67e8db8df1d1d15d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\environment.txt,,"项目实验记录
+为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。
+运行脚本和安装包时应选择同一个环境中的 Python 解释器。可以使用 python -m pip 安装依赖，减少 pip 指向另一个解释器的风险。
+虚拟环境隔离软件依赖，不会自动隔离文件、网络或操作系统权限。复制项目时保留依赖清单，通常不复制整个环境目录。",vector:6,False,,,,
+C01,challenge,工具返回结果为什么需要关联原 tool_call_id？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-76ab5ce75e586d60,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\offset.md,,"# 文本位置记录
+offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。
+文本文件以规范化整篇原文为坐标基准；PDF 片段以规范化的对应物理页文本为基准。坐标既不是 UTF-8 字节偏移，也不是 token 下标。
+重新切片应从原始文档开始，并重新生成坐标和 ID。旧片段再次切碎后不能直接沿用原来的 offset。",vector:3,False,,,,
+C01,challenge,工具返回结果为什么需要关联原 tool_call_id？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-84a31f89a1acc2f3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\cooking.txt,,"家庭厨房记录
+番茄炒蛋可以先炒鸡蛋盛出，再炒番茄，最后合炒调味。锅温和食材含水量会影响成品口感。
+这份菜谱讨论的是烹饪步骤，不包含软件工具调用流程。做菜时所说的工具是锅铲、菜刀和量勺。
+准备多道菜可以先整理食材，但厨房操作的先后顺序并不能解释异步网络请求的调度机制。",keyword:3,False,,,,
+C01,challenge,工具返回结果为什么需要关联原 tool_call_id？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-c5b5b52aa10f6be7,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md,,"# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。",vector:4,False,,,,
+C01,challenge,工具返回结果为什么需要关联原 tool_call_id？,True,{},模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。,doc-eccf50f58a9a4d9d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md,,"# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。",keyword:2;vector:2,False,,,,
+C02,challenge,两个项目需要不同版本的同一个包，怎样避免冲突？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-1d7abc3ef0be35c3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\gardening.md,,"# 阳台种植笔记
+罗勒适合放在光照充足、排水良好的位置。浇水前观察表层土壤，避免盆底长期积水。
+种植记录包括播种日期、叶片状态、浇水次数和施肥情况。这些是植物养护信息。
+给不同花盆贴标签有助于追踪品种，但花盆标签不具有软件依赖隔离的功能。本资料不记录任何数据库账号或密码。",keyword:5,False,,,,
+C02,challenge,两个项目需要不同版本的同一个包，怎样避免冲突？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-21a31aa34e21153f,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\async.md,,"# 网络任务观察
+对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。
+如果在循环里逐个 await 每次请求，前一个请求返回后才会启动下一个，就仍然是顺序等待。
+异步并发适用于 I/O 等待，不意味着 CPU 计算会自动并行。实际调用还应限制并发数量，并明确超时和单个任务失败的处理策略。",keyword:4;vector:3,False,,,,
+C02,challenge,两个项目需要不同版本的同一个包，怎样避免冲突？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-47de7bf8c30cf985,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\tools.md,,"# 执行器接口约定
+工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。
+参数合法不等于操作获准，执行器仍需检查权限和业务边界。
+模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。
+不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。",keyword:3;vector:6,False,,,,
+C02,challenge,两个项目需要不同版本的同一个包，怎样避免冲突？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-67e8db8df1d1d15d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\environment.txt,,"项目实验记录
+为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。
+运行脚本和安装包时应选择同一个环境中的 Python 解释器。可以使用 python -m pip 安装依赖，减少 pip 指向另一个解释器的风险。
+虚拟环境隔离软件依赖，不会自动隔离文件、网络或操作系统权限。复制项目时保留依赖清单，通常不复制整个环境目录。",keyword:1;vector:1,True,,,,
+C02,challenge,两个项目需要不同版本的同一个包，怎样避免冲突？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-c5b5b52aa10f6be7,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md,,"# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。",vector:2,False,,,,
+C02,challenge,两个项目需要不同版本的同一个包，怎样避免冲突？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-eccf50f58a9a4d9d,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\agent_control.md,,"# 循环运行手册
+Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。
+工具重复失败时需要受控的失败处理，不能无限重试。达到步数上限后应报告停止原因，而不是假装任务已经完成。
+模型请求工具只是循环的一次状态转换，应用仍负责计数、执行和检查退出条件。",keyword:6;vector:5,False,,,,
+C02,challenge,两个项目需要不同版本的同一个包，怎样避免冲突？,True,{},为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。,doc-f69a71b5b9f84c38,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\embeddings.md,,"# 检索实验配置
+文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。
+归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。
+Embedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。",keyword:2;vector:4,False,,,,
+C03,challenge,PDF 中间有空白页时，后续引用页数应该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-1d7abc3ef0be35c3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\gardening.md,,"# 阳台种植笔记
+罗勒适合放在光照充足、排水良好的位置。浇水前观察表层土壤，避免盆底长期积水。
+种植记录包括播种日期、叶片状态、浇水次数和施肥情况。这些是植物养护信息。
+给不同花盆贴标签有助于追踪品种，但花盆标签不具有软件依赖隔离的功能。本资料不记录任何数据库账号或密码。",keyword:3,False,,,,
+C03,challenge,PDF 中间有空白页时，后续引用页数应该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-5149b57efb060e06,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,1,"Document tracking notes
+This fixture contains three physical PDF pages.
+The second physical page is intentionally blank.
+Page labels printed on a page may differ from its physical position.",keyword:5;vector:2,False,,,,
+C03,challenge,PDF 中间有空白页时，后续引用页数应该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-76ab5ce75e586d60,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\offset.md,,"# 文本位置记录
+offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。
+文本文件以规范化整篇原文为坐标基准；PDF 片段以规范化的对应物理页文本为基准。坐标既不是 UTF-8 字节偏移，也不是 token 下标。
+重新切片应从原始文档开始，并重新生成坐标和 ID。旧片段再次切碎后不能直接沿用原来的 offset。",keyword:6;vector:4,False,,,,
+C03,challenge,PDF 中间有空白页时，后续引用页数应该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-870ad51e4b6db443,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\printed_pages.md,,"# 纸质书编排说明
+纸质书的印刷页码可能从正文开始编号，封面和目录可能不编号，也可能使用罗马数字。
+这里的页码是排版者印在纸上的标记，讨论的是纸质出版物。某张纸上没有印刷数字，并不等于文件解析时应该忽略该页。
+本说明没有规定 PDF 加载器如何记录物理页号，不能单独用它支持 PDF 中间空白页之后的引用坐标。",keyword:1;vector:1,False,,,,
+C03,challenge,PDF 中间有空白页时，后续引用页数应该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-8ed6ac9b3a883cfc,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\evidence.md,,"# 研究记录准则
+资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。
+找到主题相近的片段只是候选检索成功。回答前还要核对原句是否支持具体结论，以及来源是否适用。
+如果只能支持问题的一部分，可以回答已证实的部分并标明其余部分未知。检索分数不是结论正确的概率。",keyword:2;vector:5,False,,,,
+C03,challenge,PDF 中间有空白页时，后续引用页数应该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-a4d971350c7e5875,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,3,"Citation coordinates
+Count every physical PDF page, including blank pages, when recording citations.
+This text is on physical page 3, even though page 2 has no extracted text.
+Do not renumber later pages after skipping a blank page during extraction.",vector:3,True,,,,
+C03,challenge,PDF 中间有空白页时，后续引用页数应该怎样记录？,True,{},"Count every physical PDF page, including blank pages, when recording citations.",doc-c5b5b52aa10f6be7,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\security.md,,"# 配置交接备忘
+API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。
+本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。
+一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。",keyword:4;vector:6,False,,,,
+C04,challenge,PDF 中间有空白页时，后续引用页数应该怎样记录？,True,"{""file_types"": [""pdf""]}","Count every physical PDF page, including blank pages, when recording citations.",doc-5149b57efb060e06,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,1,"Document tracking notes
+This fixture contains three physical PDF pages.
+The second physical page is intentionally blank.
+Page labels printed on a page may differ from its physical position.",keyword:1;vector:1,False,,,,
+C04,challenge,PDF 中间有空白页时，后续引用页数应该怎样记录？,True,"{""file_types"": [""pdf""]}","Count every physical PDF page, including blank pages, when recording citations.",doc-a4d971350c7e5875,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,3,"Citation coordinates
+Count every physical PDF page, including blank pages, when recording citations.
+This text is on physical page 3, even though page 2 has no extracted text.
+Do not renumber later pages after skipping a blank page during extraction.",keyword:2;vector:2,True,,,,
+C05,challenge,PDF 中间有空白页时，后续引用页数应该怎样记录？,True,"{""relative_paths"": [""document_tracking.pdf""]}","Count every physical PDF page, including blank pages, when recording citations.",doc-5149b57efb060e06,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,1,"Document tracking notes
+This fixture contains three physical PDF pages.
+The second physical page is intentionally blank.
+Page labels printed on a page may differ from its physical position.",keyword:1;vector:1,False,,,,
+C05,challenge,PDF 中间有空白页时，后续引用页数应该怎样记录？,True,"{""relative_paths"": [""document_tracking.pdf""]}","Count every physical PDF page, including blank pages, when recording citations.",doc-a4d971350c7e5875,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\document_tracking.pdf,3,"Citation coordinates
+Count every physical PDF page, including blank pages, when recording citations.
+This text is on physical page 3, even though page 2 has no extracted text.
+Do not renumber later pages after skipping a blank page during extraction.",keyword:2;vector:2,True,,,,
+C06,challenge,怎样利用 offset 和 end_offset 找回原文？,False,"{""relative_paths"": [""cooking.txt""]}",offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。,doc-84a31f89a1acc2f3,E:\agent_project\agent-learning-lab\data\day08\retrieval-v1\corpus\cooking.txt,,"家庭厨房记录
+番茄炒蛋可以先炒鸡蛋盛出，再炒番茄，最后合炒调味。锅温和食材含水量会影响成品口感。
+这份菜谱讨论的是烹饪步骤，不包含软件工具调用流程。做菜时所说的工具是锅铲、菜刀和量勺。
+准备多道菜可以先整理食材，但厨房操作的先后顺序并不能解释异步网络请求的调度机制。",vector:1,False,,,,

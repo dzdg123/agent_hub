@@ -10,6 +10,7 @@ from typing import Any
 
 from .embeddings import Embedder
 from .models import Source
+from .retrieval_errors import operational_boundary
 
 
 def tokenize(text: str) -> list[str]:
@@ -62,16 +63,27 @@ class HybridIndex:
         return [source for _, source in scored[:top_k]]
 
 
-def merge_ranked(result_sets: list[list[Source]], top_k: int = 10) -> list[Source]:
-    """Merge result lists with reciprocal rank fusion and source-id deduplication."""
-    scores: dict[str, float] = {}
-    sources: dict[str, Source] = {}
-    for results in result_sets:
-        for rank, source in enumerate(results, 1):
-            scores[source.source_id] = scores.get(source.source_id, 0.0) + 1.0 / (60 + rank)
-            sources[source.source_id] = source
-    ordered = sorted(scores, key=lambda source_id: (-scores[source_id], source_id))
-    return [sources[source_id].model_copy(update={"score": scores[source_id]}) for source_id in ordered[:top_k]]
+def merge_ranked(
+    result_sets: list[list[Source]], top_k: int = 10, *, rank_constant: int = 60,
+    canonical_sources: list[Source] | None = None,
+) -> list[Source]:
+    """兼容旧列表接口；统一使用带去重、冲突检查和轨迹的 RRF。"""
+    # 延迟导入避免 retrieval 与 fusion 互相初始化。
+    from .fusion import fuse_rrf
+
+    if canonical_sources is None:
+        first_sources = {}
+        for results in result_sets:
+            for source in results:
+                if source.source_id not in first_sources:
+                    clean = source.model_copy(deep=True)
+                    clean.metadata.pop("_retrieval", None)
+                    first_sources[source.source_id] = clean
+        canonical_sources = list(first_sources.values())
+    return fuse_rrf(
+        {f"branch_{index}": hits for index, hits in enumerate(result_sets)},
+        canonical_sources=canonical_sources, top_k=top_k, rank_constant=rank_constant,
+    ).sources
 
 
 class IndexDataError(RuntimeError):
@@ -98,12 +110,17 @@ class ChromaIndex:
             raise RuntimeError("请安装 pip install -e '.[vector]' 后使用 ChromaIndex") from exc
 
         self.embedder = embedder
-        self.client = chromadb.PersistentClient(path=str(path))
-        self.collection = self.client.get_or_create_collection(
-            name=collection_name,
-            embedding_function=None,
-            configuration={"hnsw": {"space": "cosine"}},
-        )
+        # 只将已知临时运行错误纳入白名单；不捕获 ChromaError 基类。
+        from chromadb.errors import RateLimitError
+
+        self._operational_errors = (RateLimitError,)
+        with operational_boundary("Chroma 初始化", expected_errors=self._operational_errors):
+            self.client = chromadb.PersistentClient(path=str(path))
+            self.collection = self.client.get_or_create_collection(
+                name=collection_name,
+                embedding_function=None,
+                configuration={"hnsw": {"space": "cosine"}},
+            )
 
         configuration = self.collection.configuration
         distance = (configuration.get("hnsw") or {}).get("space")
@@ -121,10 +138,14 @@ class ChromaIndex:
         return self.embedder
 
     def count(self) -> int:
-        return self.collection.count()
+        return self._collection_call("count")
+
+    def _collection_call(self, method: str, **kwargs: Any) -> Any:
+        with operational_boundary(f"Chroma {method}", expected_errors=self._operational_errors):
+            return getattr(self.collection, method)(**kwargs)
 
     def _stored_dimension(self) -> int | None:
-        result = self.collection.get(limit=1, include=["embeddings"])
+        result = self._collection_call("get", limit=1, include=["embeddings"])
         vectors = result.get("embeddings")
         if vectors is None or len(vectors) == 0:
             return None
@@ -174,7 +195,7 @@ class ChromaIndex:
             self._get_embedder().embed_documents(documents), len(sources)
         )
 
-        self.collection.upsert(
+        self._collection_call("upsert",
             ids=[source.source_id for source in sources],
             documents=documents,
             embeddings=embeddings,
@@ -183,22 +204,24 @@ class ChromaIndex:
 
     def delete(self, source_ids: list[str]) -> None:
         if source_ids:
-            self.collection.delete(ids=list(dict.fromkeys(source_ids)))
+            self._collection_call("delete", ids=list(dict.fromkeys(source_ids)))
 
     def all(self) -> list[Source]:
-        result = self.collection.get(include=["documents", "metadatas"])
+        result = self._collection_call("get", include=["documents", "metadatas"])
         sources = self._sources_from_get(result)
         return sorted(sources, key=lambda source: source.source_id)
 
     def get(self, source_id: str) -> Source | None:
-        result = self.collection.get(
+        result = self._collection_call("get",
             ids=[source_id],
             include=["documents", "metadatas"],
         )
         sources = self._sources_from_get(result)
         return sources[0] if sources else None
 
-    def search(self, query: str, top_k: int = 5) -> list[Source]:
+    def search(
+        self, query: str, top_k: int = 5, *, allowed_ids: set[str] | None = None,
+    ) -> list[Source]:
         if not isinstance(top_k, int) or isinstance(top_k, bool) or top_k <= 0:
             raise ValueError("top_k 必须是正整数")
         if not isinstance(query, str):
@@ -206,17 +229,32 @@ class ChromaIndex:
         if not query.strip():
             return []
 
-        count = self.count()
+        query_options: dict[str, Any] = {}
+        if allowed_ids is not None:
+            if not allowed_ids:
+                return []
+            # 先取得实际存在的允许记录，检查旧集合是否需要回填过滤字段。
+            records = self._collection_call("get", ids=sorted(allowed_ids), include=["metadatas"])
+            for source_id, metadata in zip(records["ids"], records["metadatas"], strict=True):
+                if metadata.get("filter_source_id") != source_id:
+                    raise IndexConfigurationError(
+                        "集合缺少 filter_source_id；请用规范 Source 在新的 Day 09 集合建库"
+                    )
+            count = len(records["ids"])
+            query_options["where"] = {"filter_source_id": {"$in": sorted(allowed_ids)}}
+        else:
+            count = self.count()
         if count == 0:
             return []
 
         query_embedding = self._validate_vectors(
             [self._get_embedder().embed_query(query)], 1
         )[0]
-        result = self.collection.query(
+        result = self._collection_call("query",
             query_embeddings=[query_embedding],
             n_results=min(top_k, count),
             include=["documents", "metadatas", "distances"],
+            **query_options,
         )
 
         rows = self._aligned_columns(result, query=True)
@@ -242,7 +280,7 @@ class ChromaIndex:
                 "metric": "cosine", "distance": float(distance),
             }
             sources.append(source)
-        return sources
+        return sorted(sources, key=lambda source: (-source.score, source.source_id))
 
     @staticmethod
     def _source_to_metadata(source: Source) -> dict[str, Any]:
@@ -257,6 +295,7 @@ class ChromaIndex:
         except (TypeError, ValueError) as exc:
             raise IndexDataError(f"Source {source.source_id!r} 的 metadata 无法序列化") from exc
         return {
+            "filter_source_id": source.source_id,
             "title": source.title,
             "url": source.url or "",
             "file_path": source.file_path or "",
@@ -341,3 +380,67 @@ class ChromaIndex:
             )
         ]
 
+class KeywordIndex:
+    """使用词项频次余弦进行检索的确定性索引。"""
+
+    def __init__(self) -> None:
+        self._sources: dict[str, Source] = {}
+
+    def add(self, sources: list[Source]) -> None:
+        for source in sources:
+            # 深复制，避免调用方后来修改原对象或嵌套 metadata，
+            # 从而悄悄改变索引中的内容。
+            self._sources[source.source_id] = source.model_copy(deep=True)
+
+    def all(self) -> list[Source]:
+        """返回规范资料的深副本，供共同来源检查使用。"""
+        return [self._sources[key].model_copy(deep=True) for key in sorted(self._sources)]
+
+    def search(
+        self,
+        query: str,
+        top_k: int = 5,
+        *,
+        allowed_ids: set[str] | None = None,
+    ) -> list[Source]:
+        if isinstance(top_k, bool) or not isinstance(top_k, int) or top_k <= 0:
+            raise ValueError("top_k 必须是正整数，且不能是 bool")
+
+        if not isinstance(query, str):
+            raise TypeError("query 必须是字符串")
+
+        if not query.strip():
+            return []
+
+        # None 表示不限制；空集合表示没有允许的来源。
+        if allowed_ids is not None and not allowed_ids:
+            return []
+
+        query_terms = Counter(tokenize(query))
+        if not query_terms:
+            return []
+
+        scored: list[tuple[float, Source]] = []
+
+        for source in self._sources.values():
+            # 必须在截取 top_k 之前过滤。
+            if allowed_ids is not None and source.source_id not in allowed_ids:
+                continue
+
+            source_terms = Counter(tokenize(source.content))
+            score = _cosine(query_terms, source_terms)
+
+            # 不用零分结果凑够 top_k。
+            if score <= 0:
+                continue
+
+            result = source.model_copy(
+                deep=True,
+                update={"score": score},
+            )
+            scored.append((score, result))
+
+        # 分数降序；同分时 source_id 升序。
+        scored.sort(key=lambda item: (-item[0], item[1].source_id))
+
+        return [source for _, source in scored[:top_k]]

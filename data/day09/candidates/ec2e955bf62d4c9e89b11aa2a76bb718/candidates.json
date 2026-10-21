@@ -1,0 +1,279 @@
+{
+  "mode": "real_embedding",
+  "query": "offset",
+  "run_dir": "E:\\agent_project\\agent-learning-lab\\data\\day09\\candidates\\ec2e955bf62d4c9e89b11aa2a76bb718",
+  "dataset_fingerprint": "926b6eca070447d1f6fedad27c104c795906c2c93e24c9654464cf66d036c9c4",
+  "result": {
+    "branches": {
+      "keyword": {
+        "sources": [
+          {
+            "source_id": "doc-76ab5ce75e586d60",
+            "title": "offset.md",
+            "content": "# 文本位置记录\noffset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。\n文本文件以规范化整篇原文为坐标基准；PDF 片段以规范化的对应物理页文本为基准。坐标既不是 UTF-8 字节偏移，也不是 token 下标。\n重新切片应从原始文档开始，并重新生成坐标和 ID。旧片段再次切碎后不能直接沿用原来的 offset。",
+            "url": null,
+            "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\retrieval-v1\\corpus\\offset.md",
+            "page": null,
+            "score": 0.21213203435596426,
+            "fetched_at": "2026-10-20T06:51:40.147715Z",
+            "metadata": {
+              "content_kind": "local_document",
+              "file_name": "offset.md",
+              "relative_path": "offset.md",
+              "file_type": "markdown",
+              "chunk_index": 0,
+              "offset": 0,
+              "end_offset": 229,
+              "offset_basis": "normalized_document_text"
+            }
+          }
+        ],
+        "traces": [
+          {
+            "source_id": "doc-76ab5ce75e586d60",
+            "branch": "keyword",
+            "raw_score": 0.21213203435596426,
+            "metric": "token_count_cosine",
+            "rank": 1,
+            "distance": null,
+            "fusion_contribution": null
+          }
+        ],
+        "status": "ok",
+        "elapsed_ms": 0.9436000254936516,
+        "candidate_count": 1,
+        "skip_reason": null
+      },
+      "vector": {
+        "sources": [
+          {
+            "source_id": "doc-76ab5ce75e586d60",
+            "title": "offset.md",
+            "content": "# 文本位置记录\noffset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。\n文本文件以规范化整篇原文为坐标基准；PDF 片段以规范化的对应物理页文本为基准。坐标既不是 UTF-8 字节偏移，也不是 token 下标。\n重新切片应从原始文档开始，并重新生成坐标和 ID。旧片段再次切碎后不能直接沿用原来的 offset。",
+            "url": null,
+            "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\retrieval-v1\\corpus\\offset.md",
+            "page": null,
+            "score": 0.6029289960861206,
+            "fetched_at": "2026-10-20T06:51:40.147715Z",
+            "metadata": {
+              "chunk_index": 0,
+              "content_kind": "local_document",
+              "end_offset": 229,
+              "file_name": "offset.md",
+              "file_type": "markdown",
+              "offset": 0,
+              "offset_basis": "normalized_document_text",
+              "relative_path": "offset.md",
+              "_retrieval": {
+                "metric": "cosine",
+                "distance": 0.3970710039138794
+              }
+            }
+          },
+          {
+            "source_id": "doc-c5b5b52aa10f6be7",
+            "title": "security.md",
+            "content": "# 配置交接备忘\nAPI 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。\n本地使用 .env 时必须将其加入版本控制忽略规则；示例文件只能保留变量名和占位值。\n一旦密钥泄露，应撤销并替换该密钥，而不能只删除最新一次提交里的字符串。日志可以记录请求是否成功，但不要输出完整凭据。",
+            "url": null,
+            "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\retrieval-v1\\corpus\\security.md",
+            "page": null,
+            "score": 0.44861042499542236,
+            "fetched_at": "2026-10-20T06:51:40.149023Z",
+            "metadata": {
+              "chunk_index": 0,
+              "content_kind": "local_document",
+              "end_offset": 166,
+              "file_name": "security.md",
+              "file_type": "markdown",
+              "offset": 0,
+              "offset_basis": "normalized_document_text",
+              "relative_path": "security.md",
+              "_retrieval": {
+                "metric": "cosine",
+                "distance": 0.5513895750045776
+              }
+            }
+          },
+          {
+            "source_id": "doc-5149b57efb060e06",
+            "title": "document_tracking.pdf 第 1 页",
+            "content": "Document tracking notes\nThis fixture contains three physical PDF pages.\nThe second physical page is intentionally blank.\nPage labels printed on a page may differ from its physical position.",
+            "url": null,
+            "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\retrieval-v1\\corpus\\document_tracking.pdf",
+            "page": 1,
+            "score": 0.4455280900001526,
+            "fetched_at": "2026-10-20T06:51:40.144714Z",
+            "metadata": {
+              "chunk_index": 0,
+              "content_kind": "local_document",
+              "empty_pages": [
+                2
+              ],
+              "end_offset": 189,
+              "file_name": "document_tracking.pdf",
+              "file_type": "pdf",
+              "offset": 0,
+              "offset_basis": "normalized_page_text",
+              "page": 1,
+              "relative_path": "document_tracking.pdf",
+              "warnings": [
+                "以下页面未提取到文本：2"
+              ],
+              "_retrieval": {
+                "metric": "cosine",
+                "distance": 0.5544719099998474
+              }
+            }
+          },
+          {
+            "source_id": "doc-47de7bf8c30cf985",
+            "title": "tools.md",
+            "content": "# 执行器接口约定\n工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。\n参数合法不等于操作获准，执行器仍需检查权限和业务边界。\n模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。\n不能把模型提出的调用请求当成已经执行成功，也不能把不同工具的结果关联到同一个错误的调用 ID。",
+            "url": null,
+            "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\retrieval-v1\\corpus\\tools.md",
+            "page": null,
+            "score": 0.4302530288696289,
+            "fetched_at": "2026-10-20T06:51:40.149023Z",
+            "metadata": {
+              "chunk_index": 0,
+              "content_kind": "local_document",
+              "end_offset": 195,
+              "file_name": "tools.md",
+              "file_type": "markdown",
+              "offset": 0,
+              "offset_basis": "normalized_document_text",
+              "relative_path": "tools.md",
+              "_retrieval": {
+                "metric": "cosine",
+                "distance": 0.5697469711303711
+              }
+            }
+          },
+          {
+            "source_id": "doc-a4d971350c7e5875",
+            "title": "document_tracking.pdf 第 3 页",
+            "content": "Citation coordinates\nCount every physical PDF page, including blank pages, when recording citations.\nThis text is on physical page 3, even though page 2 has no extracted text.\nDo not renumber later pages after skipping a blank page during extraction.",
+            "url": null,
+            "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\retrieval-v1\\corpus\\document_tracking.pdf",
+            "page": 3,
+            "score": 0.41569679975509644,
+            "fetched_at": "2026-10-20T06:51:40.145714Z",
+            "metadata": {
+              "chunk_index": 0,
+              "content_kind": "local_document",
+              "empty_pages": [
+                2
+              ],
+              "end_offset": 250,
+              "file_name": "document_tracking.pdf",
+              "file_type": "pdf",
+              "offset": 0,
+              "offset_basis": "normalized_page_text",
+              "page": 3,
+              "relative_path": "document_tracking.pdf",
+              "warnings": [
+                "以下页面未提取到文本：2"
+              ],
+              "_retrieval": {
+                "metric": "cosine",
+                "distance": 0.5843032002449036
+              }
+            }
+          },
+          {
+            "source_id": "doc-f69a71b5b9f84c38",
+            "title": "embeddings.md",
+            "content": "# 检索实验配置\n文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。\n归一化、模型快照和查询指令都应记录在实验配置中。查询指令如需使用，只加在问题端，并统一重跑评测。\nEmbedding 负责生成文本的向量表示，余弦负责比较向量方向。高相似度不保证事实正确，也不能自动识别所有否定关系。",
+            "url": null,
+            "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\retrieval-v1\\corpus\\embeddings.md",
+            "page": null,
+            "score": 0.37282317876815796,
+            "fetched_at": "2026-10-20T06:51:40.146716Z",
+            "metadata": {
+              "chunk_index": 0,
+              "content_kind": "local_document",
+              "end_offset": 178,
+              "file_name": "embeddings.md",
+              "file_type": "markdown",
+              "offset": 0,
+              "offset_basis": "normalized_document_text",
+              "relative_path": "embeddings.md",
+              "_retrieval": {
+                "metric": "cosine",
+                "distance": 0.627176821231842
+              }
+            }
+          }
+        ],
+        "traces": [
+          {
+            "source_id": "doc-76ab5ce75e586d60",
+            "branch": "vector",
+            "raw_score": 0.6029289960861206,
+            "metric": "embedding_cosine",
+            "rank": 1,
+            "distance": 0.3970710039138794,
+            "fusion_contribution": null
+          },
+          {
+            "source_id": "doc-c5b5b52aa10f6be7",
+            "branch": "vector",
+            "raw_score": 0.44861042499542236,
+            "metric": "embedding_cosine",
+            "rank": 2,
+            "distance": 0.5513895750045776,
+            "fusion_contribution": null
+          },
+          {
+            "source_id": "doc-5149b57efb060e06",
+            "branch": "vector",
+            "raw_score": 0.4455280900001526,
+            "metric": "embedding_cosine",
+            "rank": 3,
+            "distance": 0.5544719099998474,
+            "fusion_contribution": null
+          },
+          {
+            "source_id": "doc-47de7bf8c30cf985",
+            "branch": "vector",
+            "raw_score": 0.4302530288696289,
+            "metric": "embedding_cosine",
+            "rank": 4,
+            "distance": 0.5697469711303711,
+            "fusion_contribution": null
+          },
+          {
+            "source_id": "doc-a4d971350c7e5875",
+            "branch": "vector",
+            "raw_score": 0.41569679975509644,
+            "metric": "embedding_cosine",
+            "rank": 5,
+            "distance": 0.5843032002449036,
+            "fusion_contribution": null
+          },
+          {
+            "source_id": "doc-f69a71b5b9f84c38",
+            "branch": "vector",
+            "raw_score": 0.37282317876815796,
+            "metric": "embedding_cosine",
+            "rank": 6,
+            "distance": 0.627176821231842,
+            "fusion_contribution": null
+          }
+        ],
+        "status": "ok",
+        "elapsed_ms": 410.1625999901444,
+        "candidate_count": 6,
+        "skip_reason": null
+      }
+    },
+    "requested_candidate_k": 6,
+    "effective_candidate_k": 6,
+    "requested_top_k": 3,
+    "total_source_count": 13,
+    "allowed_source_count": 13,
+    "final_sources": null,
+    "final_count": null,
+    "degraded_reason": null
+  }
+}

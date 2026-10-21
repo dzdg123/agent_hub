@@ -1,0 +1,355 @@
+{
+  "dataset_manifest": {
+    "dataset_version": "retrieval-v1",
+    "fingerprint": "926b6eca070447d1f6fedad27c104c795906c2c93e24c9654464cf66d036c9c4",
+    "config": {
+      "model": "BAAI/bge-small-zh-v1.5",
+      "requested_revision": null,
+      "resolved_model_commit": "7999e1d3359715c523056ef9478215996d62a620",
+      "sentence_transformers_version": "5.7.0",
+      "transformers_version": "5.19.0",
+      "normalize_embeddings": true,
+      "query_instruction": null,
+      "chunk_size": 400,
+      "overlap": 60,
+      "model_limit": 512
+    },
+    "file_sha256": {
+      "corpus/agent_control.md": "4dc6a320a2dfc8e3d54f7f4857ea27f6731790d10aa56ed75e16afeebf5b7469",
+      "corpus/async.md": "70b0d278f8cea93070906ac9fa279736ca5fc7e6a4cb1ea4870341ccccbf3cf1",
+      "corpus/cooking.txt": "96896170011fa84501cb02d6795c398d071284f9031988ee37b83bb60ad8ddeb",
+      "corpus/document_tracking.pdf": "29a8622d077e51a6cdadeabd4afe48f7bbe8c0b62b6374b2b16b8110561c22f1",
+      "corpus/embeddings.md": "870465f4ec28fb7ea71b763ee94243aa5774ff4b0c60be4f10db9f32b793c15e",
+      "corpus/environment.txt": "e0422afb279141e0bcb989d84bd04df5e84c5ccf1030a9771be335c418bc794e",
+      "corpus/evidence.md": "0418b1c688d1876c656ee58016508b88f566cc15526bfe9bd2c95206a9ff53f3",
+      "corpus/gardening.md": "eb6f8a8067b7117d65f3df00d2f66ece1bd3c7f6d552ba127cf2167e4a6c0e2d",
+      "corpus/offset.md": "79e1f1e8395d7d7a276dda931b455dec023a9c3a69769b175f805ad94b3891a7",
+      "corpus/printed_pages.md": "32fce44ce2a77aed3e6a0052969d051c6df245ff16782284ef8ab2b57e6b6dbb",
+      "corpus/security.md": "b8ced244298a474a68b1f29290f8784329313693c18804d52f24b627b556d738",
+      "corpus/tools.md": "a5c84fb4a9ab0a682ebf6cc6b636dce81390e65daa44fcd92fa12ce547f98dc2",
+      "questions.jsonl": "cc8a35cc79927f5254594e424ca1ea254e8c80eea126a6362eb45add6da30d4d",
+      "probes.jsonl": "eaca993366feee6f8a7a17bef81a2e0f98ad7eef8ea85b423fc24385d40ee984"
+    },
+    "loaded_files": 12,
+    "source_count": 13,
+    "positive_question_count": 10,
+    "no_evidence_probe_count": 2,
+    "positive_hit_rate_denominator": 10,
+    "loader_warnings": [
+      {
+        "relative_path": "document_tracking.pdf",
+        "page": 2,
+        "warning_code": "no_text_on_page",
+        "message": "第 2 页未提取到文本"
+      }
+    ]
+  },
+  "challenge_sha256": "f6d5d835b1291f1fbb231ecf0f3bb092c6eba5fe2d1d58b44de00ae07768c39b",
+  "challenge_file": "E:\\agent_project\\agent-learning-lab\\curriculum\\day09-challenge-v1.jsonl",
+  "questions": [
+    {
+      "query_id": "Q01",
+      "question": "怎样避免不同项目安装的包互相干扰？",
+      "expected_relative_path": "environment.txt",
+      "expected_page": null,
+      "evidence_quote": "为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。",
+      "test_point": "同义表达",
+      "normalized_evidence_quote": "为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。",
+      "acceptable_source_ids": [
+        "doc-67e8db8df1d1d15d"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "filters": {}
+    },
+    {
+      "query_id": "Q02",
+      "question": "调用模型的密钥应放在哪里，哪些地方不应该出现？",
+      "expected_relative_path": "security.md",
+      "expected_page": null,
+      "evidence_quote": "API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。",
+      "test_point": "关键规则",
+      "normalized_evidence_quote": "API 密钥应保存在环境变量或受控的密钥存储中，不应写入源代码、提交到 Git，也不应出现在日志和聊天记录里。",
+      "acceptable_source_ids": [
+        "doc-c5b5b52aa10f6be7"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "filters": {}
+    },
+    {
+      "query_id": "Q03",
+      "question": "多个网络请求怎样同时等待而不逐个排队？",
+      "expected_relative_path": "async.md",
+      "expected_page": null,
+      "evidence_quote": "对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。",
+      "test_point": "意图检索",
+      "normalized_evidence_quote": "对于多个独立的网络请求，可以创建异步任务并用 asyncio.gather 同时等待，让一个请求等待响应时其他请求继续推进。",
+      "acceptable_source_ids": [
+        "doc-21a31aa34e21153f"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "filters": {}
+    },
+    {
+      "query_id": "Q04",
+      "question": "为什么工具函数执行前要验证参数？",
+      "expected_relative_path": "tools.md",
+      "expected_page": null,
+      "evidence_quote": "工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。",
+      "test_point": "原因证据",
+      "normalized_evidence_quote": "工具执行前应按照参数 Schema 检查必填字段、类型和取值范围，避免缺失或非法参数进入业务函数。",
+      "acceptable_source_ids": [
+        "doc-47de7bf8c30cf985"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "filters": {}
+    },
+    {
+      "query_id": "Q05",
+      "question": "模型提出调用工具后，谁执行函数，结果怎样传回？",
+      "expected_relative_path": "tools.md",
+      "expected_page": null,
+      "evidence_quote": "模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。",
+      "test_point": "流程证据",
+      "normalized_evidence_quote": "模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。",
+      "acceptable_source_ids": [
+        "doc-47de7bf8c30cf985"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "filters": {}
+    },
+    {
+      "query_id": "Q06",
+      "question": "PDF 中间有空白页，后续引用的页数该怎样记录？",
+      "expected_relative_path": "document_tracking.pdf",
+      "expected_page": 3,
+      "evidence_quote": "Count every physical PDF page, including blank pages, when recording citations.",
+      "test_point": "PDF 物理页号与印刷页码区分；中文问题检索英文证据",
+      "normalized_evidence_quote": "Count every physical PDF page, including blank pages, when recording citations.",
+      "acceptable_source_ids": [
+        "doc-a4d971350c7e5875"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "filters": {}
+    },
+    {
+      "query_id": "Q07",
+      "question": "怎样利用 offset 与 end_offset 找回片段原文？",
+      "expected_relative_path": "offset.md",
+      "expected_page": null,
+      "evidence_quote": "offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。",
+      "test_point": "字段与解释",
+      "normalized_evidence_quote": "offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。",
+      "acceptable_source_ids": [
+        "doc-76ab5ce75e586d60"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "filters": {}
+    },
+    {
+      "query_id": "Q08",
+      "question": "文档与查询为什么不能分别使用两种向量模型？",
+      "expected_relative_path": "embeddings.md",
+      "expected_page": null,
+      "evidence_quote": "文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。",
+      "test_point": "原理证据",
+      "normalized_evidence_quote": "文档与查询必须使用同一套向量模型和兼容的编码配置；不同模型即使输出维度相同，其坐标含义也可能不同，不能直接比较这些向量。",
+      "acceptable_source_ids": [
+        "doc-f69a71b5b9f84c38"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "filters": {}
+    },
+    {
+      "query_id": "Q09",
+      "question": "如何避免 Agent 一直调用工具而不结束？",
+      "expected_relative_path": "agent_control.md",
+      "expected_page": null,
+      "evidence_quote": "Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。",
+      "test_point": "同义表达",
+      "normalized_evidence_quote": "Agent 应设置最大执行步数，并在模型给出最终回答、任务取消或发生不可恢复错误时停止，避免持续调用工具而不结束。",
+      "acceptable_source_ids": [
+        "doc-eccf50f58a9a4d9d"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "filters": {}
+    },
+    {
+      "query_id": "Q10",
+      "question": "资料没有支持结论时，研究系统应怎样处理？",
+      "expected_relative_path": "evidence.md",
+      "expected_page": null,
+      "evidence_quote": "资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。",
+      "test_point": "规则与边界",
+      "normalized_evidence_quote": "资料不足以支持结论时，应明确说明证据不足、列出缺失信息，并在必要时继续检索；不能编造事实或用无关引用冒充证据。",
+      "acceptable_source_ids": [
+        "doc-8ed6ac9b3a883cfc"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "baseline",
+      "has_allowed_evidence": true,
+      "filters": {}
+    },
+    {
+      "query_id": "N01",
+      "question": "本资料里的公司 2027 年营收是多少？",
+      "has_evidence": false,
+      "reason": "语料未描述公司、财务报表或任何年度营收。",
+      "include_in_positive_hit_rate": false,
+      "group": "baseline",
+      "has_allowed_evidence": false,
+      "filters": {}
+    },
+    {
+      "query_id": "N02",
+      "question": "园艺资料是否说明了数据库管理员密码？",
+      "has_evidence": false,
+      "reason": "园艺资料明确不记录数据库账号或密码；没有可提供的管理员密码。",
+      "include_in_positive_hit_rate": false,
+      "group": "baseline",
+      "has_allowed_evidence": false,
+      "filters": {}
+    },
+    {
+      "query_id": "C01",
+      "question": "工具返回结果为什么需要关联原 tool_call_id？",
+      "expected_relative_path": "tools.md",
+      "expected_page": null,
+      "evidence_quote": "模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。",
+      "filters": {},
+      "has_allowed_evidence": true,
+      "test_point": "精确术语",
+      "normalized_evidence_quote": "模型只提出工具名称和参数；应用执行器调用实际函数，再把结果封装为关联原 tool_call_id 的工具消息传回模型。",
+      "acceptable_source_ids": [
+        "doc-47de7bf8c30cf985"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "challenge"
+    },
+    {
+      "query_id": "C02",
+      "question": "两个项目需要不同版本的同一个包，怎样避免冲突？",
+      "expected_relative_path": "environment.txt",
+      "expected_page": null,
+      "evidence_quote": "为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。",
+      "filters": {},
+      "has_allowed_evidence": true,
+      "test_point": "同义改写",
+      "normalized_evidence_quote": "为每个项目创建独立的虚拟环境，可以隔离依赖包及其版本。",
+      "acceptable_source_ids": [
+        "doc-67e8db8df1d1d15d"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "challenge"
+    },
+    {
+      "query_id": "C03",
+      "question": "PDF 中间有空白页时，后续引用页数应该怎样记录？",
+      "expected_relative_path": "document_tracking.pdf",
+      "expected_page": 3,
+      "evidence_quote": "Count every physical PDF page, including blank pages, when recording citations.",
+      "filters": {},
+      "has_allowed_evidence": true,
+      "test_point": "印刷页码干扰，只有物理页证据直接支持",
+      "normalized_evidence_quote": "Count every physical PDF page, including blank pages, when recording citations.",
+      "acceptable_source_ids": [
+        "doc-a4d971350c7e5875"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "challenge"
+    },
+    {
+      "query_id": "C04",
+      "question": "PDF 中间有空白页时，后续引用页数应该怎样记录？",
+      "expected_relative_path": "document_tracking.pdf",
+      "expected_page": 3,
+      "evidence_quote": "Count every physical PDF page, including blank pages, when recording citations.",
+      "filters": {
+        "file_types": [
+          "pdf"
+        ]
+      },
+      "has_allowed_evidence": true,
+      "test_point": "只允许 PDF",
+      "normalized_evidence_quote": "Count every physical PDF page, including blank pages, when recording citations.",
+      "acceptable_source_ids": [
+        "doc-a4d971350c7e5875"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "challenge"
+    },
+    {
+      "query_id": "C05",
+      "question": "PDF 中间有空白页时，后续引用页数应该怎样记录？",
+      "expected_relative_path": "document_tracking.pdf",
+      "expected_page": 3,
+      "evidence_quote": "Count every physical PDF page, including blank pages, when recording citations.",
+      "filters": {
+        "relative_paths": [
+          "document_tracking.pdf"
+        ]
+      },
+      "has_allowed_evidence": true,
+      "test_point": "只允许指定文件",
+      "normalized_evidence_quote": "Count every physical PDF page, including blank pages, when recording citations.",
+      "acceptable_source_ids": [
+        "doc-a4d971350c7e5875"
+      ],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "challenge"
+    },
+    {
+      "query_id": "C06",
+      "question": "怎样利用 offset 和 end_offset 找回原文？",
+      "expected_relative_path": "offset.md",
+      "expected_page": null,
+      "evidence_quote": "offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。",
+      "filters": {
+        "relative_paths": [
+          "cooking.txt"
+        ]
+      },
+      "has_allowed_evidence": false,
+      "test_point": "允许范围内无支持证据，排除在正向分母外",
+      "normalized_evidence_quote": "offset 和 end_offset 是规范化文本中的字符坐标，用 normalized_text[offset:end_offset] 可以还原对应片段，end_offset 不包含在范围内。",
+      "acceptable_source_ids": [],
+      "matching_rule": "same_file_and_physical_page_contains_full_quote",
+      "group": "challenge"
+    }
+  ],
+  "candidate_k": 6,
+  "top_k": 3,
+  "rank_constant": 60,
+  "max_context_chars": 2000,
+  "allow_degraded": false,
+  "note": "initial three-way comparison",
+  "model": {
+    "model": "BAAI/bge-small-zh-v1.5",
+    "requested_revision": null,
+    "resolved_model_commit": "7999e1d3359715c523056ef9478215996d62a620",
+    "sentence_transformers_version": "5.7.0",
+    "transformers_version": "5.19.0",
+    "normalize_embeddings": true,
+    "query_instruction": null,
+    "chunk_size": 400,
+    "overlap": 60,
+    "model_limit": 512
+  }
+}

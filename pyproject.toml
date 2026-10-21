@@ -36,3 +36,6 @@ packages = ["src/research_agent"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 asyncio_mode = "auto"
+markers = [
+  "day09_case(*case_ids): Day09 K01～E02确定性关键行为验收，不加载真实Embedding模型",
+]

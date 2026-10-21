@@ -9,6 +9,7 @@ pytest.importorskip("chromadb", reason="V01～V12 存储集成测试需要安装
 from research_agent.embeddings import SentenceTransformerEmbedder
 from research_agent.models import Source
 from research_agent.retrieval import ChromaIndex, IndexDataError
+from research_agent.retrieval_errors import RetrievalOperationalError
 
 
 class ControlledEmbedder:
@@ -122,13 +123,16 @@ def test_v11_database_failures_propagate(stored_index, monkeypatch, method):
         raise OSError(f"storage {method} failure")
 
     monkeypatch.setattr(type(index.collection), method, fail)
-    with pytest.raises(OSError, match=f"storage {method} failure"):
+    # 阶段七：IO 故障仍向调用方报告，统一包装且保留原始原因，不返回假成功。
+    with pytest.raises(RetrievalOperationalError, match=f"storage {method} failure") as error:
         if method == "upsert":
             index.add([Source(source_id="new", title="新", content="正向文档")])
         elif method == "delete":
             index.delete(["doc-1"])
         else:
             index.search("问题")
+    assert isinstance(error.value.__cause__, OSError)
+    assert error.value.error_type == "OSError"
 
 
 def test_v12_overlength_rejected_before_encode_and_index_write(tmp_path):

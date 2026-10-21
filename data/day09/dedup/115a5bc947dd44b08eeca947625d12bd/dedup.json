@@ -1,0 +1,333 @@
+{
+  "input": {
+    "mode": "real_embedding",
+    "candidate_file": "data\\day09\\candidates\\f0bb67e67041403db9ae861fe0070a4c\\candidates.json",
+    "dataset_fingerprint": "926b6eca070447d1f6fedad27c104c795906c2c93e24c9654464cf66d036c9c4"
+  },
+  "candidate_snapshot": {
+    "keyword": [
+      {
+        "source_id": "doc-5149b57efb060e06",
+        "title": "document_tracking.pdf 第 1 页",
+        "content": "Document tracking notes\nThis fixture contains three physical PDF pages.\nThe second physical page is intentionally blank.\nPage labels printed on a page may differ from its physical position.",
+        "url": null,
+        "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\retrieval-v1\\corpus\\document_tracking.pdf",
+        "page": 1,
+        "score": 0.059028133610095526,
+        "fetched_at": "2026-10-20T08:18:23.489108Z",
+        "metadata": {
+          "content_kind": "local_document",
+          "file_name": "document_tracking.pdf",
+          "relative_path": "document_tracking.pdf",
+          "file_type": "pdf",
+          "page": 1,
+          "chunk_index": 0,
+          "offset": 0,
+          "end_offset": 189,
+          "offset_basis": "normalized_page_text",
+          "empty_pages": [
+            2
+          ],
+          "warnings": [
+            "以下页面未提取到文本：2"
+          ]
+        }
+      },
+      {
+        "source_id": "doc-a4d971350c7e5875",
+        "title": "document_tracking.pdf 第 3 页",
+        "content": "Citation coordinates\nCount every physical PDF page, including blank pages, when recording citations.\nThis text is on physical page 3, even though page 2 has no extracted text.\nDo not renumber later pages after skipping a blank page during extraction.",
+        "url": null,
+        "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\retrieval-v1\\corpus\\document_tracking.pdf",
+        "page": 3,
+        "score": 0.04879500364742665,
+        "fetched_at": "2026-10-20T08:18:23.489108Z",
+        "metadata": {
+          "content_kind": "local_document",
+          "file_name": "document_tracking.pdf",
+          "relative_path": "document_tracking.pdf",
+          "file_type": "pdf",
+          "page": 3,
+          "chunk_index": 0,
+          "offset": 0,
+          "end_offset": 250,
+          "offset_basis": "normalized_page_text",
+          "empty_pages": [
+            2
+          ],
+          "warnings": [
+            "以下页面未提取到文本：2"
+          ]
+        }
+      }
+    ],
+    "vector": [
+      {
+        "source_id": "doc-5149b57efb060e06",
+        "title": "document_tracking.pdf 第 1 页",
+        "content": "Document tracking notes\nThis fixture contains three physical PDF pages.\nThe second physical page is intentionally blank.\nPage labels printed on a page may differ from its physical position.",
+        "url": null,
+        "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\retrieval-v1\\corpus\\document_tracking.pdf",
+        "page": 1,
+        "score": 0.5823701024055481,
+        "fetched_at": "2026-10-20T08:18:23.489108Z",
+        "metadata": {
+          "chunk_index": 0,
+          "content_kind": "local_document",
+          "empty_pages": [
+            2
+          ],
+          "end_offset": 189,
+          "file_name": "document_tracking.pdf",
+          "file_type": "pdf",
+          "offset": 0,
+          "offset_basis": "normalized_page_text",
+          "page": 1,
+          "relative_path": "document_tracking.pdf",
+          "warnings": [
+            "以下页面未提取到文本：2"
+          ],
+          "_retrieval": {
+            "metric": "cosine",
+            "distance": 0.4176298975944519
+          }
+        }
+      },
+      {
+        "source_id": "doc-a4d971350c7e5875",
+        "title": "document_tracking.pdf 第 3 页",
+        "content": "Citation coordinates\nCount every physical PDF page, including blank pages, when recording citations.\nThis text is on physical page 3, even though page 2 has no extracted text.\nDo not renumber later pages after skipping a blank page during extraction.",
+        "url": null,
+        "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\retrieval-v1\\corpus\\document_tracking.pdf",
+        "page": 3,
+        "score": 0.5687525272369385,
+        "fetched_at": "2026-10-20T08:18:23.489108Z",
+        "metadata": {
+          "chunk_index": 0,
+          "content_kind": "local_document",
+          "empty_pages": [
+            2
+          ],
+          "end_offset": 250,
+          "file_name": "document_tracking.pdf",
+          "file_type": "pdf",
+          "offset": 0,
+          "offset_basis": "normalized_page_text",
+          "page": 3,
+          "relative_path": "document_tracking.pdf",
+          "warnings": [
+            "以下页面未提取到文本：2"
+          ],
+          "_retrieval": {
+            "metric": "cosine",
+            "distance": 0.4312474727630615
+          }
+        }
+      }
+    ]
+  },
+  "inputs_unchanged": true,
+  "result": {
+    "method": "rrf",
+    "sources": [
+      {
+        "source_id": "doc-5149b57efb060e06",
+        "title": "document_tracking.pdf 第 1 页",
+        "content": "Document tracking notes\nThis fixture contains three physical PDF pages.\nThe second physical page is intentionally blank.\nPage labels printed on a page may differ from its physical position.",
+        "url": null,
+        "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\retrieval-v1\\corpus\\document_tracking.pdf",
+        "page": 1,
+        "score": 0.03278688524590164,
+        "fetched_at": "2026-10-20T12:05:46.032265Z",
+        "metadata": {
+          "content_kind": "local_document",
+          "file_name": "document_tracking.pdf",
+          "relative_path": "document_tracking.pdf",
+          "file_type": "pdf",
+          "page": 1,
+          "chunk_index": 0,
+          "offset": 0,
+          "end_offset": 189,
+          "offset_basis": "normalized_page_text",
+          "empty_pages": [
+            2
+          ],
+          "warnings": [
+            "以下页面未提取到文本：2"
+          ],
+          "_retrieval": {
+            "method": "rrf",
+            "metric": "rrf_fusion",
+            "parameters": {
+              "rank_constant": 60
+            },
+            "branches": [
+              {
+                "source_id": "doc-5149b57efb060e06",
+                "branch": "keyword",
+                "raw_score": 0.059028133610095526,
+                "metric": "token_count_cosine",
+                "rank": 1,
+                "normalized_score": null,
+                "contribution": 0.01639344262295082,
+                "distance": null
+              },
+              {
+                "source_id": "doc-5149b57efb060e06",
+                "branch": "vector",
+                "raw_score": 0.5823701024055481,
+                "metric": "embedding_cosine",
+                "rank": 1,
+                "normalized_score": null,
+                "contribution": 0.01639344262295082,
+                "distance": 0.4176298975944519
+              }
+            ]
+          }
+        }
+      },
+      {
+        "source_id": "doc-a4d971350c7e5875",
+        "title": "document_tracking.pdf 第 3 页",
+        "content": "Citation coordinates\nCount every physical PDF page, including blank pages, when recording citations.\nThis text is on physical page 3, even though page 2 has no extracted text.\nDo not renumber later pages after skipping a blank page during extraction.",
+        "url": null,
+        "file_path": "E:\\agent_project\\agent-learning-lab\\data\\day08\\retrieval-v1\\corpus\\document_tracking.pdf",
+        "page": 3,
+        "score": 0.03225806451612903,
+        "fetched_at": "2026-10-20T12:05:46.033268Z",
+        "metadata": {
+          "content_kind": "local_document",
+          "file_name": "document_tracking.pdf",
+          "relative_path": "document_tracking.pdf",
+          "file_type": "pdf",
+          "page": 3,
+          "chunk_index": 0,
+          "offset": 0,
+          "end_offset": 250,
+          "offset_basis": "normalized_page_text",
+          "empty_pages": [
+            2
+          ],
+          "warnings": [
+            "以下页面未提取到文本：2"
+          ],
+          "_retrieval": {
+            "method": "rrf",
+            "metric": "rrf_fusion",
+            "parameters": {
+              "rank_constant": 60
+            },
+            "branches": [
+              {
+                "source_id": "doc-a4d971350c7e5875",
+                "branch": "keyword",
+                "raw_score": 0.04879500364742665,
+                "metric": "token_count_cosine",
+                "rank": 2,
+                "normalized_score": null,
+                "contribution": 0.016129032258064516,
+                "distance": null
+              },
+              {
+                "source_id": "doc-a4d971350c7e5875",
+                "branch": "vector",
+                "raw_score": 0.5687525272369385,
+                "metric": "embedding_cosine",
+                "rank": 2,
+                "normalized_score": null,
+                "contribution": 0.016129032258064516,
+                "distance": 0.4312474727630615
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "traces": [
+      {
+        "source_id": "doc-5149b57efb060e06",
+        "branch": "keyword",
+        "raw_score": 0.059028133610095526,
+        "metric": "token_count_cosine",
+        "rank": 1,
+        "normalized_score": null,
+        "contribution": 0.01639344262295082,
+        "distance": null
+      },
+      {
+        "source_id": "doc-a4d971350c7e5875",
+        "branch": "keyword",
+        "raw_score": 0.04879500364742665,
+        "metric": "token_count_cosine",
+        "rank": 2,
+        "normalized_score": null,
+        "contribution": 0.016129032258064516,
+        "distance": null
+      },
+      {
+        "source_id": "doc-5149b57efb060e06",
+        "branch": "vector",
+        "raw_score": 0.5823701024055481,
+        "metric": "embedding_cosine",
+        "rank": 1,
+        "normalized_score": null,
+        "contribution": 0.01639344262295082,
+        "distance": 0.4176298975944519
+      },
+      {
+        "source_id": "doc-a4d971350c7e5875",
+        "branch": "vector",
+        "raw_score": 0.5687525272369385,
+        "metric": "embedding_cosine",
+        "rank": 2,
+        "normalized_score": null,
+        "contribution": 0.016129032258064516,
+        "distance": 0.4312474727630615
+      }
+    ],
+    "unique_candidate_count": 2,
+    "final_count": 2,
+    "parameters": {
+      "rank_constant": 60
+    },
+    "id_dedup_diagnostics": {
+      "raw_count_by_branch": {
+        "keyword": 2,
+        "vector": 2
+      },
+      "unique_count_by_branch": {
+        "keyword": 2,
+        "vector": 2
+      },
+      "removed_count_by_branch": {
+        "keyword": 0,
+        "vector": 0
+      },
+      "shared_source_ids": [
+        "doc-5149b57efb060e06",
+        "doc-a4d971350c7e5875"
+      ],
+      "unique_source_count": 2,
+      "raw_candidate_count": 4,
+      "within_branch_duplicate_count": 0,
+      "across_branch_extra_count": 2,
+      "repeated_candidate_rate": 0.5
+    },
+    "content_redundancy_diagnostics": {
+      "scope": "unique_candidates_before_top_k",
+      "selected_source_ids": [
+        "doc-5149b57efb060e06",
+        "doc-a4d971350c7e5875"
+      ],
+      "source_count": 2,
+      "duplicate_content_groups": [],
+      "duplicate_content_group_count": 0,
+      "duplicate_content_extra_count": 0,
+      "adjacent_pairs_checked": 0,
+      "overlapping_adjacent_pair_count": 0,
+      "overlap_pairs": [],
+      "coordinate_issues": [],
+      "overlap_check_complete": true
+    }
+  }
+}
