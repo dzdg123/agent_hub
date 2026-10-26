@@ -72,6 +72,8 @@ class ModelReply(BaseModel):
     tool_calls: list[ToolCall] = Field(default_factory=list)
     usage: Usage = Field(default_factory=Usage)
     request_id: str | None = None
+    finish_reason: str | None = None
+    http_attempts: int | None = Field(default=None, ge=1)
 
 
 class RunEvent(BaseModel):

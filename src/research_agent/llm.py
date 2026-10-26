@@ -17,6 +17,10 @@ from .models import ModelReply, ToolCall, Usage
 class LLMError(RuntimeError):
     """Base error for model calls."""
 
+    def __init__(self, message: str, *, http_attempts: int | None = None) -> None:
+        super().__init__(message)
+        self.http_attempts = http_attempts
+
 
 class LLMConfigurationError(LLMError):
     pass
@@ -33,6 +37,7 @@ class ChatModel(Protocol):
         *,
         tools: Sequence[dict[str, Any]] | None = None,
         response_format: dict[str, Any] | None = None,
+        max_tokens: int | None = None,
     ) -> ModelReply: ...
 
 
@@ -42,6 +47,8 @@ class DeepSeekClient:
     def __init__(self, settings: Settings, *, retries: int = 2) -> None:
         if not settings.deepseek_api_key:
             raise LLMConfigurationError("请设置 DEEPSEEK_API_KEY 后再调用真实模型")
+        if type(retries) is not int or retries < 0:
+            raise ValueError("retries 必须是非负整数，不能是 bool")
         self.settings = settings
         self.retries = retries
 
@@ -51,6 +58,7 @@ class DeepSeekClient:
         *,
         tools: Sequence[dict[str, Any]] | None = None,
         response_format: dict[str, Any] | None = None,
+        max_tokens: int | None = None,
     ) -> ModelReply:
         payload: dict[str, Any] = {
             "model": self.settings.deepseek_model,
@@ -62,6 +70,10 @@ class DeepSeekClient:
             payload["tool_choice"] = "auto"
         if response_format:
             payload["response_format"] = response_format
+        if max_tokens is not None:
+            if type(max_tokens) is not int or max_tokens <= 0:
+                raise ValueError("max_tokens 必须为正整数，不能是 bool")
+            payload["max_tokens"] = max_tokens
 
         headers = {
             "Authorization": f"Bearer {self.settings.deepseek_api_key}",
@@ -84,8 +96,13 @@ class DeepSeekClient:
                     except JSONDecodeError as exc:
                         raise LLMResponseError("模型响应不合法 JSON") from exc
 
-                    return self._normalize(data, time.perf_counter() - started)
+                    reply = self._normalize(data, time.perf_counter() - started)
+                    reply.http_attempts = attempt + 1
+                    return reply
 
+                except LLMResponseError as exc:
+                    exc.http_attempts = attempt + 1
+                    raise
                 except (httpx.TimeoutException, httpx.NetworkError) as exc:
                     last_error = exc
                 except httpx.HTTPStatusError as exc:
@@ -94,7 +111,9 @@ class DeepSeekClient:
                         break
                 if attempt < self.retries:
                     await asyncio.sleep(0.5 * (2**attempt))
-        raise LLMError(f"模型调用失败: {last_error}") from last_error
+        raise LLMError(
+            f"模型调用失败: {last_error}", http_attempts=attempt + 1,
+        ) from last_error
 
     @staticmethod
     def _normalize(data: dict[str, Any], elapsed: float) -> ModelReply:
@@ -133,6 +152,7 @@ class DeepSeekClient:
             tool_calls=calls,
             usage=usage,
             request_id=data.get("id"),
+            finish_reason=data["choices"][0].get("finish_reason"),
         )
 
     async def complete_json(

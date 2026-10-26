@@ -19,6 +19,7 @@ class DemoModel:
         *,
         tools: Sequence[dict[str, Any]] | None = None,
         response_format: dict[str, Any] | None = None,
+        max_tokens: int | None = None,
     ) -> ModelReply:
         usage = Usage(prompt_tokens=10, completion_tokens=10, total_tokens=20, model_calls=1)
         latest = str(messages[-1].get("content", ""))

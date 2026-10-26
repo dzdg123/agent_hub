@@ -14,10 +14,14 @@ class ScriptedModel:
         self.replies = list(replies)
         self.calls = []
         self.tool_definitions = []
+        self.response_formats = []
+        self.output_limits = []
 
-    async def complete(self, messages, *, tools=None, response_format=None):
+    async def complete(self, messages, *, tools=None, response_format=None, max_tokens=None):
         self.calls.append(deepcopy(messages))
         self.tool_definitions.append(deepcopy(tools))
+        self.response_formats.append(deepcopy(response_format))
+        self.output_limits.append(max_tokens)
         index = len(self.calls) - 1
         assert index < len(self.replies), "发生了预期之外的模型调用"
         item = self.replies[index]

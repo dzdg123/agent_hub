@@ -1,3 +1,6 @@
+import json
+from unittest.mock import AsyncMock
+
 import pytest
 import httpx
 import respx
@@ -296,4 +299,124 @@ async def test_complete_json_rejects_invalid_schema():
 def test_normalize_rejects_missing_message():
     with pytest.raises(LLMResponseError):
         DeepSeekClient._normalize({}, 0.1)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("limit", [None, 512])
+@respx.mock
+async def test_output_limit_payload_and_finish_reason(limit):
+    client = DeepSeekClient(Settings(deepseek_api_key="test-key-not-real"))
+    route = respx.post("https://api.deepseek.com/chat/completions").mock(
+        return_value=httpx.Response(200, json={
+            "choices": [{"message": {"content": "{}"}, "finish_reason": "length"}],
+            "usage": {"total_tokens": 12},
+        }),
+    )
+    reply = await client.complete(
+        [{"role": "user", "content": "输出 JSON"}],
+        response_format={"type": "json_object"}, max_tokens=limit,
+    )
+    payload = json.loads(route.calls[0].request.content)
+    if limit is None:
+        assert "max_tokens" not in payload
+    else:
+        assert payload["max_tokens"] == limit
+    assert payload["response_format"] == {"type": "json_object"}
+    assert reply.finish_reason == "length"
+    assert reply.usage.total_tokens == 12
+    assert reply.http_attempts == 1
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("limit", [0, -1, True, 1.5])
+@respx.mock
+async def test_client_rejects_invalid_output_limit_without_http(limit):
+    client = DeepSeekClient(Settings(deepseek_api_key="test-key-not-real"))
+    route = respx.post("https://api.deepseek.com/chat/completions")
+    with pytest.raises(ValueError, match="max_tokens"):
+        await client.complete([], max_tokens=limit)
+    assert route.call_count == 0
+
+
+@pytest.mark.asyncio
+@respx.mock
+async def test_complete_json_still_returns_schema_model():
+    client = DeepSeekClient(Settings(deepseek_api_key="test-key-not-real"))
+    route = respx.post("https://api.deepseek.com/chat/completions").mock(
+        return_value=httpx.Response(200, json={
+            "choices": [{"message": {"content": json.dumps({
+                "concept": "JSON", "explanation": "数据格式", "confidence": 1,
+            })}, "finish_reason": "stop"}],
+        }),
+    )
+    result = await client.complete_json(
+        [{"role": "user", "content": "解释 JSON"}], ConceptExplanation,
+    )
+    assert isinstance(result, ConceptExplanation)
+    assert result.concept == "JSON"
+    assert "max_tokens" not in json.loads(route.calls[0].request.content)
+
+
+@pytest.mark.asyncio
+@respx.mock
+async def test_rag_content_repair_and_network_retries_have_separate_limits(monkeypatch):
+    from research_agent.models import Source
+    from research_agent.rag import generate_answer, prepare_evidence_scope
+
+    monkeypatch.setattr("research_agent.llm.asyncio.sleep", AsyncMock())
+    source = Source(source_id="doc-a", title="实验", content="实验有三个步骤。")
+    scope = prepare_evidence_scope([source], [source])
+    good = json.dumps({
+        "status": "answered",
+        "claims": [{"text": "实验有三个步骤。", "kind": "fact", "evidence": [
+            {"source_id": "doc-a", "quote": "实验有三个步骤。"},
+        ]}],
+        "limitations": [],
+    }, ensure_ascii=False)
+
+    def response(content, tokens):
+        return httpx.Response(200, json={
+            "choices": [{"message": {"content": content}, "finish_reason": "stop"}],
+            "usage": {"total_tokens": tokens},
+        })
+
+    route = respx.post("https://api.deepseek.com/chat/completions").mock(side_effect=[
+        httpx.Response(429), httpx.Response(503), response("坏 JSON", 10),
+        httpx.Response(429), httpx.Response(503), response(good, 20),
+    ])
+    client = DeepSeekClient(Settings(deepseek_api_key="test-key-not-real"), retries=2)
+    result = await generate_answer(client, "有几个步骤？", scope, max_tokens=512)
+    assert result.status == "program_validated"
+    assert route.call_count == 6
+    assert len(result.attempts) == result.usage.model_calls == 2
+    assert [attempt.http_attempts for attempt in result.attempts] == [3, 3]
+    assert result.usage.total_tokens == 30
+    assert all(json.loads(call.request.content)["max_tokens"] == 512 for call in route.calls)
+
+
+@pytest.mark.asyncio
+@respx.mock
+async def test_rag_records_exhausted_http_attempts_without_content_repair(monkeypatch):
+    from research_agent.models import Source
+    from research_agent.rag import generate_answer, prepare_evidence_scope
+
+    monkeypatch.setattr("research_agent.llm.asyncio.sleep", AsyncMock())
+    source = Source(source_id="doc-a", title="资料", content="正文")
+    scope = prepare_evidence_scope([source], [source])
+    route = respx.post("https://api.deepseek.com/chat/completions").mock(
+        side_effect=httpx.ReadTimeout("offline test"),
+    )
+    client = DeepSeekClient(Settings(deepseek_api_key="test-key-not-real"), retries=2)
+    result = await generate_answer(client, "问题", scope)
+    assert result.status == "model_failed"
+    assert result.draft is None
+    assert route.call_count == 3
+    assert len(result.attempts) == 1
+    assert result.attempts[0].http_attempts == 3
+
+
+@pytest.mark.parametrize("retries", [-1, True, 1.5])
+def test_client_rejects_invalid_retry_limit(retries):
+    with pytest.raises(ValueError, match="retries"):
+        DeepSeekClient(Settings(deepseek_api_key="test-key-not-real"), retries=retries)
 

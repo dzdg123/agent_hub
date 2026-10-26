@@ -1,0 +1,35 @@
+{
+  "evaluation_kind": "mock_rule_tests",
+  "pytest_exit_code": 0,
+  "rule_tests": {
+    "passed": 31,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "fixed_case_runs": 23,
+  "end_to_end_case_runs": 5,
+  "covered_parent_case_ids": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "R12",
+    "R13",
+    "R14",
+    "R15"
+  ],
+  "fixture_reviews_are_not_human_acceptance": true,
+  "real_model_quality": {
+    "status": "not_measured",
+    "model_calls": 0,
+    "error_rate": null
+  }
+}
